@@ -2,7 +2,7 @@
 
 Vue，仿网易云音乐Web版
 
-感谢[@Binaryify](https://github.com/Binaryify)对网易云音乐api深度挖掘，[NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
+感谢[@Binaryify](https://github.com/Binaryify)对网易云音乐api深度挖掘。详细请Star[NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
 
 
 **开发中...**
