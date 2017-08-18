@@ -1,0 +1,123 @@
+.n-ban {
+    .wrap {
+        position: relative;
+        width: 982px;
+        height: 336px;
+        margin: 0 auto;
+    }
+    .ban {
+        position: relative;
+        width: 982px;
+        height: 336px;
+        img {
+            display: block;
+            width: 730px;
+            height: 336px;
+        }
+        .slide {
+            position: relative;
+            height: 336px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #f4f4f4;
+        }
+        .btnl,
+        .btnr {
+            display: block;
+            position: absolute;
+            top: 50%;
+            margin-top: -31px;
+            width: 37px;
+            height: 63px;
+            text-indent: -9999px;
+            background: url("./assets/img/banner.png") 0 9999px no-repeat;
+        }
+        .btnl {
+            left: 20px;
+            background-position: 0 -360px;
+            &:hover {
+                background-position: 0 -430px;
+            }
+        }
+        .btnr {
+            right: 20px;
+            background-position: 0 -508px;
+            &:hover {
+                background-position: 0 -578px;
+            }
+        }
+        .swiper-button-white {
+            background-size: 80%;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #c10d0c;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+        }
+    }
+    .ban-list {
+        position: relative;
+        box-sizing: border-box;
+        width: 730px;
+        height: 336px;
+        overflow: hidden;
+    }
+    .dots {
+        position: absolute;
+        top: 310px;
+        left: 0;
+        z-index: 10;
+        width: 730px;
+        height: 20px;
+        text-align: center;
+        .pg {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            &:before {
+                content: '';
+                display: inline-block;
+                width: 7px;
+                height: 7px;
+                overflow: hidden;
+                vertical-align: middle;
+                border-radius: 7px;
+                background: rgba(255, 255, 255, .5);
+            }
+            &.z-slt:before {
+                background: #ff0000;
+            }
+        }
+    }
+    .download,
+    .download .btn {
+        background: url("./assets/img/download.png") no-repeat 0 0;
+    }
+    .download {
+        position: absolute;
+        top: 0;
+        z-index: 20;
+        right: -1px;
+        width: 254px;
+        height: 336px;
+        overflow: hidden;
+        box-shadow: 0 0 25px rgba(0, 0, 0, .3);
+        .btn {
+            display: block;
+            width: 215px;
+            height: 56px;
+            margin: 212px 0 0 19px;
+            background-position: 0 9999px;
+            text-indent: -9999px;
+            &:hover {
+                text-decoration: none;
+                background-position: 0 -340px;
+            }
+        }
+        p {
+            margin: 10px auto;
+            text-align: center;
+            color: #8d8d8d;
+        }
+    }
+}

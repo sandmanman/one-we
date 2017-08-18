@@ -1,0 +1,254 @@
+div.m-mask {
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==);
+}
+div.m-layer {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    z-index: 9998;
+    margin-left: -(530px/2);
+    width: 530px;
+    border-radius: 4px;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.8);
+    border: none;
+}
+
+div.m-layer .zbar,
+div.m-layer .zcls {
+    background: url(./assets/img/layer.png) no-repeat 0 9999px;
+}
+
+div.m-layer .zbar,
+div.m-layer .zttl {
+    user-select: none;
+}
+
+div.m-layer .zbar {
+    position: relative;
+    z-index: 10;
+    border-bottom: 1px solid #191919;
+    border-radius: 4px 4px 0 0;
+    background: #2d2d2d;
+}
+
+div.m-layer .zttl {
+    margin: 0;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 18px;
+    border-radius: 3px 3px 0 0;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+    background-position: 50% 0;
+}
+
+div.m-layer div.zcnt {
+    padding: 0;
+    border: 1px solid #878787;
+    border-width: 0 1px 1px;
+    border-radius: 0 0 4px 4px;
+    background: #fff;
+}
+
+div.m-layer .lyct {
+    padding: 40px 0;
+}
+
+div.m-layer .lyct-1 {
+    padding: 0;
+}
+
+div.m-layer .lybt {
+    border-top: 1px solid #c6c6c6;
+}
+
+div.m-layer .lybtc {
+    height: 32px;
+    line-height: 32px;
+    padding: 8px 20px;
+    border: 1px solid #fff;
+    border-radius: 0 0 4px 4px;
+    text-align: center;
+    background: #f7f7f7;
+}
+
+div.m-layer .lybt .u-btn2 {
+    margin: 0 10px;
+}
+
+div.m-layer .lybt .back {
+    float: right;
+}
+
+div.m-layer .lybtn {
+    margin-top: 30px;
+}
+
+div.m-layer .lybtn a,
+div.m-layer .lsbtn a {
+    margin: 0 10px;
+}
+
+div.m-layer .mesg {
+    margin-top: 15px;
+}
+
+div.m-layer .msg1 {
+    margin-top: 12px;
+    margin-bottom: 10px;
+    line-height: 20px;
+}
+
+div.m-layer .zcls {
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    right: 5px;
+    width: 38px;
+    height: 38px;
+    overflow: hidden;
+    text-indent: -9999px;
+    cursor: pointer;
+    background-position: 14px -80px;
+}
+
+div.m-layer .alert {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 270px;
+    height: 30px;
+    margin: -15px 0 0 -135px;
+    background: #ffeaea;
+    border: 1px solid #f7afaf;
+    line-height: 30px;
+    text-align: center;
+    color: #666;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+div.m-layer .lsbtn {
+    padding: 10px 0;
+    border-radius: 0 0 4px 4px;
+    border-top: 1px solid #c6c6c6;
+    background-color: #f7f7f7;
+}
+
+div.m-layer-w1 {
+    width: 285px;
+}
+
+div.m-layer-w2 {
+    width: 480px;
+}
+
+div.m-layer-w3 {
+    width: 620px;
+}
+
+div.m-layer-w4 {
+    width: 750px;
+}
+
+div.m-layer-w5 {
+    width: 442px;
+}
+
+div.m-layer-w6 {
+    width: 570px;
+}
+
+div.m-layer-m5 {
+    width: 405px;
+}
+
+div.m-layer-m5 {
+    width: 405px;
+}
+
+div.m-layer-m7 {
+    width: 445px;
+}
+
+div.m-layer-m8 {
+    width: 390px;
+}
+
+div.m-layer-wauto {
+    width: auto;
+}
+
+div.m-layer .m-cpctrl {
+    padding-left: 80px;
+}
+
+
+.n-log2-1 {
+    padding: 40px 0 39px;
+}
+.n-log2 .u-main {
+    padding: 0 35px 3px 40px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 224px;
+    .u-plt {
+        height: 120px;
+        background: url(./assets/img/platform.png) no-repeat 13px 0;
+    }
+    .u-btn2 {
+        width: 219px;
+        i {
+            width: 184px;
+        }
+    }
+}
+
+
+// 登录
+.m-login-layer {
+    height: 326px;
+    margin-top: -(326px/2);
+}
+.n-log2-2 {
+    padding: 30px 0 43px;
+    width: 220px;
+    margin: 0 auto;
+}
+.n-log2 .u-txt {
+    width: 206px;
+}
+.n-log2-2 .u-btn2-2,
+.n-log2-3 .u-btn2-2 {
+    width: 215px;
+}
+.n-log2-2 .u-btn2-2 i,
+.n-log2-3 .u-btn2-2 i {
+    width: 180px;
+}
+
+
+.n-loglink2 {
+    padding: 0 19px;
+    height: 48px;
+    border-top: 1px solid #c6c6c6;
+    border-radius: 0 0 4px 4px;
+    line-height: 48px;
+    background-color: #f7f7f7;
+    a {
+        font-size: 12px;
+        color: #999;
+        text-decoration: none;
+        &.s-primary {
+            color: #0c72c3;
+        }
+    }
+}

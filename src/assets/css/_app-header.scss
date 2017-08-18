@@ -1,0 +1,431 @@
+//
+// app header
+//
+.m-top,
+.m-top .logo a,
+.m-nav li,
+.m-nav li span,
+.m-nav a,
+.m-nav a em,
+.m-nav .cor,
+.m-nav .hot,
+.m-srch .srchbg,
+.m-subnav,
+.m-subnav .nav a,
+.m-subnav .nav em,
+.m-tophead,
+.m-mail,
+.m-tophead .head .mask,
+.m-msg {
+    background: url("./assets/img/topbar.png") no-repeat 0 9999px;
+}
+
+.m-nav li,
+.m-nav li span,
+.m-nav a,
+.m-nav a em {
+    float: left;
+    height: 70px;
+    font-size: 14px;
+}
+
+.m-top {
+    position: relative;
+    z-index: 1000;
+    height: 70px;
+    background-position: 0 -80px;
+    background-repeat: repeat-x;
+    .wrap {
+        width: 1100px;
+        margin: 0 auto;
+    }
+    .logo {
+        float: left;
+        width: 176px;
+        a {
+            float: left;
+            width: 157px;
+            height: 33px;
+            padding: 22px 20px 0 0;
+            background-position: 0 15px;
+            text-indent: -9999px;
+        }
+    }
+}
+
+.m-nav {
+    float: left;
+    li {
+        position: relative;
+        background-position: right -300px;
+        span {
+            background-position: left -300px;
+        }
+        &.lst span,
+        &.fst span {
+            background: none;
+        }
+    }
+    .cor {
+        display: none;
+    }
+    a {
+        position: relative;
+        padding-left: 2px;
+        text-align: center;
+        line-height: 76px;
+        em {
+            padding: 0 20px 0 18px;
+            overflow: hidden;
+            color: #ccc;
+            text-shadow: 0 1px 0 #1b1b1b;
+            cursor: pointer;
+        }
+        &.z-slt {
+            position: relative;
+            margin: 0 -1px;
+            background-position: left -155px;
+            em {
+                padding: 0 21px 0 19px;
+                background-position: right -155px;
+            }
+            .cor {
+                display: block;
+                position: absolute;
+                left: 50%;
+                top: 63px;
+                width: 14px;
+                height: 9px;
+                margin-left: -7px;
+                overflow: hidden;
+                background-position: -226px 0;
+            }
+        }
+        &:hover {
+            position: relative;
+            margin: 0 -1px;
+            background-position: left -470px;
+            text-decoration: none;
+            em {
+                padding: 0 21px 0 19px;
+                background-position: right -470px;
+                color: #ccc;
+            }
+        }
+    }
+}
+
+.m-tophead {
+    position: relative;
+    float: right;
+    height: 45px;
+    margin: 21px 0 0 19px;
+    padding: 0 22px 0 0;
+    background-position: right -366px;
+    &:hover {
+        background-position: right -405px;
+        >.m-tlist {
+            display: block;
+        }
+    }
+    .link,
+    .link:hover {
+        display: block;
+        width: 28px;
+        margin-top: 10px;
+        color: #787878;
+    }
+    >.m-tlist {
+        display: none;
+    }
+
+    .head,
+    .head img {
+        width: 30px;
+        height: 30px;
+    }
+    .head .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 30px;
+        height: 31px;
+        background-position: 0 -390px;
+    }
+    .head .icn {
+        position: absolute;
+        top: -3px;
+        right: -5px;
+    }
+
+    .name {
+        display: inline-block;
+        max-width: 60px;
+        margin: 8px 0 0 8px;
+        line-height: 17px;
+        color: #adadad;
+    }
+
+}
+
+.m-tlist {
+    position: absolute;
+    top: 38px;
+    right: -43px;
+    width: 158px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    .inner {
+        overflow: hidden;
+        border-radius: 3px;
+        border: 1px solid #404040;
+        background: #2a2a2a;
+    }
+    .icn,
+    .arr {
+        background: url("./assets/img/toplist.png") no-repeat 0 9999px;
+    }
+    .icn {
+        float: left;
+        width: 18px;
+        height: 18px;
+        margin: 10px 10px 0 -7px;
+    }
+    .icn-mb {
+        background-position: 0 0;
+    }
+    .icn-wy {
+        background-position: 0 -40px;
+    }
+    .icn-hm {
+        background-position: 0 -80px;
+    }
+    
+    .icn-lv {
+        background-position: 0 -100px;
+    }
+    
+    .icn-mbr {
+        background-position: 0 -221px;
+    }
+    
+    .icn-store {
+        background-position: 0 -120px;
+    }
+    
+    .icn-st {
+        background-position: 0 -140px;
+    }
+    
+    .icn-dj,
+    .icn-rdi {
+        background-position: 0 -160px;
+    }
+    
+    .icn-imt {
+        background-position: 0 -180px;
+    }
+    
+    .icn-ex {
+        background-position: 0 -200px;
+    }
+    
+    .u-icn-78 {
+        float: left;
+        margin: 9px 0 0 10px;
+    }
+    
+    .icn-new {
+        width: 26px;
+        height: 15px;
+        margin: 13px 0 0 11px;
+        background-position: 0 -370px;
+    }
+    
+    .icn-topic {
+        width: 16px;
+        height: 15px;
+        background-position: -20px -60px;
+        margin: 8px 10px 0 1px;
+    }
+    
+    .icn-reward {
+        width: 16px;
+        height: 16px;
+        background-position: -20px -80px;
+        margin: 8px 10px 0 0;
+    }
+    em {
+        float: left;
+        width: 100px;
+    }
+    .arr {
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        width: 16px;
+        height: 9px;
+        margin-left: -8px;
+        background-position: -20px 0;
+    }
+    .lt {
+        border-top: 1px solid #404040;
+    }
+    .ltb {
+        border-bottom: 1px solid #151515;
+        border-top: 1px solid #404040;
+    }
+    ul.mg {
+        padding: 6px 0;
+    }
+    li,
+    li a {
+        float: left;
+    }
+    a {
+        width: 132px;
+        height: 38px;
+        overflow: hidden;
+        padding-left: 24px;
+        color: #ccc;
+        line-height: 39px;
+        &:hover {
+            background: #353535;
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+}
+
+.m-srch {
+    position: relative;
+    &,
+    .srchbg {
+        float: right;
+        width: 210px;
+        height: 31px;
+    }
+    .srchbg {
+        margin-top: 21px;
+        background-position: 0 -550px;
+    }
+    .parent {
+        display: block;
+        position: relative;
+        margin: 10px 0 0 33px;
+        input {
+            width: 90%;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            color: #333;
+            border: 0;
+        }
+    }
+}
+
+// sub nav
+.m-subnav {
+    position: relative;
+    z-index: 90;
+    margin-top: -3px;
+    height: 35px;
+    background-position: 0 -230px;
+    background-repeat: repeat-x;
+    .wrap {
+        width: 911px;
+        padding-left: 168px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    .nav {
+        li,
+        a,
+        em {
+            float: left;
+            height: 35px;
+            overflow: hidden;
+        }
+        li {
+            display: inline;
+            margin: 0 17px;
+        }
+        em {
+            padding-right: 14px;
+            line-height: 37px;
+            color: #fff;
+            text-shadow: 0 1px 0 #650303;
+        }
+        a {
+            padding-left: 14px;
+            &:hover,
+            &.z-slt {
+                background-position: left -268px;
+            }
+            &:hover em,
+            &.z-slt em {
+                background-position: right -268px;
+            }
+        }
+    }
+
+    .shadow {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        overflow: hidden;
+        box-shadow: 0 1px 2px rgba(0,0,0,.7);
+    }
+}
+
+
+.u-bub {
+    display: block;
+    position: relative;
+    zoom: 1;
+    width: 22px;
+    height: 22px;
+    color: #fff;
+    text-align: center;
+    line-height: 23px;
+    font-weight: bold;
+    b {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 22px;
+        width: 22px;
+        background: url(./assets/img/bub.png) no-repeat;
+    }
+    em {
+        float: none;
+        display: block;
+        position: relative;
+        text-align: center;
+        z-index: 2;
+    }
+}
+
+.m-msg {
+    position: relative;
+    float: right;
+    width: 34px;
+    height: 28px;
+    margin: 17px 0 0 20px;
+    background-position: 0 -49px;
+    &:hover {
+        background-position: -60px -49px;
+    }
+    .bub {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+
+.m-subnav-up {
+    height: 5px;
+}

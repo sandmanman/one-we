@@ -1,0 +1,78 @@
+<template>
+    <div>
+        <div class="n-myinfo n-myinfo-1 s-bg s-bg-1" v-if="!userInfo">
+            <p class="note s-fc3">登录网易云音乐，可以享受无限收藏的乐趣，并且无限同步到手机</p>
+            <router-link :to="{ name: 'login'}" class="btn s-bg s-bg-2 f-tdn">用户登录</router-link>
+        </div>
+        <!-- 登录后 -->
+        <template v-else>
+        <div class="n-myinfo s-bg s-bg-5">
+            <div class="f-cb">
+                <a href="#" class="head f-pr">
+                    <img :src="userInfo.profile.avatarUrl + '?param=80y80'">
+                </a>
+                <div class="info">
+                    <h4><a :href="'/user/home?id=' + userInfo.profile.userId" class="nm nm-icn f-fs1 f-ib f-thide">{{userInfo.profile.nickname}}</a></h4>
+                    <p><a href="#" class="u-lv u-icn2 u-icn2-lv">{{userLevel}}<i class="right u-icn2 u-icn2-lvright"></i></a></p>
+                    <div class="btnwrap f-pr">
+                        <a href="javascript:;" class="sign u-btn2 u-btn2-2"><i>签 到</i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <ul class="dny s-fc3 f-cb">
+                <li class="fst"><a href="#"><strong>92</strong><span>动态</span></a></li>
+                <li><a href="#"><strong>59</strong><span>关注</span></a></li>
+                <li class="lst"><a href="#"><strong>1</strong><span>粉丝</span></a></li>
+            </ul>
+        </div>
+        </template>
+    </div>
+</template>
+
+<script>
+import { docCookies, localStorage } from '@/utils'
+import { userLevel } from '@/api'
+import { mapGetters } from 'vuex'
+export default {
+    name: 'MyInfo',
+    data() {
+        return {
+            userLevel: null
+        }
+    },
+    created() {
+        //this.getUserInfo()
+        this.getUserLevel()
+    },
+    computed: {
+        ...mapGetters(['userInfo']),
+    },
+    methods: {
+        // getUserInfo() {
+        //     if ( localStorage.getter('MineInfo') ) {
+        //         this.userInfo = JSON.parse(localStorage.getter('MineInfo'))
+        //     } else {
+        //         this.userInfo = null
+        //     }
+        // },
+        getUserLevel() {
+            userLevel().then(res => {
+                if ( res.data.code === 200 ) {
+                    this.userLevel = res.data.data.level
+                } else {
+                    console.error('数据获取错误')
+                }
+            }).catch(error => {
+                console.error(error)
+            })
+        }
+    }
+}
+</script>
+
+<style>
+
+</style>
+
+
