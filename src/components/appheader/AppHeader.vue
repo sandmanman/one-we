@@ -166,13 +166,14 @@ export default {
             //
             // 删除Cookie
             docCookies.removeItem('__csrf')
+
+            // 删除localStorage
+            localStorage.remove('CURRENT_USER_ID')
+
             console.log('Cookie[__csrf]:'+docCookies.hasItem('__csrf'))
 
             // store action
             this.logout()
-
-            // 删除localStorage
-            localStorage.remove('MineInfo')
 
             // 跳转到主页
             window.location.href = '/'

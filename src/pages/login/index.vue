@@ -77,7 +77,8 @@ export default {
     },
     methods: {
         ...mapActions([
-            'setUserID'
+            'setUserID',
+            'setCurrentUserInfo'
         ]),
         openLoginByMobile() {
             this.mobile = ''
@@ -121,9 +122,10 @@ export default {
                                 this.isError = false
                                 this.submitBtnText = '登录'
                                 localStorage.setter('CURRENT_USER_ID', res.data.account.id)
-                                
-                                var currentUserID = localStorage.getter('CURRENT_USER_ID')
+
+                                var currentUserID = Number(localStorage.getter('CURRENT_USER_ID'))
                                 // store actions
+                                this.setUserID(currentUserID)
                                 this.setCurrentUserInfo(currentUserID)
 
                                 // 跳转页面或刷新
