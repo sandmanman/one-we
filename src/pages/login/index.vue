@@ -77,7 +77,7 @@ export default {
     },
     methods: {
         ...mapActions([
-            'setCurrentUserInfo'
+            'setUserID'
         ]),
         openLoginByMobile() {
             this.mobile = ''
@@ -120,38 +120,15 @@ export default {
                                 // 正确登录
                                 this.isError = false
                                 this.submitBtnText = '登录'
-                                localStorage.setter('MineInfo', res.data)
-                                var userInfo = JSON.parse( localStorage.getter('MineInfo') )
-                                                                
+                                localStorage.setter('CURRENT_USER_ID', res.data.account.id)
+                                
+                                var currentUserID = localStorage.getter('CURRENT_USER_ID')
                                 // store actions
-                                this.setCurrentUserInfo(userInfo)
+                                this.setCurrentUserInfo(currentUserID)
 
                                 // 跳转页面或刷新
                                 this.$router.push('/')
                         }
-
-                        // if( resCode === 501 ) {
-                        //     this.errorMsg = '手机号未注册'
-                        //     this.isError = true
-                        //     this.submitBtnText = '登录'
-                        // } else if( resCode === 502 ) {
-                        //     this.errorMsg = '手机号或密码错误'
-                        //     this.isError = true
-                        //     this.submitBtnText = '登录'
-                        // } else if( resCode === 200 ) {
-                        //     // 正确登录
-                        //     this.isError = false
-                        //     this.submitBtnText = '登录'
-                        //     localStorage.setter('MineInfo', res.data)
-                        //     var userInfo = JSON.parse( localStorage.getter('MineInfo') )
-                            
-                        //     // store actions
-                        //     this.setCurrentUserInfo(userInfo)
-
-
-                        //     // 跳转页面或刷新
-                        //     this.$router.push('/')
-                        // }
                     })
                     .catch( error => {
                         this.submitBtnText = '登录'

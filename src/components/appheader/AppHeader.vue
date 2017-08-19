@@ -150,33 +150,17 @@ export default {
     name: 'AppHeader',
     data() {
         return {
-            //userInfo: null
+            
         }
     },
     created() {
-        //this.getUserInfo()
+        
     },
     computed: {
         ...mapGetters(['userInfo']),
-        // userInfo() {
-        //     if ( localStorage.getter('MineInfo') ) {
-        //         return JSON.parse(localStorage.getter('MineInfo'))
-        //     } else {
-        //         return null
-        //     }
-        // }
     },
     methods: {
         ...mapActions(['logout']),
-        // getUserInfo() {
-        //     if ( localStorage.getter('MineInfo') ) {
-        //         this.userInfo = JSON.parse(localStorage.getter('MineInfo'))
-        //     } else {
-        //         this.userInfo = null
-        //     }
-
-        //     console.log('app header:'+this.userInfo)
-        // },
         logoutSubmit() {
             // 退出登录
             //

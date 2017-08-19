@@ -38,34 +38,18 @@ export default {
     name: 'MyInfo',
     data() {
         return {
-            userLevel: null
+            
         }
     },
     created() {
-        //this.getUserInfo()
-        this.getUserLevel()
+        
     },
     computed: {
         ...mapGetters(['userInfo']),
     },
     methods: {
-        // getUserInfo() {
-        //     if ( localStorage.getter('MineInfo') ) {
-        //         this.userInfo = JSON.parse(localStorage.getter('MineInfo'))
-        //     } else {
-        //         this.userInfo = null
-        //     }
-        // },
-        getUserLevel() {
-            userLevel().then(res => {
-                if ( res.data.code === 200 ) {
-                    this.userLevel = res.data.data.level
-                } else {
-                    console.error('数据获取错误')
-                }
-            }).catch(error => {
-                console.error(error)
-            })
+        getUserInfo() {
+            
         }
     }
 }

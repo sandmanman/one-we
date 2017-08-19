@@ -56,9 +56,10 @@ new Vue({
     },
     created() {
         if( docCookies.hasItem('__csrf') ) {
-            if ( localStorage.getter('MineInfo') ) {
-                var userInfo = JSON.parse( localStorage.getter('MineInfo') )
-                store.dispatch('setCurrentUserInfo', userInfo)
+            if ( localStorage.getter('CURRENT_USER_ID') ) {
+                var userId = Number(localStorage.getter('CURRENT_USER_ID'))
+                store.dispatch('setUserID', userId)
+                store.dispatch('setCurrentUserInfo', userId)
             }
         }
     }

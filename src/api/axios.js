@@ -5,7 +5,7 @@ import axios from 'axios'
 // import store from '../store'
 // import router from '../router'
 
-import { cookies } from '@/utils'
+import { docCookies } from '@/utils'
 
 
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
@@ -27,19 +27,19 @@ const service = axios.create({
 
 
 // request请求拦截器
-// service.interceptors.request.use(
-//     config => {
-//         // 在发送请求之前检测vuex是否存有token
-//         if(store.state.token) {
-//             config.headers.Authorization = 'token' + store.state.token
-//         }
-//         return config
-//     },
-//     error => {
-//         // 对请求错误做些什么
-//         return Promise.reject(error)
-//     }
-// )
+service.interceptors.request.use(
+    config => {
+        // 在发送请求之前检测vuex是否存有token
+        if(docCookies.hasItem('__csrf')) {
+            config.headers.Authorization = '__csrf' + docCookies.getItem('__csrf')
+        }
+        return config
+    },
+    error => {
+        // 对请求错误做些什么
+        return Promise.reject(error)
+    }
+)
 
 // response响应拦截器
 // service.interceptors.response.use(

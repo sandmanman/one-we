@@ -93,6 +93,7 @@
         created() {
             this.getBanner()
             this.getHotRecommended()
+            
             this.getRecommendResource()
             this.getNewAlbum(this.newAlbum.limit, this.newAlbum.offset)
             this.getToplist()

@@ -92,7 +92,18 @@ export function loginRefresh() {
     })
 }
 
-// 用户等级
+// 用户详情
+export function userInfo(uid) {
+    return $http({
+        method: 'get',
+        url: '/user/detail',
+        params: {
+            uid
+        }
+    })
+}
+
+// 用户等级信息
 export function userLevel() {
     return $http({
         method: 'get',
