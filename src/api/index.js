@@ -108,9 +108,6 @@ export function userLevel() {
     return $http({
         method: 'get',
         url: '/user/level',
-        params: {
-            csrf_token: csrfToken
-        }
     })
 }
 
@@ -119,8 +116,18 @@ export function recommendResource() {
     return $http({
         method: 'get',
         url: '/recommend/resource',
+    })
+}
+
+// 歌曲排行榜评论
+// id的请求排行榜后得到commentThreadId
+// 如/top/list?idx=6
+export function commentToplist(id) {
+    return $http({
+        method: 'get',
+        url: '/comment/toplist',
         params: {
-            csrf_token: csrfToken
+            id
         }
     })
 }
