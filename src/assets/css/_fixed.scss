@@ -1,0 +1,25 @@
+//
+// Fixed
+//
+
+
+.m-tlist {
+    display: none;
+}
+.m-tophead:hover {
+    > .m-tlist {
+        display: block;
+    }
+}
+
+.m-subnav {
+    position: relative;
+    z-index: 1;
+}
+.m-subnav-up {
+    margin-top: 0 !important;
+}
+
+.n-bilst .blk:last-child {
+    width: 228px;
+}
