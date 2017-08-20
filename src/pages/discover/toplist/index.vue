@@ -589,8 +589,8 @@ export default {
                     this.top3 = res.data.result && res.data.result.tracks.slice(0,3)
                     this.topOther = res.data.result && res.data.result.tracks.slice(3)
 
-                    var commentId = res.data.result.commentThreadId.match(/\d+/g)
-                    this.toplistCommentId = commentId[1]
+                    var commentId = res.data.result.commentThreadId.replace(/A_PL_0_/g, "")
+                    this.toplistCommentId = commentId
 
                     // 请求该排行榜下的评论
                     this.getComment(this.toplistCommentId)

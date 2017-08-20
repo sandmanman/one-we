@@ -120,8 +120,7 @@ export function recommendResource() {
 }
 
 // 歌曲排行榜评论
-// id的请求排行榜后得到commentThreadId
-// 如/top/list?idx=6
+// id需要先请求排行榜后，得到 commentThreadId
 export function commentToplist(id) {
     return $http({
         method: 'get',
