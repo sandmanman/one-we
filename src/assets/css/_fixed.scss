@@ -2,7 +2,6 @@
 // Fixed
 //
 
-
 .m-tlist {
     display: none;
 }
@@ -22,4 +21,16 @@
 
 .n-bilst .blk:last-child {
     width: 228px;
+}
+
+.g-sd3 {
+    position: static !important;
+}
+
+.n-cmt {
+    margin-top: 40px;
+}
+
+.m-table tbody > tr:nth-child(odd) td {
+    background-color: #f7f7f7;
 }
