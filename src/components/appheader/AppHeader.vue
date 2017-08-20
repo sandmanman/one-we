@@ -2,16 +2,15 @@
     <div class="g-topbar">
         <div class="m-top">
             <div class="wrap">
-                <h1 class="logo"><a href="/#">网易云音乐</a></h1>
+                <h1 class="logo"><a href="/">网易云音乐</a></h1>
 
                 <!-- 导航 -->
                 <ul class="m-nav j-tflag">
                     <li class="fst">
                         <span>
-                            <!-- 选中状态 a z-slt -->
-                            <a href="/#">
+                            <router-link :to="{name: 'discover'}" active-class="z-slt">
                                 <em>发现音乐</em><sub class="cor">&nbsp;</sub>
-                            </a>
+                            </router-link>
                         </span>
                     </li>
                     <li>
@@ -35,8 +34,8 @@
                     <a href="#" class="link">登录</a>
                     <div class="m-tlist j-uflag">
                         <div class="inner">
-                            <ul class="f-cb lb mg">
-                                <li>
+                            <ul class="f-cb">
+                                <li class="lb">
                                     <router-link :to="{ name: 'login'}" class="itm-1"><i class="icn icn-mb"></i><em>手机号登录</em></router-link>
                                 </li>
                                 <!-- <li><a class="itm-2" href="#"><i class="icn icn-wy"></i><em>网易邮箱帐号登录</em></a></li> -->
@@ -52,7 +51,7 @@
                     <div class="head f-fl f-pr">
                         <img :src="userInfo.profile.avatarUrl + '?param=30y30'">
                         <a :href="'/user/home?id=' + userInfo.profile.userId" class="mask"></a>
-                        <i class="icn u-icn u-icn-68 f-alpha"></i>
+                        <i class="m-topmsg f-pa j-uflag">5</i>
                     </div>
                     <a :href="'/user/home?id=' + userInfo.profile.userId" class="name f-thide f-fl f-tdn f-hide">{{userInfo.profile.nickname}}</a>
                     <div class="m-tlist m-tlist-lged j-uflag">
@@ -105,41 +104,20 @@
                         <i class="arr"></i>
                     </div>
                 </div>
-
-                <a class="m-msg f-pr j-tflag" href="/msg/#/private">
-                    <i class="bub u-bub "><b class="f-alpha">2</b><em></em></i>
-                </a>
                 </template>
 
                 <!-- 搜索 -->
-                <div class="m-srch">
+                <div class="m-srch f-pr j-suggest">
                     <div class="srchbg">
                         <span class="parent">
-                            <input type="text" value="" placeholder="单曲/歌手/专辑/歌单/MV/用户">
+                            <input type="text" class="txt j-flag" value="" placeholder="音乐/电台/用户">
                         </span>
                     </div>
                 </div>
 
             </div>
         </div>
-        <div class="m-subnav m-subnav-up f-pr j-tflag">
-            <div class="shadow">&nbsp;</div>
-        </div>
-        <!-- sub nav S -->
-        <div class="m-subnav">
-            <div class="wrap">
-                <ul class="nav">
-                    <!-- 选中状态  a z-slt-->
-                    <li><a href="#"><em>推荐</em></a></li>
-                    <li><a href="#"><em>排行榜</em></a></li>
-                    <li><a href="#"><em>歌单</em></a></li>
-                    <li><a href="#"><em>主播电台</em></a></li>
-                    <li><a href="#"><em>歌手</em></a></li>
-                    <li><a href="#"><em>新碟上架</em></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- sub nav End -->
+        <div class="m-subnav m-subnav-up f-pr j-tflag"></div>
     </div>
 </template>
 
@@ -164,17 +142,8 @@ export default {
         logoutSubmit() {
             // 退出登录
             //
-            // 删除Cookie
-            docCookies.removeItem('__csrf')
-
-            // 删除localStorage
-            localStorage.remove('CURRENT_USER_ID')
-
-            console.log('Cookie[__csrf]:'+docCookies.hasItem('__csrf'))
-
             // store action
             this.logout()
-
             // 跳转到主页
             window.location.href = '/'
         }

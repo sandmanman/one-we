@@ -1,7 +1,14 @@
+/**
+ * 路由配置
+ */
+
 import Vue from 'vue'
 import Router from 'vue-router'
 
 import Discover from '@/pages/discover'
+import Recommonded from '@/pages/discover/recommonded'
+import Toplist from '@/pages/discover/toplist'
+
 import Login from '@/pages/login'
 import User from '@/pages/user'
 import UserHome from '@/pages/user/home'
@@ -20,10 +27,28 @@ export default new Router({
         },{
             path: '/discover',
             name: 'discover',
+            redirect: '/discover/recommonded',
             component: Discover,
             meta: {
                 title: '网易云音乐'
-            }
+            },
+            children: [
+                {
+                    path: 'recommonded',
+                    name: 'recommonded',
+                    component: Recommonded,
+                    meta: {
+                        title: '网易云音乐 推荐',
+                    }
+                }, {
+                    path: 'toplist',
+                    name: 'toplist',
+                    component: Toplist,
+                    meta: {
+                        title: '网易云音乐 排行榜',
+                    }
+                }
+            ]
         },
         {
             path: '/login',

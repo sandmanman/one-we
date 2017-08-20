@@ -4,6 +4,7 @@
 //
 
 import * as types from '../mutation-types'
+import { docCookies, localStorage } from '@/utils'
 import { userInfo } from '@/api'
 
 // state
@@ -41,7 +42,17 @@ const actions = {
                 console.error('store action setCurrentUserInfo:'+error)
             }
         }).catch(error => {
+            alert('获取数据错误')
+
             console.error(error)
+            
+            commit(types.LOGOUT)
+            // 删除Cookie
+            docCookies.removeItem('__csrf')
+            // 删除localStorage
+            localStorage.remove('CURRENT_USER_ID')
+
+            console.log('Cookie[__csrf]:'+docCookies.hasItem('__csrf'))
         })
     },
     logout({commit}) {

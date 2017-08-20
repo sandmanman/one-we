@@ -143,6 +143,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.hd{font-size:22px;height:66px;line-height:66px;text-align:center;}
+.lg{width:536px;height:286px;margin:auto; border:1px solid #d8d8d8;box-shadow:0 2px 4px rgba(0,0,0,0.1);background-color:#fff;}
+.u-main {float:none;border-right:none;}
 </style>

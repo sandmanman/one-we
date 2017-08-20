@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import { toplist } from '../../../api'
 export default {
     name: 'Toplist',
     props: {
