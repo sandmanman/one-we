@@ -272,7 +272,7 @@
                                 </div>
                                 <div class="user f-cb">
                                     <i class="u-icn u-icn-57"></i>
-                                    <span class="sep s-fc3">最近更新：{{toplist.trackUpdateTime | formatDate}}</span>
+                                    <span class="sep s-fc3">最近更新：{{toplist.trackUpdateTime | formatToplistUpdateDate}}</span>
                                     <span class="s-fc4">（每天更新）</span>
                                 </div>
                                 <div class="btns f-cb">
@@ -451,42 +451,22 @@
                             <div class="cmmts j-flag">
                                 <!-- 精彩评论 S -->
                                 <h3 class="u-hd4">精彩评论</h3>
-                                <div class="itm">
+                                <div class="itm" v-for="item in hotComments" :key="item.commentId">
                                     <div class="head">
-                                        <a href="/user/home?id=304637080">
-                                            <img src="http://p1.music.126.net/0ItC_rNesxmagPCbWBC0Vg==/19112810625948299.jpg?param=50y50">
+                                        <a :href="'/user/home?id='+item.user.userId">
+                                            <img :src="item.user.avatarUrl+'?param=50y50'">
                                         </a>
                                     </div>
                                     <div class="cntwrap">
                                         <div class="">
                                             <div class="cnt f-brk">
-                                                <a href="/user/home?id=304637080" class="s-fc7">Bieber丶forever彡</a>：我只想问我贾的friends是不是飚到天上去了？？？😒<a href="/user/home?nickname=%E4%BA%91%E9%9F%B3%E4%B9%90%E5%B0%8F%E7%A7%98%E4%B9%A6" class="s-fc7">@云音乐小秘书</a>
+                                                <a href="/user/home?id=304637080" class="s-fc7">{{item.user.nickname}}</a>：
+                                                {{item.content}}
                                             </div>
                                         </div>
                                         <div class="rp">
-                                            <div class="time s-fc4">09:27</div>
-                                            <a href="javascript:void(0)"><i class="zan u-icn2 u-icn2-12"></i> (106)</a>
-                                            <span class="sep">|</span>
-                                            <a href="javascript:void(0)" class="s-fc3">回复</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- / .itm -->
-                                <div class="itm">
-                                    <div class="head">
-                                        <a href="/user/home?id=393270643">
-                                            <img src="http://p1.music.126.net/xvedBGNsd9itbGpB0iJKYw==/18876415625861138.jpg?param=50y50">
-                                        </a>
-                                    </div>
-                                    <div class="cntwrap">
-                                        <div class="">
-                                            <div class="cnt f-brk">
-                                                <a href="/user/home?id=393270643" class="s-fc7">青血剑仙</a>：friends飚到天上了！大家拿望远镜看吧<img src="http://s1.music.126.net/style/web2/emt/emoji_86.png">
-                                            </div>
-                                        </div>
-                                        <div class="rp">
-                                            <div class="time s-fc4">09:39</div>
-                                            <a href="javascript:void(0)"><i class="zan u-icn2 u-icn2-12"></i> (67)</a>
+                                            <div class="time s-fc4">{{item.time | formatCommentTime}}</div>
+                                            <a href="javascript:void(0)"><i class="zan u-icn2 u-icn2-12"></i> ({{item.likedCount}})</a>
                                             <span class="sep">|</span>
                                             <a href="javascript:void(0)" class="s-fc3">回复</a>
                                         </div>
@@ -498,29 +478,33 @@
                                 <br>
                                 <br>
                                 <h3 class="u-hd4">最新评论({{toplist.commentCount}})</h3>
-                                <div class="itm">
+                                <div class="itm" v-for="item in comments" :key="item.commentId">
                                     <div class="head">
                                         <a href="/user/home?id=402266706">
-                                            <img src="http://p1.music.126.net/lCjq970UlU8UqeZ8iiGSAQ==/19074327718889170.jpg?param=50y50">
+                                            <img :src="item.user.avatarUrl+'?param=50y50'">
                                         </a>
                                     </div>
                                     <div class="cntwrap">
                                         <div class="">
                                             <div class="cnt f-brk">
-                                                <a href="/user/home?id=402266706" class="s-fc7">夜空wings</a>：同意
+                                                <a :href="'/user/home?id='+item.user.userId" class="s-fc7">{{item.user.nickname}}</a>：
+                                                {{item.content}}
                                             </div>
                                         </div>
-                                        <div class="que f-brk f-pr s-fc3">
-                                            <span class="darr">
-                                                <i class="bd">◆</i>
-                                                <i class="bg">◆</i>
-                                            </span>
-                                            <a class="s-fc7" href="/user/home?id=429441337">CallMeGurei</a>：
-                                            说飚到天上去了不是不可信，这榜刷新很快的，飚的太快了，被其他歌顶了
-                                        </div>
+                                        <template v-if="item.beReplied">
+                                            <div class="que f-brk f-pr s-fc3" v-for="(reply, index) in item.beReplied" :key="index">
+                                                <span class="darr">
+                                                    <i class="bd">◆</i>
+                                                    <i class="bg">◆</i>
+                                                </span>
+                                                <a :href="'/user/home?id='+reply.user.userId" class="s-fc7">
+                                                {{reply.user.nickname}}</a>：
+                                                {{reply.content}}
+                                            </div>
+                                        </template>
                                         <div class="rp">
-                                            <div class="time s-fc4">16分钟前</div>
-                                            <a href="javascript:void(0)"><i class="zan u-icn2 u-icn2-12"></i> (2)</a>
+                                            <div class="time s-fc4">{{item.time | formatCommentTime}}</div>
+                                            <a href="javascript:void(0)"><i class="zan u-icn2 u-icn2-12"></i> ({{item.likedCount}})</a>
                                             <span class="sep">|</span>
                                             <a href="javascript:void(0)" class="s-fc3">回复</a>
                                         </div>
@@ -616,11 +600,14 @@ export default {
         }
     },
     filters: {
-        formatDate(date) {
-            return formatDate.mmdd( new Date(date), 'MM/DD' )
+        formatToplistUpdateDate(date) { // 排行榜更新日期格式
+            return formatDate.mmdd(date)
         },
-        formatMusicDuration(val) {
+        formatMusicDuration(val) { // 音乐播放总时长格式
             return formatSeconds(val)
+        },
+        formatCommentTime(date) { // 评论时间格式
+            return formatDate.fullDate(date)
         }
     }
 }

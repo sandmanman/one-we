@@ -60,8 +60,19 @@ var localStorage = {
 // 表示日期的字符串格式为月/日
 var formatDate = {
     mmdd(date) {
-        fecha.masks.mmdd = 'MM月DD日';
+        fecha.masks.mmdd = 'MM月DD日'
         return fecha.format(new Date(date), 'mmdd')
+    },
+    fullDate(date) {
+        fecha.masks.full = 'MM月DD日 HH:mm'
+        let todayRes = fecha.format(new Date(date), 'MMDD'),
+            todayLocal = fecha.format(new Date(), 'MMDD')
+        if ( todayRes == todayLocal ) {
+            return fecha.format(new Date(date), 'HH:mm')
+        } else {
+            return fecha.format(new Date(date), 'full')
+        }
+        
     }
 }
 
