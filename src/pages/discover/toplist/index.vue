@@ -460,7 +460,7 @@
                                     <div class="cntwrap">
                                         <div class="">
                                             <div class="cnt f-brk">
-                                                <a href="/user/home?id=304637080" class="s-fc7">{{item.user.nickname}}</a>：
+                                                <a :href="'/user/home?id='+item.user.userId" class="s-fc7">{{item.user.nickname}}</a>：
                                                 {{item.content}}
                                             </div>
                                         </div>
