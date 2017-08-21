@@ -34,3 +34,8 @@
 .m-table tbody > tr:nth-child(odd) td {
     background-color: #f7f7f7;
 }
+
+.n-minelst li.mine > a {
+    display: block;
+    overflow: hidden;
+}

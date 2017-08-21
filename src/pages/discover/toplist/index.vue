@@ -5,252 +5,227 @@
             <div class="n-minelst n-minelst-2">
                 <h2 class="f-ff1">云音乐特色榜</h2>
                 <ul class="f-cb">
-                    <li data-res-id="19723756" data-res-action="href" class="mine z-selected">
-                        <div class="item f-cb">
+                    <li class="mine selected">
+                        <a href="/discover/toplist?id=3" class="item f-cb">
                             <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=19723756">
-                                <img src="http://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=40y40" alt="云音乐飙升榜">
-                                <span class="msk"></span>
-                                </a>
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=40y40" alt="云音乐飙升榜">
+                                    <span class="msk"></span>
+                                </span>
                             </div>
-                            <p class="name"><a href="/discover/toplist?id=19723756" class="s-fc0">云音乐飙升榜</a></p>
+                            <p class="name"><span class="s-fc0">云音乐飙升榜</span></p>
                             <p class="s-fc4">每天更新</p>
-                        </div>
+                        </a>
                     </li>
-                    <li data-res-id="3779629" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
+                    <li class="mine">
+                        <a href="/discover/toplist?id=0" class="item f-cb">
                             <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=3779629">
-                                <img src="http://p1.music.126.net/N2HO5xfYEqyQ8q6oxCw8IQ==/18713687906568048.jpg?param=40y40" alt="云音乐新歌榜">
-                                <span class="msk"></span>
-                                </a>
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/N2HO5xfYEqyQ8q6oxCw8IQ==/18713687906568048.jpg?param=40y40" alt="云音乐新歌榜">
+                                    <span class="msk"></span>
+                                </span>
                             </div>
-                            <p class="name"><a href="/discover/toplist?id=3779629" class="s-fc0">云音乐新歌榜</a></p>
+                            <p class="name"><span class="s-fc0">云音乐新歌榜</span></p>
                             <p class="s-fc4">每天更新</p>
-                        </div>
+                        </a>
                     </li>
-                    <li data-res-id="2884035" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
+                    <li class="mine">
+                        <a href="/discover/toplist?id=2" class="item f-cb">
                             <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=2884035">
-                                <img src="http://p1.music.126.net/sBzD11nforcuh1jdLSgX7g==/18740076185638788.jpg?param=40y40" alt="网易原创歌曲榜">
-                                <span class="msk"></span>
-                                </a>
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/sBzD11nforcuh1jdLSgX7g==/18740076185638788.jpg?param=40y40" alt="网易原创歌曲榜">
+                                    <span class="msk"></span>
+                                </span>
                             </div>
-                            <p class="name"><a href="/discover/toplist?id=2884035" class="s-fc0">网易原创歌曲榜</a></p>
+                            <p class="name"><span class="s-fc0">网易原创歌曲榜</span></p>
                             <p class="s-fc4">每周四更新</p>
-                        </div>
+                        </a>
                     </li>
-                    <li data-res-id="3778678" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
+                    <li class="mine">
+                        <a href="/discover/toplist?id=1" class="item f-cb">
                             <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=3778678">
-                                <img src="http://p1.music.126.net/GhhuF6Ep5Tq9IEvLsyCN7w==/18708190348409091.jpg?param=40y40" alt="云音乐热歌榜">
-                                <span class="msk"></span>
-                                </a>
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/GhhuF6Ep5Tq9IEvLsyCN7w==/18708190348409091.jpg?param=40y40" alt="云音乐热歌榜">
+                                    <span class="msk"></span>
+                                </span>
                             </div>
-                            <p class="name"><a href="/discover/toplist?id=3778678" class="s-fc0">云音乐热歌榜</a></p>
+                            <p class="name"><span class="s-fc0">云音乐热歌榜</span></p>
                             <p class="s-fc4">每周四更新</p>
-                        </div>
+                        </a>
                     </li>
                 </ul>
 
                 <h2 class="scd f-ff1">全球媒体榜</h2>
                 <ul class="f-cb">
-                    <li data-res-id="71385702" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
+                    <li class="mine">
+                        <a href="/discover/toplist?id=4" class="item f-cb">
                             <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=71385702">
-                                <img src="http://p1.music.126.net/vttjtRjL75Q4DEnjRsO8-A==/18752170813539664.jpg?param=40y40" alt="云音乐ACG音乐榜">
-                                <span class="msk"></span>
-                                </a>
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/4mh2HWH-bd5sRufQb-61bg==/3302932937414659.jpg?param=40y40" alt="云音乐电音榜">
+                                    <span class="msk"></span>
+                                </span>
                             </div>
-                            <p class="name"><a href="/discover/toplist?id=71385702" class="s-fc0">云音乐ACG音乐榜</a></p>
-                            <p class="s-fc4">每周四更新</p>
-                        </div>
-                    </li>
-                    <li data-res-id="71384707" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
-                            <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=71384707">
-                                <img src="http://p1.music.126.net/BzSxoj6O1LQPlFceDn-LKw==/18681802069355169.jpg?param=40y40" alt="云音乐古典音乐榜">
-                                <span class="msk"></span>
-                                </a>
-                            </div>
-                            <p class="name"><a href="/discover/toplist?id=71384707" class="s-fc0">云音乐古典音乐榜</a></p>
-                            <p class="s-fc4">每周四更新</p>
-                        </div>
-                    </li>
-                    <li data-res-id="10520166" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
-                            <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=10520166">
-                                <img src="http://p1.music.126.net/4mh2HWH-bd5sRufQb-61bg==/3302932937414659.jpg?param=40y40" alt="云音乐电音榜">
-                                <span class="msk"></span>
-                                </a>
-                            </div>
-                            <p class="name"><a href="/discover/toplist?id=10520166" class="s-fc0">云音乐电音榜</a></p>
+                            <p class="name"><span class="s-fc0">云音乐电音榜</span></p>
                             <p class="s-fc4">每周五更新</p>
-                        </div>
+                        </a>
                     </li>
-                    <li data-res-id="180106" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
+                    <li class="mine">
+                        <a href="/discover/toplist?id=5" class="item f-cb">
                             <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=180106">
-                                <img src="http://p1.music.126.net/VQOMRRix9_omZbg4t-pVpw==/18930291695438269.jpg?param=40y40" alt="UK排行榜周榜">
-                                <span class="msk"></span>
-                                </a>
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/VQOMRRix9_omZbg4t-pVpw==/18930291695438269.jpg?param=40y40" alt="UK排行榜周榜">
+                                    <span class="msk"></span>
+                                </span>
                             </div>
-                            <p class="name"><a href="/discover/toplist?id=180106" class="s-fc0">UK排行榜周榜</a></p>
+                            <p class="name"><span class="s-fc0">UK排行榜周榜</span></p>
                             <p class="s-fc4">每周一更新</p>
-                        </div>
+                        </a>
                     </li>
-                    <li data-res-id="60198" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
+                    <li class="mine">
+                        <a href="/discover/toplist?id=6" class="item f-cb">
                             <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=60198">
-                                <img src="http://p1.music.126.net/EBRqPmY8k8qyVHyF8AyjdQ==/18641120139148117.jpg?param=40y40" alt="美国Billboard周榜">
-                                <span class="msk"></span>
-                                </a>
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/EBRqPmY8k8qyVHyF8AyjdQ==/18641120139148117.jpg?param=40y40" alt="美国Billboard周榜">
+                                    <span class="msk"></span>
+                                </span>
                             </div>
-                            <p class="name"><a href="/discover/toplist?id=60198" class="s-fc0">美国Billboard周榜</a></p>
+                            <p class="name"><span class="s-fc0">美国Billboard周榜</span></p>
                             <p class="s-fc4">每周三更新</p>
-                        </div>
+                        </a>
                     </li>
-                    <li data-res-id="3812895" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
+                    <li class="mine">
+                        <a href="/discover/toplist?id=21" class="item f-cb">
                             <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=3812895">
-                                <img src="http://p1.music.126.net/A61n94BjWAb-ql4xpwpYcg==/18613632348448741.jpg?param=40y40" alt="Beatport全球电子舞曲榜">
-                                <span class="msk"></span>
-                                </a>
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/A61n94BjWAb-ql4xpwpYcg==/18613632348448741.jpg?param=40y40" alt="Beatport全球电子舞曲榜">
+                                    <span class="msk"></span>
+                                </span>
                             </div>
-                            <p class="name"><a href="/discover/toplist?id=3812895" class="s-fc0">Beatport全球电子舞曲榜</a></p>
+                            <p class="name"><span class="s-fc0">Beatport全球电子舞曲榜</span></p>
                             <p class="s-fc4">每周四更新</p>
-                        </div>
+                        </a>
                     </li>
-                    <li data-res-id="27135204" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
+                    <li class="mine">
+                        <a href="/discover/toplist?id=19" class="item f-cb">
                             <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=27135204">
-                                <img src="http://p1.music.126.net/6O0ZEnO-I_RADBylVypprg==/109951162873641556.jpg?param=40y40" alt="法国 NRJ Vos Hits 周榜">
-                                <span class="msk"></span>
-                                </a>
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/6O0ZEnO-I_RADBylVypprg==/109951162873641556.jpg?param=40y40" alt="法国 NRJ Vos Hits 周榜">
+                                    <span class="msk"></span>
+                                </span>
                             </div>
-                            <p class="name"><a href="/discover/toplist?id=27135204" class="s-fc0">法国 NRJ Vos Hits 周榜</a></p>
+                            <p class="name"><span class="s-fc0">法国 NRJ Vos Hits 周榜</span></p>
                             <p class="s-fc4">每周五更新</p>
-                        </div>
+                        </a>
                     </li>
-                    <li data-res-id="21845217" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
+                    <li class="mine">
+                        <a href="/discover/toplist?id=7" class="item f-cb">
                             <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=21845217">
-                                <img src="http://p1.music.126.net/H4Y7jxd_zwygcAmPMfwJnQ==/19174383276805159.jpg?param=40y40" alt="KTV唛榜">
-                                <span class="msk"></span>
-                                </a>
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/H4Y7jxd_zwygcAmPMfwJnQ==/19174383276805159.jpg?param=40y40" alt="KTV唛榜">
+                                    <span class="msk"></span>
+                                </span>
                             </div>
-                        <p class="name"><a href="/discover/toplist?id=21845217" class="s-fc0">KTV唛榜</a></p>
-                        <p class="s-fc4">每周五更新</p>
-                        </div>
-                    </li>
-                    <li data-res-id="11641012" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
-                            <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=11641012">
-                                <img src="http://p1.music.126.net/83pU_bx5Cz0NlcTq-P3R3g==/18588343581028558.jpg?param=40y40" alt="iTunes榜">
-                                <span class="msk"></span>
-                                </a>
-                            </div>
-                        <p class="name"><a href="/discover/toplist?id=11641012" class="s-fc0">iTunes榜</a></p>
-                        <p class="s-fc4">每周一更新</p>
-                        </div>
-                    </li>
-                    <li data-res-id="60131" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
-                            <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=60131">
-                                <img src="http://p1.music.126.net/Rgqbqsf4b3gNOzZKxOMxuw==/19029247741938160.jpg?param=40y40" alt="日本Oricon周榜">
-                                <span class="msk"></span>
-                                </a>
-                            </div>
-                        <p class="name"><a href="/discover/toplist?id=60131" class="s-fc0">日本Oricon周榜</a></p>
-                        <p class="s-fc4">每周三更新</p>
-                        </div>
-                    </li>
-                    <li data-res-id="120001" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
-                            <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=120001">
-                                <img src="http://p1.music.126.net/54vZEZ-fCudWZm6GH7I55w==/19187577416338508.jpg?param=40y40" alt="Hit FM Top榜">
-                                <span class="msk"></span>
-                                </a>
-                            </div>
-                        <p class="name"><a href="/discover/toplist?id=120001" class="s-fc0">Hit FM Top榜</a></p>
-                        <p class="s-fc4">每周一更新</p>
-                        </div>
-                    </li>
-                    <li data-res-id="112463" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
-                            <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=112463">
-                                <img src="http://p1.music.126.net/wqi4TF4ILiTUUL5T7zhwsQ==/18646617697286899.jpg?param=40y40" alt="台湾Hito排行榜">
-                                <span class="msk"></span>
-                                </a>
-                            </div>
-                        <p class="name"><a href="/discover/toplist?id=112463" class="s-fc0">台湾Hito排行榜</a></p>
-                        <p class="s-fc4">每周一更新</p>
-                        </div>
-                    </li>
-                    <li data-res-id="112504" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
-                            <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=112504">
-                                <img src="http://p1.music.126.net/JPh-zekmt0sW2Z3TZMsGzA==/18967675090783713.jpg?param=40y40" alt="中国TOP排行榜（港台榜）">
-                                <span class="msk"></span>
-                                </a>
-                            </div>
-                        <p class="name"><a href="/discover/toplist?id=112504" class="s-fc0">中国TOP排行榜（港台榜）</a></p>
-                        <p class="s-fc4">每周一更新</p>
-                        </div>
-                    </li>
-                    <li data-res-id="64016" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
-                            <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=64016">
-                                <img src="http://p1.music.126.net/2klOtThpDQ0CMhOy5AOzSg==/18878614648932971.jpg?param=40y40" alt="中国TOP排行榜（内地榜）">
-                                <span class="msk"></span>
-                                </a>
-                            </div>
-                        <p class="name"><a href="/discover/toplist?id=64016" class="s-fc0">中国TOP排行榜（内地榜）</a></p>
-                        <p class="s-fc4">每周一更新</p>
-                        </div>
-                    </li>
-                    <li data-res-id="10169002" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
-                            <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=10169002">
-                                <img src="http://p1.music.126.net/YQsr07nkdkOyZrlAkf0SHA==/18976471183805915.jpg?param=40y40" alt="香港电台中文歌曲龙虎榜">
-                                <span class="msk"></span>
-                                </a>
-                            </div>
-                            <p class="name"><a href="/discover/toplist?id=10169002" class="s-fc0">香港电台中文歌曲龙虎榜</a></p>
+                            <p class="name"><span class="s-fc0">KTV唛榜</span></p>
                             <p class="s-fc4">每周五更新</p>
-                        </div>
+                        </a>
                     </li>
-                    <li data-res-id="1899724" data-res-action="href" class="mine ">
-                        <div class="item f-cb">
+                    <li class="mine">
+                        <a href="/discover/toplist?id=8" class="item f-cb">
                             <div class="left">
-                                <a class="avatar" href="/discover/toplist?id=1899724">
-                                <img src="http://p1.music.126.net/_nwkQTFtOdAjFvOI8Wg7Tg==/18922595114302109.jpg?param=40y40" alt="中国嘻哈榜">
-                                <span class="msk"></span>
-                                </a>
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/83pU_bx5Cz0NlcTq-P3R3g==/18588343581028558.jpg?param=40y40" alt="iTunes榜">
+                                    <span class="msk"></span>
+                                </span>
                             </div>
-                            <p class="name"><a href="/discover/toplist?id=1899724" class="s-fc0">中国嘻哈榜</a></p>
+                            <p class="name"><span class="s-fc0">iTunes榜</span></p>
+                            <p class="s-fc4">每周一更新</p>
+                        </a>
+                    </li>
+                    <li class="mine">
+                        <a href="/discover/toplist?id=10" class="item f-cb">
+                            <div class="left">
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/Rgqbqsf4b3gNOzZKxOMxuw==/19029247741938160.jpg?param=40y40" alt="日本Oricon周榜">
+                                    <span class="msk"></span>
+                                </span>
+                            </div>
+                            <p class="name"><span href="/discover/toplist?id=10" class="s-fc0">日本Oricon周榜</span></p>
+                            <p class="s-fc4">每周三更新</p>
+                        </a>
+                    </li>
+                    <li class="mine">
+                        <a href="/discover/toplist?id=9" class="item f-cb">
+                            <div class="left">
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/54vZEZ-fCudWZm6GH7I55w==/19187577416338508.jpg?param=40y40" alt="Hit FM Top榜">
+                                    <span class="msk"></span>
+                                </span>
+                            </div>
+                            <p class="name"><span class="s-fc0">Hit FM Top榜</span></p>
+                            <p class="s-fc4">每周一更新</p>
+                        </a>
+                    </li>
+                    <li class="mine">
+                        <a href="/discover/toplist?id=20" class="item f-cb">
+                            <div class="left">
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/wqi4TF4ILiTUUL5T7zhwsQ==/18646617697286899.jpg?param=40y40" alt="台湾Hito排行榜">
+                                    <span class="msk"></span>
+                                </span>
+                            </div>
+                            <p class="name"><span class="s-fc0">台湾Hito排行榜</span></p>
+                            <p class="s-fc4">每周一更新</p>
+                        </a>
+                    </li>
+                    <li class="mine">
+                        <a href="/discover/toplist?id=14" class="item f-cb">
+                            <div class="left">
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/JPh-zekmt0sW2Z3TZMsGzA==/18967675090783713.jpg?param=40y40" alt="中国TOP排行榜（港台榜）">
+                                    <span class="msk"></span>
+                                </span>
+                            </div>
+                            <p class="name"><span class="s-fc0">中国TOP排行榜（港台榜）</span></p>
+                            <p class="s-fc4">每周一更新</p>
+                        </a>
+                    </li>
+                    <li class="mine">
+                        <a href="/discover/toplist?id=15" class="item f-cb">
+                            <div class="left">
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/2klOtThpDQ0CMhOy5AOzSg==/18878614648932971.jpg?param=40y40" alt="中国TOP排行榜（内地榜）">
+                                    <span class="msk"></span>
+                                </span>
+                            </div>
+                            <p class="name"><span class="s-fc0">中国TOP排行榜（内地榜）</span></p>
+                            <p class="s-fc4">每周一更新</p>
+                        </a>
+                    </li>
+                    <li href="/discover/toplist?id=16" class="mine">
+                        <a class="item f-cb">
+                            <div class="left">
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/YQsr07nkdkOyZrlAkf0SHA==/18976471183805915.jpg?param=40y40" alt="香港电台中文歌曲龙虎榜">
+                                    <span class="msk"></span>
+                                </span>
+                            </div>
+                            <p class="name"><span class="s-fc0">香港电台中文歌曲龙虎榜</span></p>
                             <p class="s-fc4">每周五更新</p>
-                        </div>
+                        </a>
+                    </li>
+                    <li class="mine">
+                        <a href="/discover/toplist?id=18" class="item f-cb">
+                            <div class="left">
+                                <span class="avatar">
+                                    <img src="http://p1.music.126.net/_nwkQTFtOdAjFvOI8Wg7Tg==/18922595114302109.jpg?param=40y40" alt="中国嘻哈榜">
+                                    <span class="msk"></span>
+                                </span>
+                            </div>
+                            <p class="name"><span class="s-fc0">中国嘻哈榜</span></p>
+                            <p class="s-fc4">每周五更新</p>
+                        </a>
                     </li>
                 </ul>
-
             </div>
         </div>
         <!-- menu End -->
@@ -449,6 +424,7 @@
                             <!-- 输入评论 End -->
 
                             <div class="cmmts j-flag">
+                                <template v-if="this.hotComments.length !== 0">
                                 <!-- 精彩评论 S -->
                                 <h3 class="u-hd4">精彩评论</h3>
                                 <div class="itm" v-for="item in hotComments" :key="item.commentId">
@@ -474,9 +450,11 @@
                                 </div>
                                 <!-- / .itm -->
                                 <!-- 精彩评论 End -->
+                                <br>
+                                <br>
+                                </template>
 
-                                <br>
-                                <br>
+
                                 <h3 class="u-hd4">最新评论({{toplist.commentCount}})</h3>
                                 <div class="itm" v-for="item in comments" :key="item.commentId">
                                     <div class="head">
@@ -548,12 +526,12 @@
 
 <script>
 import { toplist, commentToplist } from '@/api'
-import { formatDate, formatSeconds } from '@/utils'
+import { formatDate, formatSeconds} from '@/utils'
 export default {
     name: 'Toplist',
     data() {
         return {
-            toplistID: 3,
+            toplistID: null,
             toplist: null,
             top3: null,
             topOther: null,
@@ -563,6 +541,30 @@ export default {
         }
     },
     created() {
+        // get url params
+        var getUrlParams = function() {
+            var queryString = {}
+            var query = window.location.search.substring(1)
+            var vars = query.split('&')
+            for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split('=')
+                if (typeof queryString[pair[0]] === 'undefined') {
+                    queryString[pair[0]] = decodeURIComponent(pair[1])
+                } else if (typeof queryString[pair[0]] === 'string') {
+                    var arr = [ queryString[pair[0]],decodeURIComponent(pair[1]) ]
+                    queryString[pair[0]] = arr
+                } else {
+                    queryString[pair[0]].push(decodeURIComponent(pair[1]))
+                }
+            }
+            return queryString
+        }();
+        console.log('route parmas id:'+getUrlParams.id)
+        if ( getUrlParams.id ) {
+            this.toplistID = getUrlParams.id
+        } else {
+            this.toplistID = 3
+        }
         this.getToplist(this.toplistID)
     },
     methods: {
