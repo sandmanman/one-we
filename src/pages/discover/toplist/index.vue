@@ -5,7 +5,7 @@
             <div class="n-minelst n-minelst-2">
                 <h2 class="f-ff1">云音乐特色榜</h2>
                 <ul class="f-cb">
-                    <li class="mine selected">
+                    <li class="mine z-selected">
                         <a href="/discover/toplist?id=3" class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
@@ -201,8 +201,8 @@
                             <p class="s-fc4">每周一更新</p>
                         </a>
                     </li>
-                    <li href="/discover/toplist?id=16" class="mine">
-                        <a class="item f-cb">
+                    <li class="mine">
+                        <a href="/discover/toplist?id=16" class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/YQsr07nkdkOyZrlAkf0SHA==/18976471183805915.jpg?param=40y40" alt="香港电台中文歌曲龙虎榜">
@@ -424,7 +424,7 @@
                             <!-- 输入评论 End -->
 
                             <div class="cmmts j-flag">
-                                <template v-if="this.hotComments.length !== 0">
+                                <template v-if="isShowHotComments">
                                 <!-- 精彩评论 S -->
                                 <h3 class="u-hd4">精彩评论</h3>
                                 <div class="itm" v-for="item in hotComments" :key="item.commentId">
@@ -538,6 +538,7 @@ export default {
             toplistCommentId: null,
             hotComments: null,
             comments: null,
+            isShowHotComments: true
         }
     },
     created() {
@@ -593,6 +594,16 @@ export default {
                 if( res.data.code === 200 ) {
                     this.hotComments = res.data.hotComments
                     this.comments = res.data.comments
+
+                    // 是否显示精彩评论
+                    if ( this.hotComments.length !== 0 ) {
+                        this.isShowHotComments = true
+                    } else {
+                        this.isShowHotComments = false
+                    }
+
+                    console.log('isShowHotComments:'+this.isShowHotComments)
+
                 } else {
                     console.error('数据获取错误')
                 }

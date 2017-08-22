@@ -112,7 +112,8 @@
             // 个性化推荐
             getRecommendResource() {
                 recommendResource().then(res => {
-                    this.recommendResource = res.data.recommend.splice(0,3)
+                    let resData = res.data.recommend
+                    this.recommendResource = resData.splice(0,3)
                 })
             },
             // 获取新碟上架

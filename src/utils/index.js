@@ -24,18 +24,6 @@ fecha.masks = {
     longTime: 'HH:mm:ss.SSS'
 }
 
-var log = (console) => {
-    return console.log.bind(console)
-}
-
-// 歌单播放数量格式
-var formatPlayCount = (num) => {
-    if (num < 10000) {
-        return parseInt(num)
-    } else {
-        return (num / 10000).toFixed(0) + '万'
-    }
-}
 
 // localStorage
 var localStorage = {
@@ -57,6 +45,15 @@ var localStorage = {
 }
 
 
+// 歌单播放数量格式
+var formatPlayCount = (num) => {
+    if (num < 10000) {
+        return parseInt(num)
+    } else {
+        return (num / 10000).toFixed(0) + '万'
+    }
+}
+
 // 表示日期的字符串格式为月/日
 var formatDate = {
     mmdd(date) {
@@ -76,6 +73,7 @@ var formatDate = {
     }
 }
 
+
 // 格式秒数
 var formatSeconds = (duration) => {
     var milliseconds = parseInt((duration % 1000) / 100),
@@ -92,7 +90,6 @@ var formatSeconds = (duration) => {
 
 
 export {
-    log,
     formatPlayCount,
     localStorage,
     docCookies,
