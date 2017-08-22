@@ -24,9 +24,9 @@
                                 <span class="more"><a href="#" class="s-fc3">更多</a><i class="cor s-bg s-bg-6">&nbsp;</i></span>
                             </div>
                             <div class="n-bilst" v-if="showToplist">
-                                <toplist :toplist="biaosheng"></toplist>
-                                <toplist :toplist="xinge"></toplist>
-                                <toplist :toplist="yuanchuang"></toplist>
+                                <toplist :toplist="biaosheng" v-if="biaosheng"></toplist>
+                                <toplist :toplist="xinge" v-if="xinge"></toplist>
+                                <toplist :toplist="yuanchuang" v-if="yuanchuang"></toplist>
                             </div>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
             getRecommendResource() {
                 recommendResource().then(res => {
                     let resData = res.data.recommend
-                    this.recommendResource = resData.splice(0,3)
+                    this.recommendResource = resData
                 })
             },
             // 获取新碟上架
@@ -145,9 +145,7 @@
                 }
                 
                 Promise.all([bs(), xg(), yc()]).then(()=>{
-                   setTimeout(()=>{
-                       this.showToplist = true
-                   }, 1000)
+                    this.showToplist = true
                 })   
             }
         }
