@@ -232,7 +232,7 @@
 
 
         <div class="g-mn3">
-            <div class="g-mn3c">
+            <div class="g-mn3c" v-if="toplist">
                 <!-- header -->
                 <div class="g-wrap">
                     <div class="m-info m-info-rank f-cb">
@@ -550,12 +550,12 @@ export default {
         this.getToplist(this.toplistID)
     },
     methods: {
-        getToplist(toplistID) {
-            toplist(toplistID).then(res => {
+        getToplist(id) {
+            toplist(id).then(res => {
                 if( res.data.code === 200 ) {
-                    this.toplist = res.data.result && res.data.result
-                    this.top3 = res.data.result && res.data.result.tracks.slice(0,3)
-                    this.topOther = res.data.result && res.data.result.tracks.slice(3)
+                    this.toplist = res.data.result
+                    this.top3 = res.data.result.tracks.slice(0,3)
+                    this.topOther = res.data.result.tracks.slice(3)
 
                     var commentId = res.data.result.commentThreadId.replace(/A_PL_0_/g, '')
                     this.toplistCommentId = commentId
