@@ -130,3 +130,19 @@ export function commentToplist(id) {
         }
     })
 }
+
+
+//
+// 歌单
+// cat: tag, 比如 "华语"、"古风" 、"欧美"、"流行",默认为"全部"
+// limit: 取出评论数量,默认为20
+export function playlist(cat, limit) {
+    return $http({
+        method: 'get',
+        url: '/top/playlist',
+        params: {
+            cat,
+            limit
+        }
+    })
+}

@@ -89,10 +89,18 @@ var formatSeconds = (duration) => {
 }
 
 
+// 获取url参数
+var getUrlParam = (name, url) => {
+    var reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)", "i")
+    if (reg.test(url)) return decodeURIComponent(RegExp.$2.replace(/\+/g, " ")); return ""
+}
+
+
 export {
     formatPlayCount,
     localStorage,
     docCookies,
     formatDate,
     formatSeconds,
+    getUrlParam,
 }

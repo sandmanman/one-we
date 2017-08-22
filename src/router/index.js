@@ -5,16 +5,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Discover from '@/pages/discover'
-import Recommonded from '@/pages/discover/recommonded'
-import Toplist from '@/pages/discover/toplist'
-
-import Login from '@/pages/login'
-import User from '@/pages/user'
-import UserHome from '@/pages/user/home'
-import UserFollows from '@/pages/user/follows'
-
 Vue.use(Router)
+
+const Discover = resolve => require(['@/pages/discover'], resolve)
+const Recommonded = resolve => require(['@/pages/discover/recommonded'], resolve)
+const Toplist = resolve => require(['@/pages/discover/toplist'], resolve)
+const Playlist = resolve => require(['@/pages/discover/playlist'], resolve)
+
+const Login = resolve => require(['@/pages/login'], resolve)
+
+const User  = resolve => require(['@/pages/user'], resolve)
+const UserHome  = resolve => require(['@/pages/user/home'], resolve)
+const UserFollows  = resolve => require(['@/pages/user/follows'], resolve)
 
 export default new Router({
     mode: 'history',
@@ -46,6 +48,13 @@ export default new Router({
                     component: Toplist,
                     meta: {
                         title: '网易云音乐 排行榜',
+                    }
+                }, {
+                    path: 'playlist',
+                    name: 'playlist',
+                    component: Playlist,
+                    meta: {
+                        title: '网易云音乐 歌单',
                     }
                 }
             ]

@@ -5,7 +5,7 @@
             <div class="n-minelst n-minelst-2">
                 <h2 class="f-ff1">云音乐特色榜</h2>
                 <ul class="f-cb">
-                    <li class="mine z-selected">
+                    <li class="mine">
                         <a href="/discover/toplist?id=3" class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
@@ -515,7 +515,6 @@
                     </div>
                     <!-- 分页 End -->
 
-
                 </div>
 
             </div>
@@ -526,12 +525,12 @@
 
 <script>
 import { toplist, commentToplist } from '@/api'
-import { formatDate, formatSeconds} from '@/utils'
+import { formatDate, formatSeconds, getUrlParam} from '@/utils'
 export default {
     name: 'Toplist',
     data() {
         return {
-            toplistID: null,
+            toplistID: null, 
             toplist: null,
             top3: null,
             topOther: null,
@@ -542,27 +541,9 @@ export default {
         }
     },
     created() {
-        // get url params
-        var getUrlParams = function() {
-            var queryString = {}
-            var query = window.location.search.substring(1)
-            var vars = query.split('&')
-            for (var i=0;i<vars.length;i++) {
-                var pair = vars[i].split('=')
-                if (typeof queryString[pair[0]] === 'undefined') {
-                    queryString[pair[0]] = decodeURIComponent(pair[1])
-                } else if (typeof queryString[pair[0]] === 'string') {
-                    var arr = [ queryString[pair[0]],decodeURIComponent(pair[1]) ]
-                    queryString[pair[0]] = arr
-                } else {
-                    queryString[pair[0]].push(decodeURIComponent(pair[1]))
-                }
-            }
-            return queryString
-        }();
-        console.log('route parmas id:'+getUrlParams.id)
-        if ( getUrlParams.id ) {
-            this.toplistID = getUrlParams.id
+        console.log('url parmas id:' + getUrlParam('id', window.location.href))
+        if ( getUrlParam('id', window.location.href) ) {
+            this.toplistID = getUrlParam('id', window.location.href)
         } else {
             this.toplistID = 3
         }
@@ -572,7 +553,7 @@ export default {
         getToplist(toplistID) {
             toplist(toplistID).then(res => {
                 if( res.data.code === 200 ) {
-                    this.toplist = res.data.result
+                    this.toplist = res.data.result && res.data.result
                     this.top3 = res.data.result && res.data.result.tracks.slice(0,3)
                     this.topOther = res.data.result && res.data.result.tracks.slice(3)
 
@@ -610,6 +591,20 @@ export default {
             }).catch(error => {
                 console.log(error)
             })
+        },
+        setMenuActive() {
+            var menuEl = document.querySelectorAll('li.mine a'),
+                locationParamId = getUrlParam('id', window.location.href)
+            for (var i= 0, l = menuEl.length; i< l; i++ ) {
+                var hid = getUrlParam('id', menuEl[i].href)
+                if ( hid === locationParamId ) {
+                    
+                    console.log(getUrlParam('id', menuEl[i].href))
+                    console.log(menuEl[i].parentNode)
+                    
+                }
+                
+            }
         }
     },
     filters: {
