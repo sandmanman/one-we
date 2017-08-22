@@ -5,9 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 
-import * as utils from '@/utils'
-
-Vue.prototype.$utils = utils
+import { docCookies, localStorage } from '@/utils'
 
 Vue.config.productionTip = false
 
@@ -23,8 +21,8 @@ router.beforeEach((to, from, next) => {
      * https://github.com/doterlin/vue-example-login
      */
     if (to.meta.requestAuth) { // 目标路由需要登录权限
-        console.log('Cookie[__csrf]:'+this.$utils.docCookies.hasItem('__csrf'))
-        if( this.$utils.docCookies.hasItem('__csrf') ) {
+        console.log('Cookie[__csrf]:'+docCookies.hasItem('__csrf'))
+        if( docCookies.hasItem('__csrf') ) {
             next()
         } else {
             // 中断路由
@@ -57,9 +55,9 @@ new Vue({
         App
     },
     created() {
-        if( this.$utils.docCookies.hasItem('__csrf') ) {
-            if ( this.$utils.localStorage.getter('CURRENT_USER_ID') ) {
-                var userId = Number(this.$utils.localStorage.getter('CURRENT_USER_ID'))
+        if( docCookies.hasItem('__csrf') ) {
+            if ( localStorage.getter('CURRENT_USER_ID') ) {
+                var userId = Number(localStorage.getter('CURRENT_USER_ID'))
                 store.dispatch('setUserID', userId)
                 store.dispatch('setCurrentUserInfo', userId)
             }
