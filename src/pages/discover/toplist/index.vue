@@ -5,8 +5,8 @@
             <div class="n-minelst n-minelst-2">
                 <h2 class="f-ff1">云音乐特色榜</h2>
                 <ul class="f-cb">
-                    <li class="mine">
-                        <a href="/discover/toplist?id=3" class="item f-cb">
+                    <router-link :to="{name: 'toplist', query: {id:3}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=40y40" alt="云音乐飙升榜">
@@ -16,9 +16,9 @@
                             <p class="name"><span class="s-fc0">云音乐飙升榜</span></p>
                             <p class="s-fc4">每天更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
-                        <a href="/discover/toplist?id=0" class="item f-cb">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:0}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/N2HO5xfYEqyQ8q6oxCw8IQ==/18713687906568048.jpg?param=40y40" alt="云音乐新歌榜">
@@ -28,9 +28,9 @@
                             <p class="name"><span class="s-fc0">云音乐新歌榜</span></p>
                             <p class="s-fc4">每天更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
-                        <a href="/discover/toplist?id=2" class="item f-cb">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:2}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/sBzD11nforcuh1jdLSgX7g==/18740076185638788.jpg?param=40y40" alt="网易原创歌曲榜">
@@ -40,9 +40,9 @@
                             <p class="name"><span class="s-fc0">网易原创歌曲榜</span></p>
                             <p class="s-fc4">每周四更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
-                        <a href="/discover/toplist?id=1" class="item f-cb">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:1}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/GhhuF6Ep5Tq9IEvLsyCN7w==/18708190348409091.jpg?param=40y40" alt="云音乐热歌榜">
@@ -52,13 +52,13 @@
                             <p class="name"><span class="s-fc0">云音乐热歌榜</span></p>
                             <p class="s-fc4">每周四更新</p>
                         </a>
-                    </li>
+                    </router-link>
                 </ul>
 
                 <h2 class="scd f-ff1">全球媒体榜</h2>
                 <ul class="f-cb">
-                    <li class="mine">
-                        <a href="/discover/toplist?id=4" class="item f-cb">
+                    <router-link :to="{name: 'toplist', query: {id:4}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/4mh2HWH-bd5sRufQb-61bg==/3302932937414659.jpg?param=40y40" alt="云音乐电音榜">
@@ -68,9 +68,9 @@
                             <p class="name"><span class="s-fc0">云音乐电音榜</span></p>
                             <p class="s-fc4">每周五更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
-                        <a href="/discover/toplist?id=5" class="item f-cb">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:5}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/VQOMRRix9_omZbg4t-pVpw==/18930291695438269.jpg?param=40y40" alt="UK排行榜周榜">
@@ -80,9 +80,9 @@
                             <p class="name"><span class="s-fc0">UK排行榜周榜</span></p>
                             <p class="s-fc4">每周一更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
-                        <a href="/discover/toplist?id=6" class="item f-cb">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:6}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/EBRqPmY8k8qyVHyF8AyjdQ==/18641120139148117.jpg?param=40y40" alt="美国Billboard周榜">
@@ -92,9 +92,9 @@
                             <p class="name"><span class="s-fc0">美国Billboard周榜</span></p>
                             <p class="s-fc4">每周三更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
-                        <a href="/discover/toplist?id=21" class="item f-cb">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:21}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/A61n94BjWAb-ql4xpwpYcg==/18613632348448741.jpg?param=40y40" alt="Beatport全球电子舞曲榜">
@@ -104,8 +104,8 @@
                             <p class="name"><span class="s-fc0">Beatport全球电子舞曲榜</span></p>
                             <p class="s-fc4">每周四更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:19}}" tag="li" exact class="mine" active-class="z-selected">
                         <a href="/discover/toplist?id=19" class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
@@ -116,9 +116,9 @@
                             <p class="name"><span class="s-fc0">法国 NRJ Vos Hits 周榜</span></p>
                             <p class="s-fc4">每周五更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
-                        <a href="/discover/toplist?id=7" class="item f-cb">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:7}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/H4Y7jxd_zwygcAmPMfwJnQ==/19174383276805159.jpg?param=40y40" alt="KTV唛榜">
@@ -128,9 +128,9 @@
                             <p class="name"><span class="s-fc0">KTV唛榜</span></p>
                             <p class="s-fc4">每周五更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
-                        <a href="/discover/toplist?id=8" class="item f-cb">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:8}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/83pU_bx5Cz0NlcTq-P3R3g==/18588343581028558.jpg?param=40y40" alt="iTunes榜">
@@ -140,9 +140,9 @@
                             <p class="name"><span class="s-fc0">iTunes榜</span></p>
                             <p class="s-fc4">每周一更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
-                        <a href="/discover/toplist?id=10" class="item f-cb">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:10}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/Rgqbqsf4b3gNOzZKxOMxuw==/19029247741938160.jpg?param=40y40" alt="日本Oricon周榜">
@@ -152,9 +152,9 @@
                             <p class="name"><span href="/discover/toplist?id=10" class="s-fc0">日本Oricon周榜</span></p>
                             <p class="s-fc4">每周三更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
-                        <a href="/discover/toplist?id=9" class="item f-cb">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:9}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/54vZEZ-fCudWZm6GH7I55w==/19187577416338508.jpg?param=40y40" alt="Hit FM Top榜">
@@ -164,9 +164,9 @@
                             <p class="name"><span class="s-fc0">Hit FM Top榜</span></p>
                             <p class="s-fc4">每周一更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
-                        <a href="/discover/toplist?id=20" class="item f-cb">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:20}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/wqi4TF4ILiTUUL5T7zhwsQ==/18646617697286899.jpg?param=40y40" alt="台湾Hito排行榜">
@@ -176,9 +176,9 @@
                             <p class="name"><span class="s-fc0">台湾Hito排行榜</span></p>
                             <p class="s-fc4">每周一更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
-                        <a href="/discover/toplist?id=14" class="item f-cb">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:14}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/JPh-zekmt0sW2Z3TZMsGzA==/18967675090783713.jpg?param=40y40" alt="中国TOP排行榜（港台榜）">
@@ -188,8 +188,8 @@
                             <p class="name"><span class="s-fc0">中国TOP排行榜（港台榜）</span></p>
                             <p class="s-fc4">每周一更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:15}}" tag="li" exact class="mine" active-class="z-selected">
                         <a href="/discover/toplist?id=15" class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
@@ -200,9 +200,9 @@
                             <p class="name"><span class="s-fc0">中国TOP排行榜（内地榜）</span></p>
                             <p class="s-fc4">每周一更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
-                        <a href="/discover/toplist?id=16" class="item f-cb">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:16}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/YQsr07nkdkOyZrlAkf0SHA==/18976471183805915.jpg?param=40y40" alt="香港电台中文歌曲龙虎榜">
@@ -212,9 +212,9 @@
                             <p class="name"><span class="s-fc0">香港电台中文歌曲龙虎榜</span></p>
                             <p class="s-fc4">每周五更新</p>
                         </a>
-                    </li>
-                    <li class="mine">
-                        <a href="/discover/toplist?id=18" class="item f-cb">
+                    </router-link>
+                    <router-link :to="{name: 'toplist', query: {id:18}}" tag="li" exact class="mine" active-class="z-selected">
+                        <a class="item f-cb">
                             <div class="left">
                                 <span class="avatar">
                                     <img src="http://p1.music.126.net/_nwkQTFtOdAjFvOI8Wg7Tg==/18922595114302109.jpg?param=40y40" alt="中国嘻哈榜">
@@ -224,7 +224,7 @@
                             <p class="name"><span class="s-fc0">中国嘻哈榜</span></p>
                             <p class="s-fc4">每周五更新</p>
                         </a>
-                    </li>
+                    </router-link>
                 </ul>
             </div>
         </div>
@@ -530,7 +530,7 @@ export default {
     name: 'Toplist',
     data() {
         return {
-            toplistID: null, 
+            toplistID: null,
             toplist: null,
             top3: null,
             topOther: null,
@@ -541,13 +541,19 @@ export default {
         }
     },
     created() {
-        console.log('url parmas id:' + getUrlParam('id', window.location.href))
-        if ( getUrlParam('id', window.location.href) ) {
-            this.toplistID = getUrlParam('id', window.location.href)
+        if ( this.$route.query.id ) {
+            this.toplistID = this.$route.query.id
         } else {
             this.toplistID = 3
         }
         this.getToplist(this.toplistID)
+    },
+    watch: {
+        '$route' (to, from) {
+            // 监听路由参数的变化
+            this.getToplist(this.$route.query.id)
+            document.body.scrollTop = 0
+        }
     },
     methods: {
         getToplist(id) {
