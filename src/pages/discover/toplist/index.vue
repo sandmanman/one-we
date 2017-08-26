@@ -499,18 +499,18 @@
                     <!-- 分页 S -->
                     <div class="j-flag">
                         <div class="u-page">
-                            <a href="#" class="zbtn zprv js-p-1503235651126 js-disabled">上一页</a>
-                            <a href="#" class="zpgi zpg1 js-i-1503235651126 js-selected">1</a>
-                            <a href="#" class="zpgi zpg2 js-i-1503235651126">2</a>
-                            <a href="#" class="zpgi zpg3 js-i-1503235651126">3</a>
-                            <a href="#" class="zpgi zpg4 js-i-1503235651126">4</a>
-                            <a href="#" class="zpgi zpg5 js-i-1503235651126">5</a>
-                            <a href="#" class="zpgi zpg6 js-i-1503235651126">6</a>
-                            <a href="#" class="zpgi zpg7 js-i-1503235651126">7</a>
-                            <a href="#" class="zpgi zpg8 js-i-1503235651126">8</a>
+                            <a href="#" class="zbtn zprv js-disabled">上一页</a>
+                            <a href="#" class="zpgi zpg1 js-selected">1</a>
+                            <a href="#" class="zpgi zpg2">2</a>
+                            <a href="#" class="zpgi zpg3">3</a>
+                            <a href="#" class="zpgi zpg4">4</a>
+                            <a href="#" class="zpgi zpg5">5</a>
+                            <a href="#" class="zpgi zpg6">6</a>
+                            <a href="#" class="zpgi zpg7">7</a>
+                            <a href="#" class="zpgi zpg8">8</a>
                             <span class="zdot">...</span>
-                            <a href="#" class="zpgi zpg9 js-i-1503235651126">3697</a>
-                            <a href="#" class="zbtn znxt js-n-1503235651126">下一页</a>
+                            <a href="#" class="zpgi zpg9">3697</a>
+                            <a href="#" class="zbtn znxt">下一页</a>
                         </div>
                     </div>
                     <!-- 分页 End -->
@@ -552,6 +552,7 @@ export default {
         '$route' (to, from) {
             // 监听路由参数的变化
             this.getToplist(this.$route.query.id)
+            this.firstMenuActive = false
             document.body.scrollTop = 0
         }
     },

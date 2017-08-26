@@ -2,6 +2,10 @@
 // Fixed
 //
 
+[v-cloak] {
+    display: none;
+}
+
 .m-tlist {
     display: none;
 }
@@ -38,4 +42,9 @@
 .n-minelst li.mine > a {
     display: block;
     overflow: hidden;
+}
+
+.n-sltlyr {
+    display: block;
+    left: 0;
 }

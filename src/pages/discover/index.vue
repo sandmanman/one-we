@@ -10,7 +10,7 @@
                         </router-link>
                     </li>
                     <li>
-                        <router-link :to="{name: 'toplist'}" active-class="z-slt">
+                        <router-link :to="{name: 'toplist', query: {id:3}}" active-class="z-slt">
                             <em>排行榜</em>
                         </router-link>
                     </li>
