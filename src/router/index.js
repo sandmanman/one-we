@@ -8,14 +8,22 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const Discover = resolve => require(['@/pages/discover'], resolve)
+// 推荐
 const Recommonded = resolve => require(['@/pages/discover/recommonded'], resolve)
+// 排行
 const Toplist = resolve => require(['@/pages/discover/toplist'], resolve)
+// 歌单
 const Playlist = resolve => require(['@/pages/discover/playlist'], resolve)
-const DJRadio = resolve => require(['@/pages/discover/djradio'], resolve)
-const DJCategory  = resolve => require(['@/pages/discover/djradio/category'], resolve)
 
+// 主播电台
+const DJRadio = resolve => require(['@/pages/discover/djradio'], resolve)
+const DJRadioHome = resolve => require(['@/pages/discover/djradio/home/index'], resolve)
+const DJCategory  = resolve => require(['@/pages/discover/djradio/category/index'], resolve)
+
+// 登录
 const Login = resolve => require(['@/pages/login'], resolve)
 
+// 用户
 const User  = resolve => require(['@/pages/user'], resolve)
 const UserHome  = resolve => require(['@/pages/user/home'], resolve)
 const UserFollows  = resolve => require(['@/pages/user/follows'], resolve)
@@ -25,6 +33,7 @@ export default new Router({
     routes: [{
             path: '/',
             component: Discover,
+            redirect: '/discover/recommonded',
             meta: {
                 title: '网易云音乐'
             }
@@ -62,10 +71,16 @@ export default new Router({
                     path: 'djradio',
                     name: 'djradio',
                     component: DJRadio,
-                    meta: {
-                        title: '网易云音乐 主播电台',
-                    },
+                    redirect: 'djradio/recommonded',
                     children: [
+                        {
+                            path: 'recommonded',
+                            name: 'recommonded',
+                            component: DJRadioHome,
+                            meta: {
+                                title: '网易云音乐 主播电台',
+                            }
+                        },
                         {
                             path: 'category',
                             name: 'category',
