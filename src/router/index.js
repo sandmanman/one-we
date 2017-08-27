@@ -11,6 +11,8 @@ const Discover = resolve => require(['@/pages/discover'], resolve)
 const Recommonded = resolve => require(['@/pages/discover/recommonded'], resolve)
 const Toplist = resolve => require(['@/pages/discover/toplist'], resolve)
 const Playlist = resolve => require(['@/pages/discover/playlist'], resolve)
+const DJRadio = resolve => require(['@/pages/discover/djradio'], resolve)
+const DJCategory  = resolve => require(['@/pages/discover/djradio/category'], resolve)
 
 const Login = resolve => require(['@/pages/login'], resolve)
 
@@ -56,6 +58,23 @@ export default new Router({
                     meta: {
                         title: '网易云音乐 歌单',
                     }
+                }, {
+                    path: 'djradio',
+                    name: 'djradio',
+                    component: DJRadio,
+                    meta: {
+                        title: '网易云音乐 主播电台',
+                    },
+                    children: [
+                        {
+                            path: 'category',
+                            name: 'category',
+                            component: DJCategory,
+                            meta: {
+                                title: '网易云音乐 主播电台',
+                            }
+                        },
+                    ]
                 }
             ]
         },

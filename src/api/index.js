@@ -148,3 +148,32 @@ export function playlist(order, cat, limit) {
         }
     })
 }
+
+
+
+// 节目分类
+export function djCatelist() {
+    return $http({
+        method: 'get',
+        url: '/dj/catelist',
+    })
+}
+
+// 推荐节目
+export function djRecommend() {
+    return $http({
+        method: 'get',
+        url: '/program/recommend',
+    })
+}
+
+// 电台-分类推荐
+export function djRecommendType(id) {
+    return $http({
+        method: 'get',
+        url: '/dj/recommend/type',
+        params: {
+            type: id
+        }
+    })
+}

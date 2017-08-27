@@ -19,7 +19,11 @@
                             <em>歌单</em>
                         </router-link>
                     </li>
-                    <li><a href="#"><em>主播电台</em></a></li>
+                    <li>
+                        <router-link :to="{name: 'djradio'}" active-class="z-slt">
+                            <em>主播电台</em>
+                        </router-link>
+                    </li>
                     <li><a href="#"><em>歌手</em></a></li>
                     <li><a href="#"><em>新碟上架</em></a></li>
                 </ul>
