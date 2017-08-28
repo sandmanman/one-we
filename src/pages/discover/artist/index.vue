@@ -8,9 +8,6 @@
                     <li>
                         <router-link :to="{name: 'artist'}" class="cat-flag" active-class="z-slt">推荐歌手</router-link>
                     </li>
-                    <li>
-                        <router-link :to="{name: 'signed'}" exact class="cat-flag" active-class="z-slt">入住歌手</router-link>
-                    </li>
                 </ul>
             </div>
         </div>

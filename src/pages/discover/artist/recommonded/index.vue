@@ -1,6 +1,7 @@
 <template>
     <div class="g-wrap">
 
+        <template v-if="signedAartistsData">
         <div class="u-title f-cb">
             <h3><span class="f-ff2">入驻歌手</span></h3>
             <a href="/discover/artist/signed/" class="more s-fc3">更多 &gt;</a>
@@ -18,6 +19,7 @@
                 </li>
             </ul>
         </div>
+        </template>
 
         <div class="u-title f-cb">
             <h3><span class="f-ff2">热门歌手</span></h3>
@@ -56,6 +58,7 @@ export default {
     name: 'ArtistRecommonded',
     data() {
         return {
+            signedAartistsData: null,
             hotAartistsDataTop10: null,
             hotAartistsData: null
         }
