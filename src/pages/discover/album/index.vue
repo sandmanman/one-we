@@ -3,13 +3,6 @@
         <div class="g-wrap n-alblist f-pr">
             <div class="u-title f-cb">
                 <h3><span class="f-ff2">全部新碟</span></h3>
-                <div class="tab">
-                    <a href="/discover/album/#/?area=ALL" class="s-fc6" id="auto-id-a3fVzFcTKdvscFwC">全部</a><span class="line">|</span>
-                    <a href="/discover/album/#/?area=ZH" class="s-fc3" id="auto-id-6pcyGggwNJwZz1Nl">华语</a><span class="line">|</span>
-                    <a href="/discover/album/#/?area=EA" class="s-fc3" id="auto-id-nngQdZkxwC8TQfQo">欧美</a><span class="line">|</span>
-                    <a href="/discover/album/#/?area=KR" class="s-fc3" id="auto-id-be4dSoTBZQBM2aZl">韩国</a><span class="line">|</span>
-                    <a href="/discover/album/#/?area=JP" class="s-fc3" id="auto-id-D849TVhSQsvL1ceu">日本</a>
-                </div>
             </div>
 
             <ul class="m-cvrlst m-cvrlst-alb2 f-cb" v-if="topAlbumData">
