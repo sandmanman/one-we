@@ -24,8 +24,16 @@
                             <em>主播电台</em>
                         </router-link>
                     </li>
-                    <li><a href="#"><em>歌手</em></a></li>
-                    <li><a href="#"><em>新碟上架</em></a></li>
+                    <li>
+                        <router-link :to="{name: 'artist'}" active-class="z-slt">
+                            <em>歌手</em>
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link :to="{name: 'album'}" active-class="z-slt">
+                            <em>新碟上架</em>
+                        </router-link>
+                    </li>
                 </ul>
             </div>
         </div>
