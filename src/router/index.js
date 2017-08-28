@@ -20,6 +20,14 @@ const DJRadio = resolve => require(['@/pages/discover/djradio'], resolve)
 const DJRadioHome = resolve => require(['@/pages/discover/djradio/home/index'], resolve)
 const DJCategory  = resolve => require(['@/pages/discover/djradio/category/index'], resolve)
 
+// 歌手
+const Artist = resolve => require(['@/pages/discover/artist'], resolve)
+const ArtistRecommonded  = resolve => require(['@/pages/discover/artist/recommonded'], resolve)
+const ArtistSigned  = resolve => require(['@/pages/discover/artist/signed'], resolve)
+
+// 新碟
+const Album = resolve => require(['@/pages/discover/album'], resolve)
+
 // 登录
 const Login = resolve => require(['@/pages/login'], resolve)
 
@@ -90,6 +98,36 @@ export default new Router({
                             }
                         },
                     ]
+                }, {
+                    path: 'artist',
+                    name: 'artist',
+                    component: Artist,
+                    redirect: 'artist/recommonded',
+                    children: [
+                        {
+                            path: 'recommonded',
+                            name: 'recommonded',
+                            component: ArtistRecommonded,
+                            meta: {
+                                title: '网易云音乐 推荐歌手',
+                            }
+                        },
+                        {
+                            path: 'signed',
+                            name: 'signed',
+                            component: ArtistSigned,
+                            meta: {
+                                title: '网易云音乐 入驻歌手',
+                            }
+                        }
+                    ]
+                }, {
+                    path: 'album',
+                    name: 'album',
+                    component: Album,
+                    meta: {
+                        title: '网易云音乐 新碟',
+                    }
                 }
             ]
         },
