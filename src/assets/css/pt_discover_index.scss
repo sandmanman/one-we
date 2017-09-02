@@ -845,10 +845,10 @@ html {
 }
 
 .u-btn,
-div.u-page a,
-div.u-page a.js-selected,
-div.u-page a.znxt.js-disabled,
-div.u-page a.zprv.js-disabled {
+.u-page a,
+.u-page a.js-selected,
+.u-page a.znxt.js-disabled,
+.u-page a.zprv.js-disabled {
     background: url(./assets/img/button.png?3a07504cd0e06d721afcce0c85be7f9c) no-repeat 0 9999px;
 }
 
@@ -4777,17 +4777,17 @@ a.u-type-red:hover {
     display: none;
 }
 
-div.u-page {
+.u-page {
     margin: 20px 0;
     text-align: center;
 }
 
-div.u-page a:hover {
+.u-page a:hover {
     text-decoration: none;
 }
 
-div.u-page .zbtn,
-div.u-page .zpgi {
+.u-page .zbtn,
+.u-page .zpgi {
     margin: 0 1px 0 2px;
     display: inline-block;
     border: 1px solid #ccc;
@@ -4795,7 +4795,7 @@ div.u-page .zpgi {
     vertical-align: middle;
 }
 
-div.u-page .zbtn {
+.u-page .zbtn {
     width: 69px;
     height: 24px;
     line-height: 24px;
@@ -4804,54 +4804,54 @@ div.u-page .zbtn {
     padding: 0;
 }
 
-div.u-page .zprv {
+.u-page .zprv {
     width: 47px;
     padding-left: 22px;
     background-position: 0 -560px;
 }
 
-div.u-page .zprv:hover {
+.u-page .zprv:hover {
     background-position: 0 -590px;
 }
 
-div.u-page .znxt {
+.u-page .znxt {
     width: 57px;
     padding-left: 12px;
     background-position: -75px -560px;
 }
 
-div.u-page .znxt:hover {
+.u-page .znxt:hover {
     background-position: -75px -590px;
 }
 
-div.u-page .zpgi {
+.u-page .zpgi {
     height: 22px;
     padding: 0 8px;
     background-color: #fff;
     line-height: 22px;
 }
 
-div.u-page .zpgi:hover {
+.u-page .zpgi:hover {
     border-color: #666;
 }
 
-div.u-page a.js-selected,
-div.u-page a.js-selected:hover {
+.u-page a.js-selected,
+.u-page a.js-selected:hover {
     background-position: 0 -650px;
     border-color: #A2161B;
     color: #fff;
     cursor: default;
 }
 
-div.u-page a.zprv.js-disabled,
-div.u-page a.zprv.js-disabled:hover {
+.u-page a.zprv.js-disabled,
+.u-page a.zprv.js-disabled:hover {
     background-position: 0 -620px;
     color: #cacaca;
     cursor: default;
 }
 
-div.u-page a.znxt.js-disabled,
-div.u-page a.znxt.js-disabled:hover {
+.u-page a.znxt.js-disabled,
+.u-page a.znxt.js-disabled:hover {
     background-position: -75px -620px;
     color: #cacaca;
     cursor: default;

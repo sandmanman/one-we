@@ -23,6 +23,21 @@
                 </li>
             </ul>
 
+            <template v-if="totalAlbum">
+            <paginate
+                :page-count="pageCount"
+                :page-range="8"
+                :margin-pages="1"
+                :click-handler="pageCallback"
+                :prev-text="'上一页'"
+                :next-text="'下一页'"
+                :container-class="'u-page'"
+                :page-link-class="'page-item'"
+                :prev-link-class="'page-prev'"
+                :next-link-class="'page-next'">
+            </paginate>
+            </template>
+
         </div>
     </div>
 </template>
@@ -33,15 +48,34 @@ export default {
     name: 'Album',
     data() {
         return {
-            topAlbumData: null
+            topAlbumData: null,
+            totalAlbum: Number,
+            pageLimit: 35,
         }
     },
     created() {
-        this.getTopAlbum()
+        this.getTopAlbum(this.pageLimit)
+    },
+    computed: {
+        pageCount() {
+            return Math.ceil(this.totalAlbum/this.pageLimit)
+        }
     },
     methods: {
-        getTopAlbum() {
-            topAlbum().then(res => {
+        getTopAlbum(limit, offset) {
+            topAlbum(limit, offset).then(res => {
+                if(res.data.code === 200) {
+                    this.topAlbumData = res.data.albums
+                    this.totalAlbum = res.data.total
+                } else {
+                    console.error('数据获取错误')
+                }
+            }).catch(error => {
+                console.error(error)
+            })
+        },
+        pageCallback(pageNum) {
+            topAlbum(this.pageLimit, (pageNum-1)*this.pageLimit).then(res => {
                 if(res.data.code === 200) {
                     this.topAlbumData = res.data.albums
                 } else {

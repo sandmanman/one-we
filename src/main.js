@@ -5,7 +5,11 @@ import App from './App'
 import router from './router'
 import store from './store'
 
+import Paginate from 'vuejs-paginate'
+
 import { docCookies, localStorage } from '@/utils'
+
+Vue.component('paginate', Paginate)
 
 Vue.config.productionTip = false
 

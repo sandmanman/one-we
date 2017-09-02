@@ -1,0 +1,58 @@
+//
+// pagination
+//
+
+.u-page {
+    text-align: center;
+
+    > li {
+        display: inline-block;
+
+        .page-item,
+        .page-prev,
+        .page-next {
+            margin: 0 1px 0 2px;
+            padding-left: 8px;
+            padding-right: 8px;
+            display: inline-block;
+            line-height: 22px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            vertical-align: middle;
+        
+            text-decoration: none !important;
+        
+            &:hover {
+                border-color: #666;
+            }
+            
+        }
+
+        .page-prev,
+        .page-next {
+            background-color: #f4f4f4;
+        }
+
+        &.active .page-item {
+            background-color: #CE2127;
+            border-color: #A2161B;
+            color: #fff;
+            cursor: default;
+    
+            &:hover {
+                color: #fff;
+            }
+        }
+
+        &.disabled {
+            .page-item,
+            .page-prev,
+            .page-next {
+                color: #ccc;
+                &:hover {
+                    border-color: #ccc;
+                }
+            }
+        }
+    }
+}

@@ -2,7 +2,7 @@
     <div class="g-topbar">
         <div class="m-top">
             <div class="wrap">
-                <h1 class="logo"><a href="/">网易云音乐</a></h1>
+                <h1 class="logo"><a href="/#">网易云音乐</a></h1>
 
                 <!-- 导航 -->
                 <ul class="m-nav j-tflag">
