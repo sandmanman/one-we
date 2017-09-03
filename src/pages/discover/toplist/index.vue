@@ -306,7 +306,7 @@
                                                     <div class="ttc">
                                                         <span class="txt">
                                                             <a :href="'/song?id='+item.id">
-                                                                <b :title="item.name + '- ('+ item.alias[0] +')'">{{item.name}}</b>
+                                                                <b :title="item.name">{{item.name}}</b>
                                                             </a>
                                                             <span v-if="item.alias[0]" :title="item.alias[0]" class="s-fc8">
                                                                 - {{item.alias[0]}}
@@ -556,6 +556,7 @@ export default {
             // 监听路由参数的变化
             this.getToplist(this.$route.query.id)
             this.firstMenuActive = false
+            this.totalComment = NaN
             document.body.scrollTop = 0
         }
     },
