@@ -14,6 +14,8 @@ const Recommonded = resolve => require(['@/pages/discover/recommonded'], resolve
 const Toplist = resolve => require(['@/pages/discover/toplist'], resolve)
 // 歌单
 const Playlist = resolve => require(['@/pages/discover/playlist'], resolve)
+// 歌单详细
+const PlaylistDetail = resolve => require(['@/pages/playlist'], resolve)
 
 // 主播电台
 const DJRadio = resolve => require(['@/pages/discover/djradio'], resolve)
@@ -45,7 +47,8 @@ export default new Router({
             meta: {
                 title: '网易云音乐'
             }
-        },{
+        },
+        {
             path: '/discover',
             name: 'discover',
             redirect: '/discover/recommonded',
@@ -130,6 +133,14 @@ export default new Router({
                     }
                 }
             ]
+        },
+        {
+            path: '/playlist',
+            name: 'playlist',
+            component: PlaylistDetail,
+            meta: {
+                title: '网易云音乐 歌单详细'
+            }
         },
         {
             path: '/login',

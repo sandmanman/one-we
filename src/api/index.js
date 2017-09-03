@@ -151,6 +151,53 @@ export function playlist(order, cat, limit) {
     })
 }
 
+//
+// 歌单详细
+// 必选参数:
+// id : 歌单 id
+export function playlistDetail(id) {
+    return $http({
+        method: 'get',
+        url: '/playlist/detail',
+        params: {
+            id,
+        }
+    })
+}
+
+//
+// 歌单评论
+// 必选参数:
+// id : 歌单 id
+// 可选参数:
+// limit: 取出评论数量,默认为20
+// offset: 偏移数量,用于分页,如:(评论页数-1)*20, 其中 20 为 limit 的值
+export function playlistComment(id, limit, offset) {
+    return $http({
+        method: 'get',
+        url: '/comment/playlist',
+        params: {
+            id,
+            limit,
+            offset,
+        }
+    })
+}
+
+//
+// 相似歌单
+// 必选参数:
+// id: 歌曲 id
+export function playlistSimi(id) {
+    return $http({
+        method: 'get',
+        url: '/simi/playlist',
+        params: {
+            id,
+        }
+    })
+}
+
 
 
 // 节目分类

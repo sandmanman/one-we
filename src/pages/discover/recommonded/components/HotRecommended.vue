@@ -16,11 +16,11 @@
         <span class="more"><a href="#" class="s-fc3">更多</a><i class="cor s-bg s-bg-6">&nbsp;</i></span>
     </div>
 
-    <ul class="m-cvrlst f-cb">
+    <ul class="m-cvrlst f-cb" v-if="recommended">
         <li v-for="(item, index) in recommended" :key="index">
             <div class="u-cover u-cover-1">
                 <img :src="item.picUrl">
-                <a :title="item.name" :href="'/playlist?id='+item.id" class="msk"></a>
+                <router-link :title="item.name" :to="{path: '/playlist', query: {id: item.id}}" class="msk"></router-link>
                 <div class="bottom">
                 <a class="icon-play f-fr" title="播放" href="javascript:;"></a>
                 <span class="icon-headset"></span>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <p class="dec">
-                <a :title="item.name" class="tit s-fc0" :href="'/playlist?id='+item.id">{{item.name}}</a>
+                <router-link :title="item.name" :to="{path: '/playlist', query: {id: item.id}}" class="tit s-fc0">{{item.name}}</router-link>
             </p>
         </li>
     </ul>

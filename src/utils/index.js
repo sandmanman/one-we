@@ -56,6 +56,10 @@ var formatPlayCount = (num) => {
 
 // 表示日期的字符串格式为月/日
 var formatDate = {
+    yyyymmdd(date) {
+        fecha.masks.yyyymmdd = 'YYYY年MM月DD日'
+        return fecha.format(new Date(date), 'yyyymmdd')
+    },
     mmdd(date) {
         fecha.masks.mmdd = 'MM月DD日'
         return fecha.format(new Date(date), 'mmdd')

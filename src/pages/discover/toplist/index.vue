@@ -397,32 +397,6 @@
                             <span class="sub s-fc3">共<span class="j-flag">{{toplist.commentCount}}</span>条评论</span>
                         </div>
                         <div class="m-cmmt">
-                            <!-- 输入评论 S -->
-                            <div class="iptarea">
-                                <div class="head">
-                                    <img src="http://s4.music.126.net/style/web2/img/default/default_avatar.jpg?param=50y50">
-                                </div>
-                                <div class="j-flag">
-                                    <div>
-                                        <div class="m-cmmtipt f-cb f-pr">
-                                            <div class="u-txtwrap holder-parent f-pr" style="display: block;">
-                                                <textarea class="u-txt area j-flag" placeholder="评论"></textarea>
-                                            </div>
-                                            <div class="btns f-cb f-pr">
-                                                <i class="icn u-icn u-icn-36 j-flag"></i>
-                                                <i class="icn u-icn u-icn-41 j-flag"></i>
-                                                <a href="javascript:void(0)" class="btn u-btn u-btn-1 j-flag">评论</a>
-                                                <span class="zs s-fc4 j-flag">140</span>
-                                            </div>
-                                            <div class="corr u-arr">
-                                                <em class="arrline">◆</em><span class="arrclr">◆</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 输入评论 End -->
-
                             <div class="cmmts j-flag">
                                 <template v-if="isShowHotComments">
                                 <!-- 精彩评论 S -->
@@ -440,6 +414,17 @@
                                                 {{item.content}}
                                             </div>
                                         </div>
+                                        <template v-if="item.beReplied">
+                                            <div class="que f-brk f-pr s-fc3" v-for="(reply, index) in item.beReplied" :key="index">
+                                                <span class="darr">
+                                                    <i class="bd">◆</i>
+                                                    <i class="bg">◆</i>
+                                                </span>
+                                                <a :href="'/user/home?id='+reply.user.userId" class="s-fc7">
+                                                {{reply.user.nickname}}</a>：
+                                                {{reply.content}}
+                                            </div>
+                                        </template>
                                         <div class="rp">
                                             <div class="time s-fc4">{{item.time | formatCommentTime}}</div>
                                             <a href="javascript:void(0)"><i class="zan u-icn2 u-icn2-12"></i> ({{item.likedCount}})</a>
@@ -521,7 +506,7 @@
 
 <script>
 import { toplist, commentToplist } from '@/api'
-import { formatDate, formatSeconds, getUrlParam} from '@/utils'
+import { formatDate, formatSeconds} from '@/utils'
 export default {
     name: 'Toplist',
     data() {
