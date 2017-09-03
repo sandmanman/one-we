@@ -349,7 +349,7 @@
                 <li v-for="item in playlist" :key="item.id">
                     <div class="u-cover u-cover-1">
                         <img class="j-flag" :src="item.coverImgUrl+'?param=140y140'">
-                        <a :title="item.name" :href="'/playlist?id='+item.id" class="msk"></a>
+                        <router-link :title="item.name" :to="{name: 'playlistDetail', query: {id: item.id}}" class="msk"></router-link>
                         <div class="bottom">
                             <a class="icon-play f-fr" title="播放" href="javascript:;"></a>
                             <span class="icon-headset"></span>
@@ -357,7 +357,7 @@
                         </div>
                     </div>
                     <p class="dec">
-                        <a :title="item.name" :href="'/playlist?id='+item.id" class="tit f-thide s-fc0">{{item.name}}</a>
+                        <router-link :title="item.name" :to="{name: 'playlistDetail', query: {id: item.id}}" class="tit s-fc0">{{item.name}}</router-link>
                     </p>
                     <p>
                         <span class="s-fc4">by</span>
