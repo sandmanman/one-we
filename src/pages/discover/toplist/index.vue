@@ -496,24 +496,20 @@
                     </div>
                     <!-- 评论 End -->
                     
-                    <!-- 分页 S -->
-                    <div class="j-flag">
-                        <div class="u-page">
-                            <a href="#" class="zbtn zprv js-disabled">上一页</a>
-                            <a href="#" class="zpgi zpg1 js-selected">1</a>
-                            <a href="#" class="zpgi zpg2">2</a>
-                            <a href="#" class="zpgi zpg3">3</a>
-                            <a href="#" class="zpgi zpg4">4</a>
-                            <a href="#" class="zpgi zpg5">5</a>
-                            <a href="#" class="zpgi zpg6">6</a>
-                            <a href="#" class="zpgi zpg7">7</a>
-                            <a href="#" class="zpgi zpg8">8</a>
-                            <span class="zdot">...</span>
-                            <a href="#" class="zpgi zpg9">3697</a>
-                            <a href="#" class="zbtn znxt">下一页</a>
-                        </div>
-                    </div>
-                    <!-- 分页 End -->
+                    <template v-if="totalComment">
+                    <paginate
+                        :page-count="pageCount"
+                        :page-range="8"
+                        :margin-pages="1"
+                        :click-handler="pageCallback"
+                        :prev-text="'上一页'"
+                        :next-text="'下一页'"
+                        :container-class="'u-page'"
+                        :page-link-class="'page-item'"
+                        :prev-link-class="'page-prev'"
+                        :next-link-class="'page-next'">
+                    </paginate>
+                    </template>
 
                 </div>
 
@@ -537,7 +533,14 @@ export default {
             toplistCommentId: null,
             hotComments: null,
             comments: null,
-            isShowHotComments: true
+            isShowHotComments: true,
+            totalComment: Number,
+            pageLimit: 20,
+        }
+    },
+    computed: {
+        pageCount() {
+            return Math.ceil(this.totalComment/this.pageLimit)
         }
     },
     created() {
@@ -583,6 +586,9 @@ export default {
                     this.hotComments = res.data.hotComments
                     this.comments = res.data.comments
 
+                    // 评论总数
+                    this.totalComment = res.data.total
+
                     // 是否显示精彩评论
                     if ( this.hotComments.length !== 0 ) {
                         this.isShowHotComments = true
@@ -612,6 +618,17 @@ export default {
                 }
                 
             }
+        },
+        pageCallback(pageNum) {
+            commentToplist(this.toplistCommentId, this.pageLimit, (pageNum-1)*this.pageLimit).then(res => {
+                if(res.data.code === 200) {
+                    this.comments = res.data.comments
+                } else {
+                    console.error('数据获取错误')
+                }
+            }).catch(error => {
+                console.error(error)
+            })
         }
     },
     filters: {

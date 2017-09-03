@@ -368,25 +368,6 @@
                 </li>
             </ul>
 
-            <!-- 分页 S -->
-            <div class="j-flag">
-                <div class="u-page">
-                    <a href="#" class="zbtn zprv js-disabled">上一页</a>
-                    <a href="#" class="zpgi zpg1 js-selected">1</a>
-                    <a href="#" class="zpgi zpg2">2</a>
-                    <a href="#" class="zpgi zpg3">3</a>
-                    <a href="#" class="zpgi zpg4">4</a>
-                    <a href="#" class="zpgi zpg5">5</a>
-                    <a href="#" class="zpgi zpg6">6</a>
-                    <a href="#" class="zpgi zpg7">7</a>
-                    <a href="#" class="zpgi zpg8">8</a>
-                    <span class="zdot">...</span>
-                    <a href="#" class="zpgi zpg9">3697</a>
-                    <a href="#" class="zbtn znxt">下一页</a>
-                </div>
-            </div>
-            <!-- 分页 End -->
-
         </div>
     </div>
 </template>

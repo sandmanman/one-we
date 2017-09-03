@@ -75,6 +75,8 @@ export default {
             })
         },
         pageCallback(pageNum) {
+            document.body.scrollTop = 0
+            
             topAlbum(this.pageLimit, (pageNum-1)*this.pageLimit).then(res => {
                 if(res.data.code === 200) {
                     this.topAlbumData = res.data.albums

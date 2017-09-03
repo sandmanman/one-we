@@ -121,12 +121,14 @@ export function recommendResource() {
 
 // 歌曲排行榜评论
 // id需要先请求排行榜后，得到 commentThreadId
-export function commentToplist(id) {
+export function commentToplist(id, limit, offset) {
     return $http({
         method: 'get',
         url: '/comment/toplist',
         params: {
-            id
+            id,
+            limit,
+            offset
         }
     })
 }
