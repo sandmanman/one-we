@@ -86,7 +86,7 @@ export default new Router({
                     children: [
                         {
                             path: 'recommonded',
-                            name: 'recommonded',
+                            name: 'recommondedDJRadio',
                             component: DJRadioHome,
                             meta: {
                                 title: '网易云音乐 主播电台',
@@ -109,7 +109,7 @@ export default new Router({
                     children: [
                         {
                             path: 'recommonded',
-                            name: 'recommonded',
+                            name: 'recommondedArtist',
                             component: ArtistRecommonded,
                             meta: {
                                 title: '网易云音乐 推荐歌手',
@@ -136,7 +136,7 @@ export default new Router({
         },
         {
             path: '/playlist',
-            name: 'playlist',
+            name: 'playlistDetail',
             component: PlaylistDetail,
             meta: {
                 title: '网易云音乐 歌单详细'
