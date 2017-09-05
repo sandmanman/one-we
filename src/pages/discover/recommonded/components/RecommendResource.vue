@@ -19,7 +19,7 @@
             <li v-for="(item, index) in recommendResource" :key="index">
                 <div class="u-cover u-cover-1">
                     <img :src="item.picUrl+'?param=140y140'">
-                    <a :title="item.name" :href="'/playlist?id='+item.id" class="msk"></a>
+                    <router-link :to="{name: 'playlistDetail', query: {id: item.id}}" :title="item.name" class="msk"></router-link>
                     <div class="bottom">
                         <a title="播放" class="icon-play f-fr" href="javascript:;" ></a>
                         <a href="javascript:;" class="icon-headset"></a>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <p class="dec f-brk">
-                    <a :title="item.name" class="tit s-fc0" :href="'/playlist?id='+item.id">{{item.name}}</a>
+                    <router-link :to="{name: 'playlistDetail', query: {id: item.id}}" :title="item.name" class="tit s-fc0">{{item.name}}</router-link>
                 </p>
                 <p class="idv f-brk s-fc4" :title="item.copywriter">
                     <em>{{item.copywriter}}</em>

@@ -23,8 +23,7 @@
                                 :href="'/artist?id=' + artists.id">{{artists.name}}</a>
                             </p>
                         </swiper-slide>
-                        <div class="swiper-button-prev swiper-button-black" slot="button-prev"></div>
-                        <div class="swiper-button-next swiper-button-black" slot="button-next"></div>
+                        <div class="swiper-pagination" slot="pagination"></div>
                     </swiper>
                 </div>
             </div>
@@ -49,10 +48,10 @@ export default {
     data() {
         return {
             swiperOption: {
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
                 slidesPerView: 5,
-                spaceBetween: 2
+                spaceBetween: 10,
+                pagination: '.swiper-pagination',
+                paginationClickable: true
             }
         }
     }
@@ -60,24 +59,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .n-disk .inner {
+        padding-left: 0;
+    }
+    .roll {
+        float: none;
+        width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+    }
     .swiper-swiper {
-        overflow: visible;
         margin-top: 28px;
-        .swiper-wrapper {
-            min-height: 143px;
-            margin-left: 19px;
-            margin-right: 16px;
-        }
-        .swiper-button-black {
-            margin-top: -45px;
-            background-size: 30%;
-        }
-        .swiper-button-prev {
-            left: -23px;
-        }
-        .swiper-button-next {
-            right: -5px;
-        }
+        overflow: visible;
+    }
+    .swiper-wrapper {
+        min-height: 143px;
+        margin-left: 19px;
+        margin-right: 16px;
+    }
+    .swiper-button-black {
+        margin-top: -45px;
+        background-size: 30%;
+    }
+    .swiper-button-prev {
+        left: 0;
+    }
+    .swiper-button-next {
+        right: 0;
+    }
+    .swiper-container-horizontal > .swiper-pagination-bullets {
+        bottom: auto;
+        top: -23px;
     }
 </style>
 

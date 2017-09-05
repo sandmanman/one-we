@@ -3,17 +3,20 @@
     <div class="v-hd2">
         <a href="#" class="tit f-ff2 f-tdn">热门推荐</a>
         <div class="tab">
-        <a href="#" class="s-fc3">华语</a>
-        <span class="line">|</span>
-        <a href="#" class="s-fc3">流行</a>
-        <span class="line">|</span>
-        <a href="#" class="s-fc3">摇滚</a>
-        <span class="line">|</span>
-        <a href="#" class="s-fc3">民谣</a>
-        <span class="line">|</span>
-        <a href="#" class="s-fc3">电子</a>
+            <router-link :to="{name: 'playlist', query: {cat: '华语'}}" class="s-fc3">华语</router-link>
+            <span class="line">|</span>
+            <router-link :to="{name: 'playlist', query: {cat: '流行'}}" class="s-fc3">流行</router-link>
+            <span class="line">|</span>
+            <router-link :to="{name: 'playlist', query: {cat: '摇滚'}}" class="s-fc3">摇滚</router-link>
+            <span class="line">|</span>
+            <router-link :to="{name: 'playlist', query: {cat: '民谣'}}" class="s-fc3">民谣</router-link>
+            <span class="line">|</span>
+            <router-link :to="{name: 'playlist', query: {cat: '电子'}}" class="s-fc3">电子</router-link>
         </div>
-        <span class="more"><a href="#" class="s-fc3">更多</a><i class="cor s-bg s-bg-6">&nbsp;</i></span>
+        <span class="more">
+            <router-link :to="{name: 'playlist'}" class="s-fc3">更多</router-link>
+            <i class="cor s-bg s-bg-6">&nbsp;</i>
+        </span>
     </div>
 
     <ul class="m-cvrlst f-cb" v-if="recommended">
