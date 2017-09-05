@@ -41,9 +41,15 @@
                                     </a>
                                     <a href="javascript:;" class="u-btni u-btni-add" title="添加到播放列表"></a>
                                     <a class="u-btni u-btni-fav " href="javascript:;"><i>收藏</i></a>
-                                    <a class="u-btni u-btni-share " href="javascript:;"><i>分享</i></a>
+                                    <a class="u-btni u-btni-share " href="javascript:;">
+                                        <i v-if="albumData.info.shareCount === 0">分享</i>
+                                        <i v-else>({{albumData.info.shareCount}})</i>
+                                    </a>
                                     <a class="u-btni u-btni-dl " href="javascript:;"><i>下载</i></a>
-                                    <a href="javascript:;" class="u-btni u-btni-cmmt "><i>(<span>8</span>)</i></a>
+                                    <a href="javascript:;" class="u-btni u-btni-cmmt ">
+                                        <i v-if="albumData.info.commentCount === 0">评论</i>
+                                        <i v-else>(<span>{{albumData.info.commentCount}}</span>)</i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -52,8 +58,7 @@
                     <!-- 专辑介绍 -->
                     <div class="n-albdesc">
                         <h3>专辑介绍：</h3>
-                        <div class="f-brk">
-                            {{albumData.description}}
+                        <div class="f-brk" v-html="albumData.description">
                         </div>
                     </div>
                     </template>
@@ -94,7 +99,12 @@
                                                             :to="{name: 'songDetail', query: {id: item.id}}">
                                                                 <b :title="item.name">{{item.name}}</b>
                                                             </router-link>
-                                                            <span v-if="item.mv !== 0" title="播放mv" class="mv">MV</span>
+                                                            
+                                                            <router-link
+                                                            v-if="item.mv !== 0"
+                                                            :to="{name: 'mvDetail', query: {mvid: item.mv}}"
+                                                            title="播放mv"
+                                                            class="mv"></router-link>
                                                         </span>
                                                         
                                                     </div>
@@ -182,6 +192,10 @@ export default {
 }
 .g-mn4c {
     margin-right: 0;
+}
+.n-albdesc .f-brk {
+    max-height: 120px;
+    overflow: hidden;
 }
 </style>
 

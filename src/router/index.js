@@ -37,6 +37,9 @@ const AlbumDetail = resolve => require(['@/pages/album'], resolve)
 // 歌曲详细
 const SongDetail  = resolve => require(['@/pages/song'], resolve)
 
+// MV详细
+const MVDetail  = resolve => require(['@/pages/mv'], resolve)
+
 // 登录
 const Login = resolve => require(['@/pages/login'], resolve)
 
@@ -169,6 +172,14 @@ export default new Router({
             path: '/song',
             name: 'songDetail',
             component: SongDetail,
+            meta: {
+                title: '网易云音乐 歌曲详细'
+            }
+        },
+        {
+            path: '/mv',
+            name: 'mvDetail',
+            component: MVDetail,
             meta: {
                 title: '网易云音乐 歌曲详细'
             }

@@ -272,3 +272,17 @@ export function albumDetail(id) {
         }
     })
 }
+
+
+// MV详细
+// 必选参数:
+// id: 专辑 id
+export function mvDetail(mvid) {
+    return $http({
+        method: 'get',
+        url: '/mv',
+        params: {
+            mvid
+        }
+    })
+}
