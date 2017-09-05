@@ -9,14 +9,14 @@
                 <li v-for="item in topAlbumData" :key="item.id">
                     <div class="u-cover u-cover-alb2">
                         <img :src="item.picUrl+'?param=130y130'">
-                        <a :href="'/album?id='+item.id" class="msk" :title="item.name"></a>
+                        <router-link :to="{name: 'albumDetail', query: {id:item.id}}" class="msk" :title="item.name"></router-link>
                         <a href="javascript:;" class="icon-play f-alpha f-fr" title="播放"></a>
                         <p class="dec">
-                            <a class="tit f-thide s-fc0" :href="'/album?id='+item.id" :title="item.name">{{item.name}}</a>
+                            <router-link :to="{name: 'albumDetail', query: {id:item.id}}" class="tit f-thide s-fc0" :title="item.name">{{item.name}}</router-link>
                         </p>
                         <p class="f-thide">
                             <span class="nm f-thide" :title="item.artist.name">
-                                <a :href="'/artist?id='+item.artist.id" class="s-fc3">{{item.artist.name}}</a>
+                                <router-link :to="{name: 'artistDetail', query: {id:item.artist.id}}" class="s-fc3" :title="item.artist.name">{{item.artist.name}}</router-link>
                             </span>
                         </p>
                     </div>

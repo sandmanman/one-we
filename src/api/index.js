@@ -258,3 +258,17 @@ export function topAlbum(limit, offset) {
         }
     })
 }
+
+
+// 专辑详细
+// 必选参数:
+// id: 专辑 id
+export function albumDetail(id) {
+    return $http({
+        method: 'get',
+        url: '/album',
+        params: {
+            id
+        }
+    })
+}

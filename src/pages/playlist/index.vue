@@ -245,12 +245,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="g-sd4">
-            <div class="g-wrap7">
-                
-            </div>
-        </div>
     </div>
 </template>
 
@@ -350,6 +344,12 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.g-bd4 {
+    background-image: none;
+    background-color: #fff;
+}
+.g-mn4c {
+    margin-right: 0;
+}
 </style>

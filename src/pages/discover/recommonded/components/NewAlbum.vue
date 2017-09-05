@@ -11,16 +11,22 @@
                         <swiper-slide v-for="(item, index) in albums" :key="index">
                             <div class="u-cover u-cover-alb1">
                                 <img class="j-img" :src="item.blurPicUrl">
-                                <a :title="item.name" href="#" class="msk"></a>
+                                <router-link :to="{name: 'albumDetail', query: {id:item.id}}" class="msk" :title="item.name"></router-link>
                                 <a href="javascript:;" class="icon-play f-alpha f-fr" title="播放"></a>
                             </div>
-                            <p class="f-thide"><a :title="item.name" href="#" class="s-fc0 tit">{{item.name}}</a></p>
-                            <p class="tit f-thide" >
-                                <a class="s-fc3"
+                            <p class="f-thide">
+                                <router-link :to="{name: 'albumDetail', query: {id:item.id}}" class="s-fc0 tit" :title="item.name">{{item.name}}</router-link>
+                            </p>
+                            <p class="tit f-thide">
+
+                                <router-link 
+                                class="s-fc3" 
                                 v-for="(artists, index) in item.artists"
                                 :key="index"
-                                :title="artists.name"
-                                :href="'/artist?id=' + artists.id">{{artists.name}}</a>
+                                :to="{name: 'artistDetail', query: {id:artists.id}}" 
+                                :title="artists.name">
+                                    {{artists.name}}
+                                </router-link>
                             </p>
                         </swiper-slide>
                         <div class="swiper-pagination" slot="pagination"></div>
