@@ -45,6 +45,21 @@
 
                     </div>
 
+                    <template v-if="totalComment">
+                    <paginate
+                        :page-count="pageCount"
+                        :page-range="8"
+                        :margin-pages="1"
+                        :click-handler="pageCallback"
+                        :prev-text="'上一页'"
+                        :next-text="'下一页'"
+                        :container-class="'u-page'"
+                        :page-link-class="'page-item'"
+                        :prev-link-class="'page-prev'"
+                        :next-link-class="'page-next'">
+                    </paginate>
+                    </template>
+
                 </div>
             </div>
         </div>
@@ -101,10 +116,16 @@ export default {
             comments: [],
             hotComments: [],
             totalComment: NaN,
+            pageLimit: 20,
         }
     },
     created() {
         this.getMV(this.$route.query.mvid)
+    },
+    computed: {
+        pageCount() {
+            return Math.ceil(this.totalComment/this.pageLimit)
+        }
     },
     methods: {
         getMV(id) {
@@ -136,6 +157,17 @@ export default {
                 }
             })
         },
+        pageCallback(pageNum) {
+            mvComment(this.mvId, this.pageLimit, (pageNum-1)*this.pageLimit).then(res => {
+                if(res.data.code === 200) {
+                    this.comments = res.data.comments
+                } else {
+                    console.error('数据获取错误')
+                }
+            }).catch(error => {
+                console.error(error)
+            })
+        }
     }
 }
 </script>

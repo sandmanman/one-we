@@ -65,7 +65,7 @@
             </template>
 
 
-            <h3 class="u-hd4">最新评论({{comments.length}})</h3>
+            <h3 class="u-hd4">最新评论({{totalComment}})</h3>
             <div class="itm" v-for="item in comments" :key="item.commentId">
                 <div class="head">
                     <a href="/user/home?id=402266706">
