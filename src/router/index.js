@@ -241,7 +241,6 @@ export default new Router({
             component: User,
             redirect: '/user/home',
             meta: {
-                requestAuth: true,
                 title: '我的主页',
             },
             children: [
@@ -250,7 +249,6 @@ export default new Router({
                     name: 'userHome',
                     component: UserHome,
                     meta: {
-                        requestAuth: true,
                         title: '我的主页',
                     }
                 },
@@ -259,7 +257,6 @@ export default new Router({
                     name: 'userFollows',
                     component: UserFollows,
                     meta: {
-                        requestAuth: true,
                         title: '我的关注',
                     }
                 }

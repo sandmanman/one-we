@@ -30,10 +30,16 @@
                 <li v-for="item in hotAartistsDataTop10" :key="item.id">
                     <div class="u-cover u-cover-5">
                         <img :src="item.img1v1Url+'?param=130y130'">
-                        <a :title="item.name+'的音乐'" :href="'/artist?id='+item.id" class="msk"></a>
+                        <router-link
+                        :to="{name: 'artistDetail', query: {id: item.id}}"
+                        :title="item.name+'的音乐'"
+                         class="msk"></router-link>
                     </div>
                     <p>
-                        <a :href="'/artist?id='+item.id" class="nm nm-icn f-thide s-fc0" :title="item.name+'的音乐'">{{item.name}}</a>
+                        <router-link
+                        :to="{name: 'artistDetail', query: {id: item.id}}"
+                        :title="item.name+'的音乐'"
+                         class="nm nm-icn f-thide s-fc0">{{item.name}}</router-link>
                     </p>
                 </li>
                 </template>
@@ -41,9 +47,16 @@
 
                 <template v-if="hotAartistsData">
                 <li class="sml" v-for="item in hotAartistsData" :key="item.id">
-                    <a :href="'/artist?id='+item.id" class="nm nm-icn f-thide s-fc0" :title="item.name+'的音乐'">{{item.name}}</a>
+                    <router-link
+                    :to="{name: 'artistDetail', query: {id: item.id}}"
+                    :title="item.name+'的音乐'"
+                    class="nm nm-icn f-thide s-fc0">{{item.name}}</router-link>
                     &nbsp;
-                    <a class="icn u-icn u-icn-5" v-if="item.accountId" :href="'/user/home?id='+item.accountId" title="杨宗纬的个人主页"></a>
+                    <router-link
+                     v-if="item.accountId"
+                    :to="{name: 'user', query: {id: item.accountId}}"
+                    :title="item.name+'的音乐'"
+                    class="icn u-icn u-icn-5"></router-link>
                 </li>
                 </template>
             </ul>
