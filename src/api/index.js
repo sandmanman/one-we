@@ -243,6 +243,72 @@ export function hotAartists(limit, offset) {
     })
 }
 
+// 歌手单曲
+// 必选参数:
+// id: 歌手 id,可由搜索接口获得
+export function artistSongs(id) {
+    return $http({
+        method: 'get',
+        url: '/artists',
+        params: {
+            id
+        }
+    })
+}
+// 歌手MV
+// 必选参数:
+// id: 歌手 id
+export function artistMv(id) {
+    return $http({
+        method: 'get',
+        url: '/artist/mv',
+        params: {
+            id
+        }
+    })
+}
+// 歌手专辑
+// 必选参数:
+// id: 歌手 id
+// 可选参数:
+// limit: 取出数量,默认为50
+// offset: 偏移数量,用于分页,如:(页数-1)*50, 其中 50 为 limit 的值,默认为0
+export function artistAlbum(id, limit, offset) {
+    return $http({
+        method: 'get',
+        url: '/artist/album',
+        params: {
+            id,
+            limit,
+            offset
+        }
+    })
+}
+// 歌手描述
+// 必选参数:
+// id: 歌手 id
+export function artistDesc(id) {
+    return $http({
+        method: 'get',
+        url: '/artist/desc',
+        params: {
+            id
+        }
+    })
+}
+// 相似歌手
+// 必选参数:
+// id: 歌手 id
+export function simiArtist(id) {
+    return $http({
+        method: 'get',
+        url: '/simi/artist',
+        params: {
+            id
+        }
+    })
+}
+
 
 // 新碟上架
 // 可选参数:
@@ -281,6 +347,18 @@ export function mvDetail(mvid) {
     return $http({
         method: 'get',
         url: '/mv',
+        params: {
+            mvid
+        }
+    })
+}
+// 相似MV
+// 必选参数:
+// id: 专辑 id
+export function simiMv(mvid) {
+    return $http({
+        method: 'get',
+        url: '/simi/mv',
         params: {
             mvid
         }

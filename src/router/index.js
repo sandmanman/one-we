@@ -24,10 +24,18 @@ const DJCategory  = resolve => require(['@/pages/discover/djradio/category/index
 
 // 歌手
 const Artist = resolve => require(['@/pages/discover/artist'], resolve)
-const ArtistRecommonded  = resolve => require(['@/pages/discover/artist/recommonded'], resolve)
-const ArtistSigned  = resolve => require(['@/pages/discover/artist/signed'], resolve)
+const ArtistRecommonded = resolve => require(['@/pages/discover/artist/recommonded'], resolve)
+const ArtistSigned = resolve => require(['@/pages/discover/artist/signed'], resolve)
 // 歌手详细
-const ArtistDetail  = resolve => require(['@/pages/artist'], resolve)
+const ArtistDetail = resolve => require(['@/pages/artist'], resolve)
+// 歌手热门50单曲
+const ArtistHotSongs  = resolve => require(['@/pages/artist/hotsongs'], resolve)
+// 歌手专辑
+const ArtistAlbum  = resolve => require(['@/pages/artist/album'], resolve)
+// 歌手MV
+const ArtistMV  = resolve => require(['@/pages/artist/mv'], resolve)
+// 歌手介绍
+const ArtistDesc  = resolve => require(['@/pages/artist/desc'], resolve)
 
 // 新碟
 const Album = resolve => require(['@/pages/discover/album'], resolve)
@@ -164,9 +172,44 @@ export default new Router({
             path: '/artist',
             name: 'artistDetail',
             component: ArtistDetail,
+            redirect: '/artist/songs',
             meta: {
                 title: '网易云音乐 歌手详细'
-            }
+            },
+            children:[
+                {
+                    path: 'songs',
+                    name: 'artistHotSongs',
+                    component: ArtistHotSongs,
+                    meta: {
+                        title: '热门50单曲'
+                    }
+                },
+                {
+                    path: 'album',
+                    name: 'artistAlbum',
+                    component: ArtistAlbum,
+                    meta: {
+                        title: '所有专辑'
+                    }
+                },
+                {
+                    path: 'mv',
+                    name: 'artistMV',
+                    component: ArtistMV,
+                    meta: {
+                        title: '相关MV'
+                    }
+                },
+                {
+                    path: 'desc',
+                    name: 'artistDesc',
+                    component: ArtistDesc,
+                    meta: {
+                        title: '歌手介绍'
+                    }
+                }
+            ]
         },
         {
             path: '/song',
@@ -194,6 +237,7 @@ export default new Router({
         },
         {
             path: '/user',
+            name: 'user',
             component: User,
             redirect: '/user/home',
             meta: {

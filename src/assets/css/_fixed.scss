@@ -62,3 +62,38 @@
         margin-top: 4px;
     }
 }
+
+
+.n-sltlyr .icn, .n-mvlist .mvpic .btn, .n-artist .btn-rz, .n-artist .btnfav {
+    background: url(./assets/img/iconall.png) no-repeat;
+}
+.n-artist .btn-rz {
+    display: block;
+    position: absolute;
+    bottom: 18px;
+    right: 116px;
+    width: 96px;
+    height: 32px;
+    background-position: 0 -1156px;
+}
+.n-artist .btnfav {
+    display: block;
+    position: absolute;
+    bottom: 18px;
+    right: 20px;
+    width: 76px;
+    height: 32px;
+    background-position: 0 -500px;
+}
+.n-artist .btnfav:hover {
+    background-position: 0 -540px;
+}
+.n-artist .btn-rz:hover {
+    background-position: 0 -1196px;
+}
+.n-artist .btnfav-0 {
+    background-position: 0 -735px;
+}
+.n-artist .btnfav-0:hover {
+    background-position: 0 -781px;
+}
