@@ -13,12 +13,18 @@
                                 :key="item.id"
                                 :to="{name: 'artistDetail', query: {id: item.id}}" 
                                 :title="item.name"
-                                class="s-fc7">{{item.name}}</router-link>&nbsp;
+                                class="s-fc7">{{item.name}}</router-link>
+                                &nbsp;
                             </span>
                         </div>
 
                         <div class="mv">
-                        
+                            <d-player
+                            :video="video"
+                            :autoplay="autoplay"
+                            :contextmenu="contextmenu"
+                            @play="play"
+                            ref="player"></d-player>
                         </div>
                         <div class="btns f-cb">
                             <a class="j-flag u-btni u-btni-fav" href="javascript:;"><i>收藏</i></a>
@@ -50,12 +56,29 @@
 </template>
 
 <script>
+import DPlayer from 'DPlayer'
+import VueDPlayer from 'vue-dplayer'
 import { mvDetail } from '@/api'
 export default {
     name: 'MV',
+    components: {
+        'd-player': VueDPlayer,
+    },
     data() {
         return {
             mvData: null,
+            video: {
+                url: String,
+                pic: String
+            },
+            autoplay: true,
+            player: null,
+            contextmenu: [
+                {
+                    text: '网易云音乐',
+                    link: 'http://music.163.com/'
+                }
+            ]
         }
     },
     created() {
@@ -66,13 +89,18 @@ export default {
             mvDetail(id).then(res => {
                 if( res.data.code === 200 ) {
                     this.mvData = res.data.data
+                    // localhost:1128 是api服务地址
+                    this.video.url = 'http://localhost:1128/mv/url?url='+res.data.data.brs[720]
                 } else {
                     console.error(res.data.code+res.data.msg)
                 }
             }).catch(error => {
                 console.error(error)
             })
-        }
+        },
+        play() {
+            console.log('play callback')
+        },
     }
 }
 </script>
@@ -114,5 +142,8 @@ export default {
             margin-top: 10px;
         }
     }
+}
+.dplayer {
+    height: 400px;
 }
 </style>

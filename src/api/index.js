@@ -286,3 +286,5 @@ export function mvDetail(mvid) {
         }
     })
 }
+
+// 播放MV
