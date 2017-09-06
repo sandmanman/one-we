@@ -91,6 +91,12 @@ export default {
         this.getArtistData(this.$route.query.id)
         this.getSimiArtist(this.$route.query.id)
     },
+    watch: {
+        '$route'(to,from) {
+            this.getArtistData(this.$route.query.id)
+            this.getSimiArtist(this.$route.query.id)
+        }
+    },
     methods: {
         getArtistData(id) {
             artistSongs(id).then(res => {

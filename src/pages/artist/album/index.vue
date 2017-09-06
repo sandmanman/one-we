@@ -53,6 +53,11 @@ export default {
             return Math.ceil(this.totalAlbum/this.pageLimit)
         }
     },
+    watch: {
+        '$route'(to,from) {
+             this.getAlbum(this.$route.query.id, this.pageLimit)
+        }
+    },
     methods: {
         getAlbum(id, limit) {
             artistAlbum(id, limit).then(res => {

@@ -78,6 +78,11 @@ export default {
     created() {
         this.getArtistData(this.$route.query.id)
     },
+    watch: {
+        '$route'(to,from) {
+            this.getArtistData(this.$route.query.id)
+        }
+    },
     methods: {
         getArtistData(id) {
             artistSongs(id).then(res => {

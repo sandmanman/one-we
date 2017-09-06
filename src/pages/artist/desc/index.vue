@@ -24,6 +24,11 @@ export default {
     created() {
         this.getDesc(this.$route.query.id)
     },
+    watch: {
+        '$route'(to,from) {
+            this.getDesc(this.$route.query.id)
+        }
+    },
     methods: {
         getDesc(id) {
             artistDesc(id).then(res => {
