@@ -287,4 +287,19 @@ export function mvDetail(mvid) {
     })
 }
 
-// 播放MV
+
+// MV评论
+// 必选参数:
+// id: mv id
+// 可选参数:
+// limit: 取出评论数量,默认为20
+// offset: 偏移数量,用于分页,如:(评论页数-1)*20, 其中 20 为 limit 的值
+export function mvComment(id) {
+    return $http({
+        method: 'get',
+        url: '/comment/mv',
+        params: {
+            id
+        }
+    })
+}

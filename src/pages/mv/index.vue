@@ -22,8 +22,7 @@
                             :video="video"
                             :autoplay="autoplay"
                             :theme="theme"
-                            :contextmenu="contextmenu"
-                            @play="play"></d-player>
+                            :contextmenu="contextmenu"></d-player>
                             
                         </div>
                         <div class="btns f-cb">
@@ -32,6 +31,20 @@
                         </div>
                     </div>
                     <!-- video End -->
+
+                    <div class="n-cmt">
+                        <div class="u-title u-title-1">
+                            <h3><span class="f-ff2">评论</span></h3>
+                            <span class="sub s-fc3">共<span class="j-flag" v-if="mvData">{{mvData.commentCount}}</span>条评论</span>
+                        </div>
+
+                        <comment
+                        :comments="comments"
+                        :hotComments="hotComments"
+                        :totalComment="totalComment"></comment>
+
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -59,15 +72,18 @@
 
 <script>
 import VueDPlayer from 'vue-dplayer'
-import { mvDetail } from '@/api'
+import Comment from '@/components/comment/Comment'
+import { mvDetail, mvComment } from '@/api'
 export default {
     name: 'MV',
     components: {
         'd-player': VueDPlayer,
+        Comment,
     },
     data() {
         return {
             mvData: null,
+            mvId: null,
             video: {
                 url: String,
                 pic: String
@@ -80,7 +96,11 @@ export default {
                     text: '网易云音乐',
                     link: 'http://music.163.com/'
                 }
-            ]
+            ],
+
+            comments: [],
+            hotComments: [],
+            totalComment: NaN,
         }
     },
     created() {
@@ -91,9 +111,13 @@ export default {
             mvDetail(id).then(res => {
                 if( res.data.code === 200 ) {
                     this.mvData = res.data.data
+                    this.mvId = res.data.data.id
                     // localhost:1128 是api服务地址
                     this.video.url = 'http://localhost:1128/mv/url?url='+res.data.data.brs[480]
                     this.video.pic = res.data.data.cover
+
+                    this.getMVComment(this.mvId)
+
                 } else {
                     console.error(res.data.code+res.data.msg)
                 }
@@ -101,8 +125,16 @@ export default {
                 console.error(error)
             })
         },
-        play() {
-            console.log('play callback')
+        getMVComment(id) {
+            mvComment(id).then(res => {
+                if(res.data.code === 200 ) {
+                    this.comments = res.data.comments
+                    this.hotComments = res.data.hotComments
+                    this.totalComment = res.data.total
+                } else {
+                    console.error(res.data.code+res.data.msg)
+                }
+            })
         },
     }
 }
