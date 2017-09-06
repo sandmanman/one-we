@@ -7,10 +7,8 @@
                     <div class="n-mv" v-if="mvData">
                         <div class="title f-cb">
                             <h2 class="f-ff2 f-thide">{{mvData.name}}</h2>
-                            <span class="name">
+                            <span class="name" v-for="item in mvData.artists" :key="item.id">
                                 <router-link
-                                v-for="item in mvData.artists"
-                                :key="item.id"
                                 :to="{name: 'artistDetail', query: {id: item.id}}" 
                                 :title="item.name"
                                 class="s-fc7">{{item.name}}</router-link>
@@ -19,12 +17,14 @@
                         </div>
 
                         <div class="mv">
+
                             <d-player
                             :video="video"
                             :autoplay="autoplay"
+                            :theme="theme"
                             :contextmenu="contextmenu"
-                            @play="play"
-                            ref="player"></d-player>
+                            @play="play"></d-player>
+                            
                         </div>
                         <div class="btns f-cb">
                             <a class="j-flag u-btni u-btni-fav" href="javascript:;"><i>收藏</i></a>
@@ -45,7 +45,9 @@
                     <p class="s-fc4">发布时间：{{mvData.publishTime}}</p>
                     <p class="s-fc4">播放次数：{{mvData.playCount}}万次</p>
                     <p class="intr">
+                    <template v-if="mvData.briefDesc">
                     {{mvData.briefDesc}}
+                    </template>
                     <br>
                     {{mvData.desc}}
                     </p>
@@ -56,7 +58,6 @@
 </template>
 
 <script>
-import DPlayer from 'DPlayer'
 import VueDPlayer from 'vue-dplayer'
 import { mvDetail } from '@/api'
 export default {
@@ -72,6 +73,7 @@ export default {
                 pic: String
             },
             autoplay: true,
+            theme: '#C20C0C',
             player: null,
             contextmenu: [
                 {
@@ -90,7 +92,8 @@ export default {
                 if( res.data.code === 200 ) {
                     this.mvData = res.data.data
                     // localhost:1128 是api服务地址
-                    this.video.url = 'http://localhost:1128/mv/url?url='+res.data.data.brs[720]
+                    this.video.url = 'http://localhost:1128/mv/url?url='+res.data.data.brs[480]
+                    this.video.pic = res.data.data.cover
                 } else {
                     console.error(res.data.code+res.data.msg)
                 }
