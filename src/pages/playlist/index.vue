@@ -49,9 +49,10 @@
                                 </div>
                                 <div class="tags f-cb">
                                     <b>标签：</b>
-                                    <a class="u-tag" 
+                                    <router-link
                                     v-for="(value, index) in playlistData.tags" :key="index"
-                                    :href="'/discover/playlist/?cat='+ value +';order=hot'"><i>{{value}}</i></a>
+                                    :to="{name: 'playlist', query: {cat: value}}"
+                                    class="u-tag"><i>{{value}}</i></router-link>
                                 </div>
                                 <p class="intr f-brk">
                                     <b>介绍：</b>
