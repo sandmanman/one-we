@@ -3,12 +3,13 @@
         <div class="g-mn4">
             <div class="g-mn4c">
                 <div class="g-wrap6">
-                    <div class="m-lycifo">
+                    <!-- 歌曲信息 S -->
+                    <div class="m-lycifo" v-if="songData">
                         <div class="f-cb">
                             <!-- 专辑封面 S -->
                             <div class="cvrwrap f-cb f-pr">
                                 <div class="u-cover u-cover-6 f-fl">
-                                    <img src="http://p4.music.126.net/cUTk0ewrQtYGP2YpPZoUng==/3265549553028224.jpg?param=130y130" class="j-img">
+                                    <img :src="songData.al.picUrl+'?param=130y130'" class="j-img">
                                     <span class="msk f-alpha"></span>
                                 </div>
                                 <div class="out s-fc3">
@@ -22,26 +23,29 @@
                                 <div class="hd">
                                     <i class="lab u-icn u-icn-37"></i>
                                     <div class="tit">
-                                        <em class="f-ff2">告白气球</em>
+                                        <em class="f-ff2">{{songData.name}}</em>
                                         <router-link
-                                        :to="{name: 'mvDetail', query: {mvid: 5382080}}">
+                                        v-if="songData.mv"
+                                        :to="{name: 'mvDetail', query: {mvid: songData.mv}}">
                                             <i class="icn u-icn u-icn-2"></i>
                                         </router-link>
                                     </div>
                                 </div>
                                 <p class="des s-fc4">
                                     歌手：
-                                    <span title="周杰伦">
+                                    <span v-for="item in songData.ar" :key="item.id" :title="item.name">
                                         <router-link
-                                        :to="{name: 'artistDetail', query: {id: 6452}}"
-                                        class="s-fc7">周杰伦</router-link>
+                                        :to="{name: 'artistDetail', query: {id: item.id}}"
+                                        class="s-fc7">{{item.name}}</router-link>
+                                        &nbsp;
                                     </span>
+                                    
                                 </p>
                                 <p class="des s-fc4">
                                     所属专辑：
                                     <router-link
-                                    :to="{name: 'albumDetail', query: {id: 34720827}}"
-                                    class="s-fc7">周杰伦的床边故事</router-link>
+                                    :to="{name: 'albumDetail', query: {id: songData.al.id}}"
+                                    class="s-fc7">{{songData.al.name}}</router-link>
                                 </p>
                                 <div class="m-info">
                                     <div class="btns f-cb">
@@ -64,12 +68,13 @@
                                     </div>
                                 </div>
                                 <!-- 歌词 -->
-                                <div class="bd bd-open f-brk f-ib">
-                                    <div>
-                                        拥有你就拥有  全世界<br><br>亲爱的  爱上你  从那天起<br>甜蜜的很轻易<br>亲爱的  别任性  你的眼睛<br>在说我愿意<br><br>塞纳河畔  左岸的咖啡<br>我手一杯  品尝你的美<br>留下唇印的嘴<br><br>花店玫瑰  名字写错谁<br>告白气球  风吹到对街<br>微笑在天上飞<br><br>你说你有点难追  想让我知难而退<br>礼物不需挑最贵  只要香榭的落叶<br>喔～营造浪漫的约会  不害怕搞砸一切<br>拥有你就拥有  全世界<br><br>亲爱的  爱上你  从那天起<br>甜蜜的很轻易<br>亲爱的  别任性  你的眼睛<br>在说我愿意<br><br>亲爱的  爱上你  恋爱日记<br>飘香水的回忆<br>一整瓶  的梦境  全都有你<br>搅拌在一起<br><br>亲爱的别任性  你的眼睛<br>在说我愿意<br><br>
+                                <div class="bd bd-open f-brk f-ib" v-if="lyricData">
+                                    <div class="lyric-content" :class="{open:isShowMoreLyric}">
+                                        <p v-for="(item, index) in lyric" :key="index">{{item.txt}}</p>
                                     </div>
                                     <div class="crl">
-                                        <a href="javascript:void(0)" class="s-fc7">展开<i class="u-icn u-icn-69"></i></a>
+                                        <a v-if="!isShowMoreLyric" href="javascript:void(0)" class="s-fc7" @click="showMoreLyric">展开<i class="u-icn u-icn-69" style="margin-left:5px;"></i></a>
+                                        <a v-else href="javascript:void(0)" class="s-fc7" @click="showMoreLyric">收起<i class="u-icn u-icn-70" style="margin-left:5px;"></i></a>
                                     </div>
                                 </div>
 
@@ -77,6 +82,7 @@
 
                         </div>
                     </div>
+                    <!-- 歌曲信息 End -->
 
                     <div class="n-cmt">
                         <div class="u-title u-title-1">
@@ -93,14 +99,22 @@
                 <h3 class="u-hd3">
                     <span class="f-fl">相似歌曲</span>
                 </h3>
-                <ul class="m-sglist f-cb">
-                    <li class="f-cb">
+                <ul class="m-sglist f-cb" v-if="simiSongData">
+                    <li class="f-cb" v-for="item in simiSongData" :key="item.id">
                         <div class="txt">
                             <div class="f-thide">
-                                <a href="/song?id=186016" title="晴天" class="s-fc1">晴天</a>
+                                <router-link
+                                :to="{name: 'songDetail', query: {id: item.id}}"
+                                :title="item.name"
+                                class="s-fc1">{{item.name}}</router-link>
                             </div>
                             <div class="f-thide s-fc4">
-                                <span title="周杰伦"><a class="s-fc4" href="/artist?id=6452">周杰伦</a></span>
+                                <span v-for="ar in item.artists" :key="ar.id" :title="ar.name">
+                                    <router-link
+                                    :to="{name: 'artistDetail', query: {id: ar.id}}"
+                                    class="s-fc4">{{ar.name}}</router-link>
+                                    &nbsp;
+                                </span>
                             </div>
                         </div>
                         <div class="opr f-cb">
@@ -115,12 +129,108 @@
 </template>
 
 <script>
+import { songDetail, songLyric, songComment, simiSong } from '@/api'
 export default {
-    name: 'Song'
+    name: 'Song',
+    data() {
+        return {
+            songData: null,
+            lyricData: null,
+            lyric: null,
+            isShowMoreLyric: false,
+            simiSongData: null,
+        }
+    },
+    created() {
+        this.getSong(this.$route.query.id)
+        this.getLyric(this.$route.query.id)
+        this.getSimiSong(this.$route.query.id)
+    },
+    watch: {
+        '$route'(to,from) {
+            this.getSong(this.$route.query.id)
+            this.getLyric(this.$route.query.id)
+            this.getSimiSong(this.$route.query.id)
+        }
+    },
+    methods: {
+        getSong(ids) { // 歌曲信息
+            songDetail(ids).then(res => {
+                if(res.data.code === 200) {
+                    this.songData = res.data.songs[0]
+                } else {
+                    console.log(res.data.code+res.data.msg)
+                }
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        getLyric(id) { // 歌词
+            songLyric(id).then(res => {
+                if(res.data.code === 200) {
+                    this.lyricData = res.data.lrc.lyric
+                    this.lyricFormat()
+                } else {
+                    console.log(res.data.code+res.data.msg)
+                }
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        getSimiSong(id) {
+            simiSong(id).then(res => {
+                if(res.data.code === 200) {
+                    this.simiSongData = res.data.songs
+                } else {
+                    console.log(res.data.code+res.data.msg)
+                }
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        lyricFormat() {
+            var lyrics = this.lyricData.split('\n')
+            // console.log(lyrics)
+            var lrcObj = []
+            /*eslint-disable */
+            var timeReg = /\[\d*:\d*((\.|\:)\d*)*\]/g
+            /*eslint-enable */
+            // 思路：1、把歌词进行处理以时间和歌词组成一个对象，放入afterLrc数组中
+            // 2、在computed方法中根据当前的时间进行匹配歌词，然后查找在数据中的位置计算offset值
+            for (var i = 0; i < lyrics.length; i++) {
+                var timeRegExpArr = lyrics[i].match(timeReg)
+                if (!timeRegExpArr) continue
+                var txt = lyrics[i].replace(timeReg, '')
+                // 处理时间
+                for (var k = 0; k < timeRegExpArr.length; k++) {
+                    var array = {}
+                    var t = timeRegExpArr[k]
+                    /*eslint-disable */
+                    var min = Number(String(t.match(/\[\d*/i)).slice(1))
+                    var sec = Number(String(t.match(/\:\d*/i)).slice(1))
+                    /*eslint-enable */
+                    var time = min * 60 + sec
+                    array.time = time
+                    array.txt = txt
+                    lrcObj.push(array)
+                }
+            }
+            this.lyric = lrcObj
+        },
+        showMoreLyric(event) { // 歌词展开
+            this.isShowMoreLyric = !this.isShowMoreLyric
+        }
+    }
 }
 </script>
 
 
-<style>
-
+<style scoped>
+.lyric-content {
+    max-height: 299px;
+    overflow: hidden;
+}
+.lyric-content.open {
+    max-height: none;
+}
 </style>

@@ -383,3 +383,55 @@ export function mvComment(id, limit, offset) {
         }
     })
 }
+
+
+//
+// 歌曲详细
+// 必选参数:
+// ids: 音乐 id,如 ids=347230
+export function songDetail(ids) {
+    return $http({
+        method: 'get',
+        url: '/song/detail',
+        params: {
+            ids,
+        }
+    })
+}
+// 歌曲评论
+// 必选参数:
+// id: 音乐 id
+// 可选参数:
+// limit: 取出评论数量,默认为20
+// offset: 偏移数量,用于分页,如:(评论页数-1)*20, 其中 20 为 limit 的值
+export function songComment(id) {
+    return $http({
+        method: 'get',
+        url: '/comment/music',
+        params: {
+            id,
+        }
+    })
+}
+// 相似歌曲
+export function simiSong(id) {
+    return $http({
+        method: 'get',
+        url: '/simi/song',
+        params: {
+            id,
+        }
+    })
+}
+// 歌词
+// 必选参数:
+// id: 音乐 id
+export function songLyric(id) {
+    return $http({
+        method: 'get',
+        url: '/lyric',
+        params: {
+            id,
+        }
+    })
+}
