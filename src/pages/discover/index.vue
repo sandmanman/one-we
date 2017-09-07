@@ -1,43 +1,6 @@
 <template>
     <div>
-        <!-- sub nav S -->
-        <div class="m-subnav j-tflag">
-            <div class="wrap f-pr">
-                <ul class="nav">
-                    <li>
-                        <router-link :to="{name: 'recommonded'}" active-class="z-slt">
-                            <em>推荐</em>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link :to="{name: 'toplist', query: {id:3}}" active-class="z-slt">
-                            <em>排行榜</em>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link :to="{name: 'playlist'}" active-class="z-slt">
-                            <em>歌单</em>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link :to="{name: 'djradio'}" active-class="z-slt">
-                            <em>主播电台</em>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link :to="{name: 'artist'}" active-class="z-slt">
-                            <em>歌手</em>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link :to="{name: 'album'}" active-class="z-slt">
-                            <em>新碟上架</em>
-                        </router-link>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- sub nav End -->
+        
         
         <router-view></router-view>
     </div>
