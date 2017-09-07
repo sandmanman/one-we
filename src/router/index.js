@@ -7,6 +7,8 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+const PageNotFound =  resolve => require(['@/pages/404.vue'], resolve)
+
 const Discover = resolve => require(['@/pages/discover'], resolve)
 // 推荐
 const Recommonded = resolve => require(['@/pages/discover/recommonded'], resolve)
@@ -271,6 +273,10 @@ export default new Router({
                     }
                 }
             ]
+        },
+        {
+            path: "*",
+            component: PageNotFound
         }
     ]
 })
