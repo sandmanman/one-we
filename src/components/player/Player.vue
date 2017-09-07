@@ -46,16 +46,17 @@
                 </div>
 
                 <div class="ctrl f-fl f-pr j-flag">
-                    <div class="m-vol" style="visibility:hidden;" id="auto-id-VCkXpB9VZDqdh2F0">
+                    <div class="m-vol" style="visibility:hidden;">
                         <div class="barbg"></div>
-                        <div class="vbg j-t" id="auto-id-ItyiMR56w66LCZPr"><div class="curr j-t" style="height: 48.2222px;"></div>
+                        <div class="vbg j-t"><div class="curr j-t" style="height: 48.2222px;"></div>
                         <span class="btn f-alpha j-t" style="top: 39px;"></span></div>
                     </div>
                     <a href="javascript:;" class="icn icn-vol" title="音量"></a>
                     <a href="javascript:;" class="icn icn-loop" title="循环"></a>
                     <span class="add f-pr">
                     <span class="tip" style="display: none;">已开始播放</span>
-                        <a href="javascript:;" title="播放列表" class="icn icn-list s-fc3">253</a>
+                        <a href="javascript:;" title="播放列表" class="icn icn-list s-fc3"
+                        @click="togglePlaylist">253</a>
                     </span>
                     <div class="tip tip-1" style="display:none;">循环</div>
                 </div>
@@ -63,7 +64,8 @@
             </div>
 
             <!-- 播放列表 S -->
-            <div class="list">
+            <transition name="fade">
+            <div class="list" v-show="isShowPlaylist">
                 <div class="listhd">
                     <div class="listhdc">
                         <h4>播放列表(<span class="j-flag">253</span>)</h4>
@@ -71,7 +73,7 @@
                         <span class="line"></span>
                         <a href="javascript:;" class="clear"><span class="ico icn-del"></span>清除</a>
                         <p class="lytit f-ff0 f-thide j-flag">告白气球</p>
-                        <span class="close">关闭</span>
+                        <span class="close" @click="togglePlaylist">关闭</span>
                     </div>
                 </div>
 
@@ -113,20 +115,67 @@
                     <!-- 歌词 End -->
                 </div>
             </div>
+            </transition>
             <!-- 播放列表 End -->
-            
+
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Player'
+    name: 'Player',
+    data() {
+        return {
+            isShowPlaylist: false
+        }
+    },
+    methods: {
+        togglePlaylist() {
+            this.isShowPlaylist = !this.isShowPlaylist
+        }
+    }
 }
 </script>
 
 <style scoped>
+.listbdc {
+    overflow-y: auto;
+}
+.fade-enter-active,
+.fade-leave-active {
+    animation-duration: .5s;
+    animation-fill-mode: both;
+    animation-name: slideInUp;
+}
+ /* .fade-leave-active 在低于版本 2.1.8 中 */
+.fade-enter,
+.fade-leave-to {
+    animation-name: slideInDown;
+}
 
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+@keyframes slideInDown {
+    from {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translate3d(0, 100%, 0);
+        opacity: 0;
+    }
+}
 </style>
 
 
