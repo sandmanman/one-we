@@ -80,7 +80,8 @@
                                     </td>
                                     <td class="col2" style="width:300px">
                                         <div class="tt f-thide">
-                                            <a href="/program?id=909198537" :title="item.name">{{item.name}}</a>
+
+                                            <a :href="'/program?id='+item.id" :title="item.name">{{item.name}}</a>
                                         </div>
                                         <div class="opt">
                                             <a class="u-icn u-icn-81 icn-add" href="javascript:;" title="添加到播放列表"></a>
