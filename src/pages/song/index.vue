@@ -189,13 +189,15 @@ export default {
             })
         },
         lyricFormat() {
+            // https://github.com/eugeneCN/vue-electron-music
             var lyrics = this.lyricData.split('\n')
             // console.log(lyrics)
             var lrcObj = []
             /*eslint-disable */
             var timeReg = /\[\d*:\d*((\.|\:)\d*)*\]/g
             /*eslint-enable */
-            // 思路：1、把歌词进行处理以时间和歌词组成一个对象，放入afterLrc数组中
+            // 思路：
+            // 1、把歌词进行处理以时间和歌词组成一个对象，放入lyric数组中
             // 2、在computed方法中根据当前的时间进行匹配歌词，然后查找在数据中的位置计算offset值
             for (var i = 0; i < lyrics.length; i++) {
                 var timeRegExpArr = lyrics[i].match(timeReg)
