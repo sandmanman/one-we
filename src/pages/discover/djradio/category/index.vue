@@ -6,11 +6,18 @@
             </div>
             <ul class="m-rdilist f-cb" v-if="djRecommendData">
                 <li v-for="item in djRecommendData" :key="item.id">
-                    <a :href="'/djradio?id='+item.id" class="u-cover u-cover-rdi2">
+                    <router-link
+                    :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                    class="u-cover u-cover-rdi2">
                         <img :src="item.picUrl+'?param=200y200'" alt="">
-                    </a>
+                    </router-link>
                     <h3 class="f-fs2">
-                        <a :href="'/djradio?id='+item.id" class="s-fc1" :title="item.name">{{item.name}}</a>
+                        <router-link
+                        :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                        :title="item.name"
+                        class="s-fc1">
+                        {{item.name}}
+                        </router-link>
                     </h3>
                     <p class="f-thide2 s-fc4">{{item.rcmdtext}}</p>
                 </li>

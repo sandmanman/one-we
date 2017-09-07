@@ -17,7 +17,10 @@
                             <a :href="'/program?id='+item.id" class="s-fc1" :title="item.name">{{item.name}}</a>
                         </div>
                         <div class="col artist f-thide">
-                            <a :href="'/djradio?id='+item.radio.id" class="s-fc3" :title="item.radio.name">{{item.radio.name}}</a>
+                            <router-link
+                            :to="{name: 'djRadioDetail', query: {id: item.radio.id}}"
+                            :title="item.radio.name"
+                            class="s-fc3">{{item.radio.name}}</router-link>
                         </div>
                         <div class="col col-4 s-fc4">播放{{item.listenerCount}}</div>
                         <div class="col col-5 s-fc4">赞{{item.likedCount}} </div>
@@ -41,11 +44,20 @@
             </div>
             <ul class="rdilist f-cb" v-if="yinyuegushi">
                 <li v-for="item in yinyuegushi" :key="item.id">
-                    <a :href="'/djradio?id='+item.id" class="cvr u-cover u-cover-rdi f-fl">
+                    <router-link
+                    :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                    class="cvr u-cover u-cover-rdi f-fl">
                         <img :src="item.picUrl+'?param=200y200'" alt="">
-                    </a>
+                    </router-link>
                     <div class="cnt">
-                        <h3 class="f-fs3"><a :href="'/djradio?id='+item.id" class="s-fc1" :title="item.name">{{item.name}}</a></h3>
+                        <h3 class="f-fs3">
+                            <router-link
+                            :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                            :title="item.name"
+                            class="s-fc1">
+                            {{item.name}}
+                            </router-link>
+                        </h3>
                         <p class="note s-fc4">{{item.rcmdtext}}</p>
                     </div>
                 </li>
@@ -67,11 +79,20 @@
             </div>
             <ul class="rdilist f-cb" v-if="meiwenduwu">
                 <li v-for="item in meiwenduwu" :key="item.id">
-                    <a :href="'/djradio?id='+item.id" class="cvr u-cover u-cover-rdi f-fl">
+                    <router-link
+                    :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                    class="cvr u-cover u-cover-rdi f-fl">
                         <img :src="item.picUrl+'?param=200y200'" alt="">
-                    </a>
+                    </router-link>
                     <div class="cnt">
-                        <h3 class="f-fs3"><a :href="'/djradio?id='+item.id" class="s-fc1" :title="item.name">{{item.name}}</a></h3>
+                        <h3 class="f-fs3">
+                            <router-link
+                            :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                            :title="item.name"
+                            class="s-fc1">
+                            {{item.name}}
+                            </router-link>
+                        </h3>
                         <p class="note s-fc4">{{item.rcmdtext}}</p>
                     </div>
                 </li>
@@ -93,11 +114,20 @@
             </div>
             <ul class="rdilist f-cb" v-if="tuokouxiu">
                 <li v-for="item in tuokouxiu" :key="item.id">
-                    <a :href="'/djradio?id='+item.id" class="cvr u-cover u-cover-rdi f-fl">
+                    <router-link
+                    :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                    class="cvr u-cover u-cover-rdi f-fl">
                         <img :src="item.picUrl+'?param=200y200'" alt="">
-                    </a>
+                    </router-link>
                     <div class="cnt">
-                        <h3 class="f-fs3"><a :href="'/djradio?id='+item.id" class="s-fc1" :title="item.name">{{item.name}}</a></h3>
+                        <h3 class="f-fs3">
+                            <router-link
+                            :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                            :title="item.name"
+                            class="s-fc1">
+                            {{item.name}}
+                            </router-link>
+                        </h3>
                         <p class="note s-fc4">{{item.rcmdtext}}</p>
                     </div>
                 </li>
@@ -118,11 +148,20 @@
             </div>
             <ul class="rdilist f-cb" v-if="qinggantiaopin">
                 <li v-for="item in qinggantiaopin" :key="item.id">
-                    <a :href="'/djradio?id='+item.id" class="cvr u-cover u-cover-rdi f-fl">
+                    <router-link
+                    :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                    class="cvr u-cover u-cover-rdi f-fl">
                         <img :src="item.picUrl+'?param=200y200'" alt="">
-                    </a>
+                    </router-link>
                     <div class="cnt">
-                        <h3 class="f-fs3"><a :href="'/djradio?id='+item.id" class="s-fc1" :title="item.name">{{item.name}}</a></h3>
+                        <h3 class="f-fs3">
+                            <router-link
+                            :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                            :title="item.name"
+                            class="s-fc1">
+                            {{item.name}}
+                            </router-link>
+                        </h3>
                         <p class="note s-fc4">{{item.rcmdtext}}</p>
                     </div>
                 </li>
@@ -144,11 +183,20 @@
             </div>
             <ul class="rdilist f-cb" v-if="chuangzuofanchang">
                 <li v-for="item in chuangzuofanchang" :key="item.id">
-                    <a :href="'/djradio?id='+item.id" class="cvr u-cover u-cover-rdi f-fl">
+                    <router-link
+                    :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                    class="cvr u-cover u-cover-rdi f-fl">
                         <img :src="item.picUrl+'?param=200y200'" alt="">
-                    </a>
+                    </router-link>
                     <div class="cnt">
-                        <h3 class="f-fs3"><a :href="'/djradio?id='+item.id" class="s-fc1" :title="item.name">{{item.name}}</a></h3>
+                        <h3 class="f-fs3">
+                            <router-link
+                            :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                            :title="item.name"
+                            class="s-fc1">
+                            {{item.name}}
+                            </router-link>
+                        </h3>
                         <p class="note s-fc4">{{item.rcmdtext}}</p>
                     </div>
                 </li>
@@ -169,11 +217,20 @@
             </div>
             <ul class="rdilist f-cb" v-if="renwenlishi">
                 <li v-for="item in renwenlishi" :key="item.id">
-                    <a :href="'/djradio?id='+item.id" class="cvr u-cover u-cover-rdi f-fl">
+                    <router-link
+                    :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                    class="cvr u-cover u-cover-rdi f-fl">
                         <img :src="item.picUrl+'?param=200y200'" alt="">
-                    </a>
+                    </router-link>
                     <div class="cnt">
-                        <h3 class="f-fs3"><a :href="'/djradio?id='+item.id" class="s-fc1" :title="item.name">{{item.name}}</a></h3>
+                        <h3 class="f-fs3">
+                            <router-link
+                            :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                            :title="item.name"
+                            class="s-fc1">
+                            {{item.name}}
+                            </router-link>
+                        </h3>
                         <p class="note s-fc4">{{item.rcmdtext}}</p>
                     </div>
                 </li>

@@ -227,6 +227,30 @@ export function djRecommendType(id) {
     })
 }
 
+// 电台详细
+// 必选参数:
+// rid: 电台 的 id
+export function djDetail(rid) {
+    return $http({
+        method: 'get',
+        url: '/dj/detail',
+        params: {
+            rid
+        }
+    })
+}
+// 电台节目
+// 必选参数:
+// rid: 电台 的 id
+export function djProgram(rid) {
+    return $http({
+        method: 'get',
+        url: '/dj/program',
+        params: {
+            rid
+        }
+    })
+}
 
 // 热门歌手
 // 可选参数:

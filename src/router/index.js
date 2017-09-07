@@ -20,7 +20,9 @@ const PlaylistDetail = resolve => require(['@/pages/playlist'], resolve)
 // 主播电台
 const DJRadio = resolve => require(['@/pages/discover/djradio'], resolve)
 const DJRadioHome = resolve => require(['@/pages/discover/djradio/home/index'], resolve)
-const DJCategory  = resolve => require(['@/pages/discover/djradio/category/index'], resolve)
+const DJCategory = resolve => require(['@/pages/discover/djradio/category/index'], resolve)
+// 电台详细
+const DJRadioDetail  = resolve => require(['@/pages/djradio'], resolve)
 
 // 歌手
 const Artist = resolve => require(['@/pages/discover/artist'], resolve)
@@ -225,6 +227,14 @@ export default new Router({
             component: MVDetail,
             meta: {
                 title: '网易云音乐 歌曲详细'
+            }
+        },
+        {
+            path: '/djradio',
+            name: 'djRadioDetail',
+            component: DJRadioDetail,
+            meta: {
+                title: '网易云音乐 电台'
             }
         },
         {
