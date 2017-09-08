@@ -93,7 +93,7 @@ export function loginRefresh() {
 }
 
 // 用户详情
-export function userInfo(uid) {
+export function userProfile(uid) {
     return $http({
         method: 'get',
         url: '/user/detail',
@@ -102,8 +102,99 @@ export function userInfo(uid) {
         }
     })
 }
+// 获取用户信息:歌单，收藏，mv, dj 数量
+export function userInfo(uid) {
+    return $http({
+        method: 'get',
+        url: '/user/subcount',
+        params: {
+            uid
+        }
+    })
+}
+// 用户歌单
+export function userPlaylist(uid) {
+    return $http({
+        method: 'get',
+        url: '/user/playlist',
+        params: {
+            uid
+        }
+    })
+}
+// 用户电台
+export function userDj(uid) {
+    return $http({
+        method: 'get',
+        url: '/user/dj',
+        params: {
+            uid
+        }
+    })
+}
+// 用户关注列表
+// 必选参数:
+// uid : 用户 id
+// 可选参数:
+// limit : 返回数量,默认为30
+// offset : 偏移数量，用于分页,如: 如:(页数-1)*30, 其中 30 为 limit 的值,默认为0
+export function userFollows(uid, limit, offset) {
+    return $http({
+        method: 'get',
+        url: '/user/follows',
+        params: {
+            uid,
+            limit,
+            offset
+        }
+    })
+}
+// 用户粉丝列表
+// 必选参数:
+// uid : 用户 id
+// 可选参数:
+// limit : 返回数量,默认为30
+// offset : 偏移数量，用于分页,如: 如:(页数-1)*30, 其中 30 为 limit 的值,默认为0
+export function userFolloweds(uid, limit, offset) {
+    return $http({
+        method: 'get',
+        url: '/user/followeds',
+        params: {
+            uid,
+            limit,
+            offset
+        }
+    })
+}
+// 用户动态
+// 必选参数:
+// uid : 用户 id
+export function userEvent(uid) {
+    return $http({
+        method: 'get',
+        url: '/user/event',
+        params: {
+            uid
+        }
+    })
+}
+// 用户播放记录
+// 必选参数:
+// uid : 用户 id
+// 可选参数:
+// type : type=1时只返回weekData, type=0时返回allData
+export function userRecord(uid, type) {
+    return $http({
+        method: 'get',
+        url: '/user/record',
+        params: {
+            uid,
+            type: 1,
+        }
+    })
+}
 
-// 用户等级信息
+// 我的等级信息
 export function userLevel() {
     return $http({
         method: 'get',
