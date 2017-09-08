@@ -63,7 +63,7 @@
                                         <i>下载</i>
                                     </a>
                                     <a href="javascript:;" class="u-btni u-btni-cmmt ">
-                                        <i>(<span>335669</span>)</i>
+                                        <i>(<span>{{totalComment}}</span>)</i>
                                     </a>
                                     </div>
                                 </div>
@@ -87,8 +87,26 @@
                     <div class="n-cmt">
                         <div class="u-title u-title-1">
                             <h3><span class="f-ff2">评论</span></h3>
-                            <span class="sub s-fc3">共<span class="j-flag">335669</span>条评论</span>
+                            <span class="sub s-fc3">共<span class="j-flag">{{totalComment}}</span>条评论</span>
                         </div>
+
+                        <comment :totalComment="totalComment" :comments="comments" :hotComments="hotComments"></comment>
+
+                        <template v-if="totalComment">
+                        <paginate
+                            :page-count="pageCount"
+                            :page-range="8"
+                            :margin-pages="1"
+                            :click-handler="pageCallback"
+                            :prev-text="'上一页'"
+                            :next-text="'下一页'"
+                            :container-class="'u-page'"
+                            :page-link-class="'page-item'"
+                            :prev-link-class="'page-prev'"
+                            :next-link-class="'page-next'">
+                        </paginate>
+                        </template>
+
                     </div>
                 </div>
             </div>
@@ -130,26 +148,42 @@
 
 <script>
 import { songDetail, songLyric, songComment, simiSong } from '@/api'
+import Comment from '@/components/comment/Comment'
 export default {
     name: 'Song',
+    components: {
+        Comment
+    },
     data() {
         return {
             songData: null,
+            songId: null,
             lyricData: null,
             lyric: null,
             isShowMoreLyric: false,
             simiSongData: null,
+            comments: null,
+            hotComments: null,
+            totalComment: Number,
+            pageLimit: 20,
         }
     },
     created() {
         this.getSong(this.$route.query.id)
         this.getLyric(this.$route.query.id)
+        this.getSongComment(this.$route.query.id)
         this.getSimiSong(this.$route.query.id)
+    },
+    computed: {
+        pageCount() {
+            return Math.ceil(this.totalComment/this.pageLimit)
+        }
     },
     watch: {
         '$route'(to,from) {
             this.getSong(this.$route.query.id)
             this.getLyric(this.$route.query.id)
+            this.getSongComment(this.$route.query.id)
             this.getSimiSong(this.$route.query.id)
         }
     },
@@ -158,6 +192,7 @@ export default {
             songDetail(ids).then(res => {
                 if(res.data.code === 200) {
                     this.songData = res.data.songs[0]
+                    this.songId = res.data.songs[0].id
                 } else {
                     console.log(res.data.code+res.data.msg)
                 }
@@ -170,6 +205,19 @@ export default {
                 if(res.data.code === 200) {
                     this.lyricData = res.data.lrc.lyric
                     this.lyricFormat()
+                } else {
+                    console.log(res.data.code+res.data.msg)
+                }
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        getSongComment(id) {
+            songComment(id).then(res => {
+                if(res.data.code === 200) {
+                    this.comments = res.data.comments
+                    this.hotComments = res.data.hotComments
+                    this.totalComment = res.data.total
                 } else {
                     console.log(res.data.code+res.data.msg)
                 }
@@ -221,6 +269,17 @@ export default {
         },
         showMoreLyric(event) { // 歌词展开
             this.isShowMoreLyric = !this.isShowMoreLyric
+        },
+        pageCallback(pageNum) {
+            songComment(this.songId, this.pageLimit, (pageNum-1)*this.pageLimit).then(res => {
+                if(res.data.code === 200) {
+                    this.comments = res.data.comments
+                } else {
+                    console.error(res.data.code+res.data.msg)
+                }
+            }).catch(error => {
+                console.error(error)
+            })
         }
     }
 }
