@@ -10,6 +10,7 @@
             <div class="wrap" style="margin-left: -497.5px;">
                 <div class="btns">
                     <a href="javascript:;" class="prv" title="上一首(ctrl+←)">上一首</a>
+                    <!-- 暂停 add pas -->
                     <a href="javascript:;" class="ply j-flag" title="播放/暂停(p)">播放/暂停</a>
                     <a href="javascript:;" class="nxt" title="下一首(ctrl+→)">下一首</a>
                 </div>
@@ -46,13 +47,17 @@
                 </div>
 
                 <div class="ctrl f-fl f-pr j-flag">
-                    <div class="m-vol" style="visibility:hidden;">
+                    <!-- 调音量 -->
+                    <div class="m-vol" v-if="isShowVolume">
                         <div class="barbg"></div>
                         <div class="vbg j-t"><div class="curr j-t" style="height: 48.2222px;"></div>
                         <span class="btn f-alpha j-t" style="top: 39px;"></span></div>
                     </div>
-                    <a href="javascript:;" class="icn icn-vol" title="音量"></a>
+                    <a href="javascript:;" class="icn icn-vol" title="音量" @click="toggleVolume"></a>
+
+                    <!-- 循环icn-loop 单曲icn-one 随机icn-shuffle -->
                     <a href="javascript:;" class="icn icn-loop" title="循环"></a>
+
                     <span class="add f-pr">
                     <span class="tip" style="display: none;">已开始播放</span>
                         <a href="javascript:;" title="播放列表" class="icn icn-list s-fc3"
@@ -127,12 +132,18 @@ export default {
     name: 'Player',
     data() {
         return {
-            isShowPlaylist: false
+            isShowPlaylist: false,
+            isShowVolume: false,
         }
     },
     methods: {
         togglePlaylist() {
+            // 显示隐藏播放列表
             this.isShowPlaylist = !this.isShowPlaylist
+        },
+        toggleVolume() {
+            // 显示隐藏音量调节
+            this.isShowVolume = !this.isShowVolume
         }
     }
 }
@@ -167,13 +178,13 @@ export default {
 }
 @keyframes slideInDown {
     from {
-        transform: translate3d(0, 0, 0);
         opacity: 1;
+        transform: translate3d(0, 0, 0);
     }
 
     to {
-        transform: translate3d(0, 100%, 0);
         opacity: 0;
+        transform: translate3d(0, 100%, 0);
     }
 }
 </style>
