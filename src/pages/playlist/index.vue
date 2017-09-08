@@ -99,9 +99,10 @@
                                                     <div class="tt">
                                                         <div class="ttc">
                                                             <span class="txt">
-                                                                <a :href="'/song?id='+item.id">
-                                                                    <b title="Like&nbsp;That">{{item.name}}</b>
-                                                                </a>
+                                                                <router-link
+                                                                :to="{name: 'songDetail', query: {id: item.id}}">
+                                                                    <b :title="item.name">{{item.name}}</b>
+                                                                </router-link>
                                                                 <span v-if="item.mv !== 0" title="播放mv" class="mv">MV</span>
                                                             </span>
                                                         </div>
@@ -120,13 +121,20 @@
                                             <td class="">
                                                 <div class="text">
                                                     <span v-for="item in item.ar" :key="item.id">
-                                                        <a :href="'/artist?id='+item.id">{{item.name}}</a>&nbsp;
+                                                        <router-link
+                                                        :to="{name: 'artistDetail', query: {id: item.id}}">
+                                                        {{item.name}}
+                                                        </router-link>&nbsp;
                                                     </span>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="text">
-                                                    <a :href="'/album?id='+'item.al.id'" :title="item.al.name">{{item.al.name}}</a>
+                                                    <router-link
+                                                    :to="{name: 'albumDetail', query: {id: item.al.id}}"
+                                                    :title="item.al.name">
+                                                    {{item.al.name}}
+                                                    </router-link>
                                                 </div>
                                             </td>
                                         </tr>
