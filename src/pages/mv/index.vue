@@ -120,7 +120,7 @@ export default {
         }
     },
     created() {
-        this.getMV(this.$route.query.mvid)
+        this.getMV(this.$route.query.id)
     },
     computed: {
         pageCount() {
@@ -153,7 +153,7 @@ export default {
                     this.hotComments = res.data.hotComments
                     this.totalComment = res.data.total
                 } else {
-                    console.error(res.data.code+res.data.msg)
+                    console.error(res.data.code+res.data.message)
                 }
             })
         },
