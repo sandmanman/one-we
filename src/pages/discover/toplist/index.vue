@@ -305,13 +305,18 @@
                                                     <span class="ply ">&nbsp;</span>
                                                     <div class="ttc">
                                                         <span class="txt">
-                                                            <a :href="'/song?id='+item.id">
-                                                                <b :title="item.name">{{item.name}}</b>
-                                                            </a>
+                                                            <router-link
+                                                            :to="{name: 'songDetail', query: {id: item.id}}">
+                                                                <b :title="item.name + '- ('+ item.alias[0] +')'">{{item.name}}</b>
+                                                            </router-link>
                                                             <span v-if="item.alias[0]" :title="item.alias[0]" class="s-fc8">
                                                                 - {{item.alias[0]}}
                                                             </span>
-                                                            <span title="播放mv" class="mv">MV</span>
+                                                            <router-link
+                                                            v-if="item.mvid"
+                                                            :to="{name: 'mvDetail', query: {id: item.mvid}}"
+                                                            title="播放mv"
+                                                            class="mv">MV</router-link>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -352,13 +357,18 @@
                                                     <span class="ply ">&nbsp;</span>
                                                     <div class="ttc">
                                                         <span class="txt">
-                                                            <a :href="'/song?id='+item.id">
+                                                            <router-link
+                                                            :to="{name: 'songDetail', query: {id: item.id}}">
                                                                 <b :title="item.name + '- ('+ item.alias[0] +')'">{{item.name}}</b>
-                                                            </a>
+                                                            </router-link>
                                                             <span v-if="item.alias[0]" :title="item.alias[0]" class="s-fc8">
                                                                 - {{item.alias[0]}}
                                                             </span>
-                                                            <span title="播放mv" class="mv" v-if="item.mvid !== 0">MV</span>
+                                                            <router-link
+                                                            v-if="item.mvid"
+                                                            :to="{name: 'mvDetail', query: {id: item.mvid}}"
+                                                            title="播放mv"
+                                                            class="mv">MV</router-link>
                                                         </span>
                                                     </div>
                                                 </div>

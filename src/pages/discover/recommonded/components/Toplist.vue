@@ -6,7 +6,11 @@
                 <a href="#" class="msk" :title="toplistData.name"></a>
             </div>
             <div class="tit">
-                <a href="#" :title="toplistData.name"><h3 class="f-fs1 f-thide">{{toplistData.name}}</h3></a>
+                <router-link
+                :to="{name:'toplist', query: {id: toplistId}}"
+                :title="toplistData.name">
+                    <h3 class="f-fs1 f-thide">{{toplistData.name}}</h3>
+                </router-link>
                 <div class="btn">
                     <a href="javascript:;" class="s-bg s-bg-9 f-tdn" title="播放">播放</a>
                     <a href="javascript:;" class="s-bg s-bg-10 f-tdn subscribe-flag" title="收藏">收藏</a>
@@ -25,7 +29,13 @@
                     </div>
                 </li>
             </ol>
-            <div class="more"><a :href="'/toplist?id='+toplistData.id" class="s-fc0">查看全部&gt;</a></div>
+            <div class="more">
+                <router-link
+                :to="{name:'toplist', query: {id: toplistId}}"
+                 class="s-fc0">
+                    查看全部&gt;
+                </router-link>
+            </div>
         </dd>
     </dl>
 </template>
@@ -36,6 +46,9 @@ export default {
     props: {
         toplist: {
             type: Object
+        },
+        toplistId: {
+            type: Number
         }
     },
     computed: {

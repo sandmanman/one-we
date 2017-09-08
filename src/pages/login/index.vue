@@ -134,7 +134,7 @@ export default {
                     })
                     .catch( error => {
                         this.submitBtnText = '登录'
-                        alert('登录错误')
+                        //alert('登录错误')
                         console.error(error)
                     })
             }

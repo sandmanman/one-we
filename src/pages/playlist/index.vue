@@ -103,7 +103,12 @@
                                                                 :to="{name: 'songDetail', query: {id: item.id}}">
                                                                     <b :title="item.name">{{item.name}}</b>
                                                                 </router-link>
-                                                                <span v-if="item.mv !== 0" title="播放mv" class="mv">MV</span>
+
+                                                                <router-link 
+                                                                v-if="item.mv !== 0" 
+                                                                :to="{name: 'mvDetail', query: {id: item.mv}}"
+                                                                title="播放mv" 
+                                                                class="mv">MV</router-link>
                                                             </span>
                                                         </div>
                                                     </div>

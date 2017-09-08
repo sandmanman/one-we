@@ -102,7 +102,7 @@
                                                             
                                                             <router-link
                                                             v-if="item.mv !== 0"
-                                                            :to="{name: 'mvDetail', query: {mvid: item.mv}}"
+                                                            :to="{name: 'mvDetail', query: {id: item.mv}}"
                                                             title="播放mv"
                                                             class="mv"></router-link>
                                                         </span>

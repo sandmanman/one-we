@@ -2,7 +2,11 @@
     <div class="n-new">
         <div class="v-hd2">
             <a href="#" class="tit f-ff2 f-tdn">新碟上架</a>
-            <span class="more"><a href="#" class="s-fc3">更多</a><i class="cor s-bg s-bg-6">&nbsp;</i></span>
+            <span class="more">
+                <router-link
+                :to="{name: 'album'}"
+                class="s-fc3">更多</router-link><i class="cor s-bg s-bg-6">&nbsp;</i>
+            </span>
         </div>
         <div class="n-disk">
             <div class="inner">

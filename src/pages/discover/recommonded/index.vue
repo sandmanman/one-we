@@ -21,12 +21,16 @@
                         <div class="n-bill">
                             <div class="v-hd2">
                                 <a href="#" class="tit f-ff2 f-tdn">榜单</a>
-                                <span class="more"><a href="#" class="s-fc3">更多</a><i class="cor s-bg s-bg-6">&nbsp;</i></span>
+                                <span class="more">
+                                    <router-link
+                                    :to="{name: 'toplist'}"
+                                    class="s-fc3">更多</router-link><i class="cor s-bg s-bg-6">&nbsp;</i>
+                                </span>
                             </div>
                             <div class="n-bilst" v-if="showToplist">
-                                <toplist :toplist="biaosheng" v-if="biaosheng"></toplist>
-                                <toplist :toplist="xinge" v-if="xinge"></toplist>
-                                <toplist :toplist="yuanchuang" v-if="yuanchuang"></toplist>
+                                <toplist :toplist="biaosheng" :toplistId="3" v-if="biaosheng"></toplist>
+                                <toplist :toplist="xinge" :toplistId="0" v-if="xinge"></toplist>
+                                <toplist :toplist="yuanchuang" :toplistId="2" v-if="yuanchuang"></toplist>
                             </div>
                         </div>
                     </div>
