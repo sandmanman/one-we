@@ -71,7 +71,7 @@
 
             <!-- 创建的电台 S -->
             <div class="u-title u-title-1 f-cb">
-                <h3><span class="f-ff2 s-fc3">{{userProfileData.profile.nickname}}创建的电台</span></h3>
+                <h3><span class="f-ff2 s-fc3">Ta创建的电台</span></h3>
             </div>
             <ul class="m-plylist m-create f-cb">
                 <li class="itm ">
@@ -152,7 +152,7 @@
 
             <!-- 创建的歌单 S -->
             <div class="u-title u-title-1 f-cb">
-                <h3><span class="f-ff2">{{userProfileData.profile.nickname}}创建的歌单（57）</span></h3>
+                <h3><span class="f-ff2">Ta创建的歌单（57）</span></h3>
             </div>
             <ul class="m-cvrlst f-cb">
                 <li>
@@ -174,7 +174,7 @@
 
             <!-- 收藏的歌单 S -->
             <div class="u-title u-title-1 f-cb">
-                <h3><span class="f-ff2">{{userProfileData.profile.nickname}}收藏的歌单（8）</span></h3>
+                <h3><span class="f-ff2">Ta收藏的歌单（8）</span></h3>
             </div>
             <ul class="m-cvrlst f-cb">
                 <li>
@@ -220,7 +220,7 @@ export default {
             }
             if (this.userProfileData) {
                 let newData = this.userProfileData.bindings.filter(urlNull)
-                console.log(newData)
+                //console.log(newData)
                 return newData
             }
         }
