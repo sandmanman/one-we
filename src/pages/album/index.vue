@@ -136,6 +136,31 @@
                             </table>
                         </div>
                     </div>
+                    
+                    <div class="n-cmt">
+                        <div class="u-title u-title-1">
+                            <h3><span class="f-ff2">评论</span></h3>
+                            <span class="sub s-fc3">共<span class="j-flag">{{totalComment}}</span>条评论</span>
+                        </div>
+                        
+                        <comment :totalComment="totalComment" :comments="comments" :hotComments="hotComments"></comment>
+
+                        <template v-if="totalComment">
+                        <paginate
+                            :page-count="pageCount"
+                            :page-range="8"
+                            :margin-pages="1"
+                            :click-handler="pageCallback"
+                            :prev-text="'上一页'"
+                            :next-text="'下一页'"
+                            :container-class="'u-page'"
+                            :page-link-class="'page-item'"
+                            :prev-link-class="'page-prev'"
+                            :next-link-class="'page-next'">
+                        </paginate>
+                        </template>
+
+                    </div>
 
                 </div>
             </div>
@@ -144,30 +169,72 @@
 </template>
 
 <script>
-import { albumDetail } from '@/api'
+import { albumDetail, albumComment } from '@/api'
 import { formatDate, formatSeconds} from '@/utils'
+import Comment from '@/components/comment/Comment'
 export default {
     name: 'Album',
+    components: {
+        Comment
+    },
     data() {
         return {
             albumData: null,
+            commentId: null,
             songsData: null,
+            comments: null,
+            hotComments: null,
+            totalComment: Number,
+            pageLimit: 20,
         }
     },
     created() {
         this.getAlbumDetail(this.$route.query.id)
+    },
+    computed: {
+        pageCount() {
+            return Math.ceil(this.totalComment/this.pageLimit)
+        }
     },
     methods: {
         getAlbumDetail(id) {
             albumDetail(id).then(res => {
                 if(res.data.code === 200) {
                     this.albumData = res.data.album
+                    this.commentId = res.data.album.commentThreadId.replace(/R_AL_3_/g,'')
                     this.songsData = res.data.songs
+
+                    // 获取评论
+                    this.getalAumComment(this.commentId)
                 } else {
                     console.error(res.data.code+res.data.msg)
                 }
             }).catch(error => {
                 console.log(error)
+            })
+        },
+        getalAumComment(id) {
+            albumComment(id).then(res => {
+                if(res.data.code === 200) {
+                    this.comments = res.data.comments
+                    this.hotComments = res.data.hotComments
+                    this.totalComment = res.data.total
+                } else {
+                    console.error(res.data.code+res.data.msg)
+                }
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        pageCallback(pageNum) {
+            albumComment(this.commentId, this.pageLimit, (pageNum-1)*this.pageLimit).then(res => {
+                if(res.data.code === 200) {
+                    this.comments = res.data.comments
+                } else {
+                    console.error(res.data.code+res.data.msg)
+                }
+            }).catch(error => {
+                console.error(error)
             })
         }
     },
