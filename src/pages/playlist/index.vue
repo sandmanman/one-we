@@ -47,14 +47,14 @@
                                         <i>(<span>{{playlistData.commentCount}}</span>)</i>
                                     </a>
                                 </div>
-                                <div class="tags f-cb">
+                                <div class="tags f-cb" v-if="playlistData.tags.length !== 0">
                                     <b>标签：</b>
                                     <router-link
                                     v-for="(value, index) in playlistData.tags" :key="index"
                                     :to="{name: 'playlist', query: {cat: value}}"
                                     class="u-tag"><i>{{value}}</i></router-link>
                                 </div>
-                                <p class="intr f-brk">
+                                <p class="intr f-brk" v-if="playlistData.description">
                                     <b>介绍：</b>
                                     {{playlistData.description}}
                                 </p>
