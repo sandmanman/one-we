@@ -2,20 +2,28 @@
     <div class="g-bd">
         <div class="g-wrap p-prf">
             <!-- 用户信息 S -->
-            <dl class="m-proifo f-cb" v-if="userProfileData">
+            <dl class="m-proifo f-cb" v-if="profileData">
                 <dt class="f-pr">
-                    <img :src="userProfileData.profile.avatarUrl+'?param=180y180'">
+                    <img :src="profileData.profile.avatarUrl+'?param=180y180'">
                 </dt>
                 <dd>
                     <div class="name f-cb">
                         <div class="f-cb">
+                            <div class="edit">
+                                <router-link 
+                                v-if="profileData.profile.artistId"
+                                :to="{name: 'artistDetail', query: {id: profileData.profile.artistId}}"
+                                class="u-btn2 u-btn2-1">
+                                    <i>查看歌手页</i>
+                                </router-link>
+                            </div>
                             <h2 class="wrap f-fl f-cb ">
-                                <span class="tit f-ff2 s-fc0 f-thide">{{userProfileData.profile.nickname}}</span>
+                                <span class="tit f-ff2 s-fc0 f-thide">{{profileData.profile.nickname}}</span>
                                 <span class="lev u-lev u-icn2 u-icn2-lev">
-                                    {{userProfileData.level}}<i class="right u-icn2 u-icn2-levr"></i>
+                                    {{profileData.level}}<i class="right u-icn2 u-icn2-levr"></i>
                                 </span>
-                                <i v-if="userProfileData.profile.gender === 1" class="icn u-icn u-icn-01"></i>
-                                <i v-if="userProfileData.profile.gender === 2" class="icn u-icn u-icn-02"></i>
+                                <i v-if="profileData.profile.gender === 1" class="icn u-icn u-icn-01"></i>
+                                <i v-if="profileData.profile.gender === 2" class="icn u-icn u-icn-02"></i>
                             </h2>
                             <div>
                                 <a href="#" class="btn u-btn u-btn-7 f-tdn"><i>发私信</i></a>
@@ -24,42 +32,34 @@
                                 <a href="#" class="btn u-btn u-btn-8 f-tdn">关 注</a>
                             </div>
                         </div>
-                        <p class="djp f-fs1 s-fc3"><i class="tag u-icn2 u-icn2-pfv"></i>心理学家、美食家陈立教授</p>
-                        <p class="djp f-fs1 s-fc3"><i class="tag u-icn2 u-icn2-pfyyr"></i>网易音乐人</p>
-                        <p class="djp f-fs1 s-fc3" v-if="userProfileData.profile.expertTags">
-                            <i class="tag u-icn2 u-icn2-pfdr"></i>音乐({{userProfileData.profile.expertTags.join('、')}})
-                        </p>
                     </div>
                     <ul class="data s-fc3 f-cb">
                         <li class="fst">
                             <a href="/user/event?id=371876620">
-                                <strong>{{userProfileData.profile.eventCount}}</strong><span>动态</span>
+                                <strong>{{profileData.profile.eventCount}}</strong><span>动态</span>
                             </a>
                         </li>
                         <li>
                             <a href="/user/follows?id=371876620">
-                                <strong>{{userProfileData.profile.follows}}</strong><span>关注</span>
+                                <strong>{{profileData.profile.follows}}</strong><span>关注</span>
                             </a>
                         </li>
                         <li>
                             <a href="/user/fans?id=371876620">
-                                <strong>{{userProfileData.profile.followeds}}</strong>
+                                <strong>{{profileData.profile.followeds}}</strong>
                                 <span>粉丝</span>
                                 <i class="u-icn u-icn-68 f-alpha"></i>
                             </a>
                         </li>
                     </ul>
-                    <div class="inf s-fc3 f-brk">个人介绍：{{userProfileData.profile.signature}}</div>
-                    <div class="inf s-fc3">
-                        <span class="sep" style="margin-left:0;">年龄：<span>{{userProfileData.profile.birthday}}(15后)</span></span>
-                    </div>
-                    <div class="inf s-fc3 f-cb">
+                    <div class="inf s-fc3 f-brk" v-if="profileData.profile.signature">个人介绍：{{profileData.profile.signature}}</div>
+                    <div class="inf s-fc3 f-cb" v-if="bindings">
                         <span class="tit">社交网络：</span>
                         <ul class="u-logo u-logo-s f-cb">
                             <li v-for="(item, index) in bindings" :key="index">
                                 <a 
                                 :href="item.url" 
-                                :class="{'u-slg-sn': item.type===2, 'u-slg-db': item.type===3}"
+                                :class="{'u-slg-sn': item.type==2, 'u-slg-db': item.type==3, 'u-slg-tc': item.type==6}"
                                 class="u-slg" 
                                 target="_blank"></a>
                             </li>
@@ -70,33 +70,35 @@
             <!-- 用户信息 End -->
 
             <!-- 创建的电台 S -->
+            <temppale v-if="createdDjData">
             <div class="u-title u-title-1 f-cb">
-                <h3><span class="f-ff2 s-fc3">Ta创建的电台</span></h3>
+                <h3><span class="f-ff2 s-fc3">{{nickname}}创建的电台</span></h3>
             </div>
             <ul class="m-plylist m-create f-cb">
                 <li class="itm ">
                     <router-link
                     :to="{name: 'djRadioDetail'}"></router-link>
-                    <a href="/djradio?id=347607128" class="col cvr u-cover-3">
-                        <img src="http://p1.music.126.net/ayq6INcIWu-nT1IIcgKwZA==/18588343580970297.jpg?param=50y50" class="">
+                    <a href="/djradio?id=1216051" class="col cvr u-cover-3">
+                        <img src="http://p1.music.126.net/3MpVCL4Wz-mkrJulXO28mg==/3419481180275990.jpg?param=50y50">
                     </a>
                     <div class="col cnt f-pr f-thide">
-                        <a href="/djradio?id=347607128" class="s-fc1">猫大叔的钢琴小屋</a>
+                        <a href="/djradio?id=1216051" class="s-fc1">陈一发儿</a>
                         <div class="opt hshow">
                             <span class="icn u-icn2 u-icn2-share">分享</span>
                         </div>
                     </div>
-                    <div class="col col-3 s-fc3">订阅448次</div>
-                    <div class="col col-4 s-fc4">101期</div>
+                    <div class="col col-3 s-fc3">订阅1985560次</div>
+                    <div class="col col-4 s-fc4">34期</div>
                 </li>
             </ul>
+            </temppale>
             <!-- 创建的电台 End -->
 
             <!-- 听歌排行 S -->
             <template v-if="peopleCanSeeMyPlayRecord">
             <div class="u-title u-title-1 f-cb m-record-title">
                 <h3><span class="f-ff2 s-fc3">听歌排行</span></h3>
-                <h4>累积听歌12956首</h4>
+                <h4>累积听歌{{profileData.listenSongs}}首</h4>
                 <span class="n-iconpoint">
                     <a href="javascript:void(0)" class="icon u-icn2 u-icn2-5 j-flag"></a>
                     <div class="tip">
@@ -106,26 +108,40 @@
                     </div>
                 </span>
                 <div class="nav f-cb">
-                    <span>所有时间</span>
+                    <span :class="{'z-sel': playRecordType == 0}" @click="changePlayRecord(0)">所有时间</span>
                     <i></i>
-                    <span class="z-sel">最近一周</span>
+                    <span :class="{'z-sel': playRecordType == 1}" @click="changePlayRecord(1)">最近一周</span>
                 </div>
             </div>
-            <div class="m-record j-flag">
+
+            <div class="m-record j-flag" v-if="playRecordData">
+                <div class="n-nmusic" v-if="playRecordData.length == 0"><h3 class="f-ff2"><i class="u-icn u-icn-21"></i>暂无听歌记录</h3></div>
                 <ul>
-                    <li>
+                    <li v-for="(item, index) in playRecordData" :key="item.id">
                         <div class="hd ">
-                            <span class="ply ">&nbsp;</span><span class="num">1.</span>
+                            <span class="ply ">&nbsp;</span><span class="num">{{index+1}}.</span>
                         </div>
                         <div class="song">
                             <div class="tt">
                                 <div class="ttc">
                                     <span class="txt">
-                                        <a href="/song?id=18383574"><b title="La vie en rose">La vie en rose</b></a>
+                                        <router-link
+                                        :to="{name: 'songDetail', query: {id: item.song.id}}"
+                                        :title="item.song.name">
+                                            <b title="La vie en rose">{{item.song.name}}</b>
+                                        </router-link>
                                         <span class="ar s-fc8"> 
                                             <em>-</em>
-                                            <span title="Iggy Pop">
-                                                <a class="s-fc8" href="/artist?id=35045">Iggy&nbsp;Pop</a>
+                                            <span 
+                                            v-for="ar in item.song.ar"
+                                            :key="ar.id"
+                                            :title="ar.name">
+                                                <router-link
+                                                :to="{name: 'artistDetail', query: {id: ar.id}}"
+                                                class="s-fc8">
+                                                    {{ar.name}}
+                                                </router-link>
+                                                &nbsp;
                                             </span>
                                         </span>
                                     </span>
@@ -139,106 +155,199 @@
                             </div>
                         </div>
                         <div class="tops">
-                            <span class="bg" style="width:100%;"></span>
+                            <span class="bg" :style="{width:item.score +'%'}"></span>
                         </div>
                     </li>
                 </ul>
-                <div class="more">
+                <!-- <div class="more">
                     <a href="/user/songs/rank?id=371876620">查看更多&gt;</a>
-                </div>
+                </div> -->
             </div>
             </template>
             <!-- 听歌排行 End -->
 
             <!-- 创建的歌单 S -->
+            <template v-if="createPlaylist">
             <div class="u-title u-title-1 f-cb">
-                <h3><span class="f-ff2">Ta创建的歌单（57）</span></h3>
+                <h3><span class="f-ff2">{{nickname}}创建的歌单（{{createPlaylist.length}}）</span></h3>
             </div>
             <ul class="m-cvrlst f-cb">
-                <li>
+                <li v-for="item in createPlaylist" :key="item.id">
                     <div class="u-cover u-cover-1">
-                        <img src="http://p1.music.126.net/K-YI7P34oHzjMZQJE6coQA==/18535567022984112.jpg?param=140y140">
-                        <a href="/playlist?id=526075209" class="msk" title="爱听音乐的猫大叔喜欢的音乐"></a>
+                        <img :src="item.coverImgUrl+'?param=140y140'">
+                        <router-link 
+                        :to="{name: 'playlistDetail', query: {id: item.id}}"
+                        :title="item.name"
+                        class="msk"></router-link>
                         <div class="bottom">
                             <a class="icon-play f-fr" href="javascript:;" title="播放"></a>
                             <span class="icon-headset"></span>
-                            <span class="nb">57274</span>
+                            <span class="nb">{{item.playCount}}</span>
                         </div>
                     </div>
                     <p class="dec">
-                        <a class="tit f-thide s-fc0" href="/playlist?id=526075209" title="爱听音乐的猫大叔喜欢的音乐">爱听音乐的猫大叔喜欢的音乐</a>
+                        <router-link 
+                        :to="{name: 'playlistDetail', query: {id: item.id}}"
+                        :title="item.name"
+                        class="tit f-thide s-fc0">{{item.name}}</router-link>
                     </p>
                 </li>
             </ul>
+            </template>
             <!-- 创建的歌单 End -->
+            
 
             <!-- 收藏的歌单 S -->
+            <template v-if="collectionPlaylist">
             <div class="u-title u-title-1 f-cb">
-                <h3><span class="f-ff2">Ta收藏的歌单（8）</span></h3>
+                <h3><span class="f-ff2">{{nickname}}收藏的歌单（{{collectionPlaylist.length}}）</span></h3>
             </div>
             <ul class="m-cvrlst f-cb">
-                <li>
+                <li v-for="item in collectionPlaylist" :key="item.id">
                     <div class="u-cover u-cover-1">
-                        <img src="http://p1.music.126.net/K-YI7P34oHzjMZQJE6coQA==/18535567022984112.jpg?param=140y140">
-                        <a href="/playlist?id=526075209" class="msk" title="爱听音乐的猫大叔喜欢的音乐"></a>
+                        <img :src="item.coverImgUrl+'?param=140y140'">
+                        <router-link 
+                        :to="{name: 'playlistDetail', query: {id: item.id}}"
+                        :title="item.name"
+                        class="msk"></router-link>
                         <div class="bottom">
                             <a class="icon-play f-fr" href="javascript:;" title="播放"></a>
                             <span class="icon-headset"></span>
-                            <span class="nb">57274</span>
+                            <span class="nb">{{item.playCount}}</span>
                         </div>
                     </div>
                     <p class="dec">
-                        <a class="tit f-thide s-fc0" href="/playlist?id=526075209" title="爱听音乐的猫大叔喜欢的音乐">爱听音乐的猫大叔喜欢的音乐</a>
+                        <router-link 
+                        :to="{name: 'playlistDetail', query: {id: item.id}}"
+                        :title="item.name"
+                        class="tit f-thide s-fc0">{{item.name}}</router-link>
                     </p>
                 </li>
             </ul>
+            </template>
             <!-- 收藏的歌单 End -->
-
+            
         </div>
     </div>
 </template>
 
 <script>
-import { userProfile } from '@/api'
+import { userProfile, userDj, userPlaylist, userPlayRecord } from '@/api'
 export default {
     name: 'UserHome',
     data() {
         return {
             uid: null,
-            userProfileData: null,
+            profileData: null,
+            nickname: null,
             peopleCanSeeMyPlayRecord: null,
+            createdDjData: null, // 用户创建的电台，没有找到相对应的api
+            playlistData: null,
+            playRecordType: 1, // 听歌排行显示类型，1:最近一周，0:所有时间
+            playRecordData: null,
         }
     },
     created() {
         this.uid = this.$route.query.id
-        this.getUserProfile(this.uid)
+        this.getProfile(this.uid)
+        this.getPlaylist(this.uid)
+        this.getPlayRecord(this.uid, this.playRecordType)
     },
     computed: {
-        bindings: function() {
-            let urlNull = function(element, index, array){
-                return element.url !== ''
+        bindings() {
+            let urlNull = function(item, index, array) {
+                return item.url !== ''
             }
-            if (this.userProfileData) {
-                let newData = this.userProfileData.bindings.filter(urlNull)
+            if (this.profileData) {
+                let newData = this.profileData.bindings.filter(urlNull)
+                //console.log(newData)
+                return newData
+            }
+        },
+        createPlaylist() {
+            let uid = this.$route.query.id
+            let sameUid = function(item, index, array) {
+                return item.userId == uid
+            }
+            if (this.playlistData) {
+                let newData = this.playlistData.filter(sameUid)
+                //console.log(newData)
+                return newData
+            }
+        },
+        collectionPlaylist() {
+            let uid = this.$route.query.id
+            let notSameUid = function(item, index, array) {
+                return item.userId != uid
+            }
+            if (this.playlistData) {
+                let newData = this.playlistData.filter(notSameUid)
                 //console.log(newData)
                 return newData
             }
         }
     },
     methods: {
-        getUserProfile(uid) {
+        getProfile(uid) {
+            // 用户信息
             userProfile(uid).then(res => {
                 if(res.data.code === 200) {
-                    this.userProfileData = res.data
+                    this.profileData = res.data
+                    // 昵称
+                    this.nickname = res.data && res.data.profile.nickname
                     // 是否显示听歌记录
                     this.peopleCanSeeMyPlayRecord = res.data.peopleCanSeeMyPlayRecord
                 }
+            }).catch(error => {
+                console.log(error)
             })
+        },
+        getPlaylist(uid) {
+            userPlaylist(uid).then(res => {
+                if(res.data.code === 200) {
+                    this.playlistData = res.data.playlist
+                } else {
+                    console.error(res.data.code+res.data.message)
+                }
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        getPlayRecord(uid, type) {
+            userPlayRecord(uid, type).then(res => {
+                if(res.data.code === 200) {
+                    if ( type == 1 ) {
+                        this.playRecordData = res.data.weekData
+                    } else if( type == 0 ) {
+                        this.playRecordData = res.data.allData
+                    }
+                } else {
+                    console.error(res.data.code+res.data.msg)
+                }
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        changePlayRecord(type) {
+            // 1:最近一周，0:所有时间
+            if ( type == 1 ) {
+                this.playRecordType = 1
+            } else if ( type == 0 ) {
+                this.playRecordType = 0
+            }
+            console.log(this.playRecordType)
+            this.getPlayRecord(this.uid, this.playRecordType)
         }
     }
 }
 </script>
 
-<style>
-
+<style scoped>
+.n-nmusic {
+    padding: 105px 0 105px 0;
+    text-align: center;
+}
+.m-record  li:nth-child(even) {
+    background-color: #f7f7f7;
+}
 </style>

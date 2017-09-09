@@ -183,13 +183,13 @@ export function userEvent(uid) {
 // uid : 用户 id
 // 可选参数:
 // type : type=1时只返回weekData, type=0时返回allData
-export function userRecord(uid, type) {
+export function userPlayRecord(uid, type) {
     return $http({
         method: 'get',
         url: '/user/record',
         params: {
             uid,
-            type: 1,
+            type,
         }
     })
 }
