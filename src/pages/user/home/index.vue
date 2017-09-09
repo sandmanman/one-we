@@ -53,7 +53,7 @@
                         </li>
                     </ul>
                     <div class="inf s-fc3 f-brk" v-if="profileData.profile.signature">个人介绍：{{profileData.profile.signature}}</div>
-                    <div class="inf s-fc3 f-cb" v-if="bindings">
+                    <div class="inf s-fc3 f-cb" v-if="bindings && bindings.length !== 0">
                         <span class="tit">社交网络：</span>
                         <ul class="u-logo u-logo-s f-cb">
                             <li v-for="(item, index) in bindings" :key="index">
