@@ -38,9 +38,10 @@
                 </a>
             </li>
             <li>
-                <a href="/user/follows?id=371876620">
+                <router-link
+                :to="{name: 'userFollows', query: {id: userProfile.profile.userId}}">
                     <strong>{{userProfile.profile.follows}}</strong><span>关注</span>
-                </a>
+                </router-link>
             </li>
             <li>
                 <a href="/user/fans?id=371876620">
