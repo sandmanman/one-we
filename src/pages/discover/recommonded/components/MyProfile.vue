@@ -12,8 +12,15 @@
                     <img :src="userProfile.profile.avatarUrl + '?param=80y80'">
                 </a>
                 <div class="info">
-                    <h4><a :href="'/user/home?id=' + userProfile.profile.userId" class="nm nm-icn f-fs1 f-ib f-thide">{{userProfile.profile.nickname}}</a></h4>
-                    <p><a href="#" class="u-lv u-icn2 u-icn2-lv">{{userProfile.level}}<i class="right u-icn2 u-icn2-lvright"></i></a></p>
+                    <h4>
+                        <router-link
+                        :to="{name: 'userHome', query: {id: userProfile.profile.userId}}"
+                        class="nm nm-icn f-fs1 f-ib f-thide"
+                        >{{userProfile.profile.nickname}}</router-link>
+                    </h4>
+                    <p>
+                        <a href="#" class="u-lv u-icn2 u-icn2-lv">{{userProfile.level}}<i class="right u-icn2 u-icn2-lvright"></i></a>
+                    </p>
                     <div class="btnwrap f-pr">
                         <a href="javascript:;" class="sign u-btn2 u-btn2-2"><i>签 到</i></a>
                     </div>

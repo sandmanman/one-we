@@ -50,15 +50,15 @@
                 <div class="m-tophead f-pr j-tflag">
                     <div class="head f-fl f-pr">
                         <img :src="userProfile.profile.avatarUrl + '?param=30y30'">
-                        <a :href="'/user/home?id=' + userProfile.profile.userId" class="mask"></a>
+                        <router-link :to="{ name: 'userHome', query: { id: userProfile.profile.userId }}" class="mask">
+                        </router-link>
                         <i class="m-topmsg f-pa j-uflag">5</i>
                     </div>
-                    <a :href="'/user/home?id=' + userProfile.profile.userId" class="name f-thide f-fl f-tdn f-hide">{{userProfile.profile.nickname}}</a>
                     <div class="m-tlist m-tlist-lged j-uflag">
                         <div class="inner">
                             <ul class="f-cb lb mg">
                                 <li>
-                                    <router-link :to="{ name: 'userHome', params: { id: userProfile.profile.userId }}" class="itm-1">
+                                    <router-link :to="{ name: 'userHome', query: { id: userProfile.profile.userId }}" class="itm-1">
                                         <i class="icn icn-hm"></i>
                                         <em>我的主页</em>
                                         <i class="icon u-icn u-icn-68 f-alpha j-uflag"></i>
@@ -69,26 +69,6 @@
                                         <i class="icn icn-lv"></i>
                                         <em>我的等级</em>
                                         <i class="new u-icn u-icn-78 j-uflag"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/member" class="itm-2">
-                                        <i class="icn icn-mbr"></i>
-                                        <em>会员中心</em>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="f-cb ltb mg">
-                                <li>
-                                    <a class="itm-2" href="/user/update">
-                                        <i class="icn icn-st"></i>
-                                        <em>个人设置</em>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="itm-2" href="/import/kugou">
-                                        <i class="icn icn-imt"></i>
-                                        <em>导入歌单</em>
                                     </a>
                                 </li>
                             </ul>
