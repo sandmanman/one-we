@@ -1,73 +1,8 @@
 <template>
     <div class="g-bd">
         <div class="g-wrap p-prf">
-            <!-- 用户信息 S -->
-            <dl class="m-proifo f-cb" v-if="profileData">
-                <dt class="f-pr">
-                    <img :src="profileData.profile.avatarUrl+'?param=180y180'">
-                </dt>
-                <dd>
-                    <div class="name f-cb">
-                        <div class="f-cb">
-                            <div class="edit">
-                                <router-link 
-                                v-if="profileData.profile.artistId"
-                                :to="{name: 'artistDetail', query: {id: profileData.profile.artistId}}"
-                                class="u-btn2 u-btn2-1">
-                                    <i>查看歌手页</i>
-                                </router-link>
-                            </div>
-                            <h2 class="wrap f-fl f-cb ">
-                                <span class="tit f-ff2 s-fc0 f-thide">{{profileData.profile.nickname}}</span>
-                                <span class="lev u-lev u-icn2 u-icn2-lev">
-                                    {{profileData.level}}<i class="right u-icn2 u-icn2-levr"></i>
-                                </span>
-                                <i v-if="profileData.profile.gender === 1" class="icn u-icn u-icn-01"></i>
-                                <i v-if="profileData.profile.gender === 2" class="icn u-icn u-icn-02"></i>
-                            </h2>
-                            <div>
-                                <a href="#" class="btn u-btn u-btn-7 f-tdn"><i>发私信</i></a>
-                                <a href="#" class="btn u-btn u-btn-6 f-tdn"><i>已关注</i></a>
-                                <a href="#" class="btn u-btn u-btn-5 f-tdn"><i>相互关注</i></a>
-                                <a href="#" class="btn u-btn u-btn-8 f-tdn">关 注</a>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="data s-fc3 f-cb">
-                        <li class="fst">
-                            <a href="/user/event?id=371876620">
-                                <strong>{{profileData.profile.eventCount}}</strong><span>动态</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/user/follows?id=371876620">
-                                <strong>{{profileData.profile.follows}}</strong><span>关注</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/user/fans?id=371876620">
-                                <strong>{{profileData.profile.followeds}}</strong>
-                                <span>粉丝</span>
-                                <i class="u-icn u-icn-68 f-alpha"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="inf s-fc3 f-brk" v-if="profileData.profile.signature">个人介绍：{{profileData.profile.signature}}</div>
-                    <div class="inf s-fc3 f-cb" v-if="bindings && bindings.length !== 0">
-                        <span class="tit">社交网络：</span>
-                        <ul class="u-logo u-logo-s f-cb">
-                            <li v-for="(item, index) in bindings" :key="index">
-                                <a 
-                                :href="item.url" 
-                                :class="{'u-slg-sn': item.type==2, 'u-slg-db': item.type==3, 'u-slg-tc': item.type==6}"
-                                class="u-slg" 
-                                target="_blank"></a>
-                            </li>
-                        </ul>
-                    </div>
-                </dd>
-            </dl>
-            <!-- 用户信息 End -->
+
+            <user-info :userProfile="userProfileData" :bindings="bindings"></user-info>         
 
             <!-- 创建的电台 S -->
             <temppale v-if="createdDjData">
@@ -98,7 +33,7 @@
             <template v-if="peopleCanSeeMyPlayRecord">
             <div class="u-title u-title-1 f-cb m-record-title">
                 <h3><span class="f-ff2 s-fc3">听歌排行</span></h3>
-                <h4>累积听歌{{profileData.listenSongs}}首</h4>
+                <h4>累积听歌{{userProfileData.listenSongs}}首</h4>
                 <span class="n-iconpoint">
                     <a href="javascript:void(0)" class="icon u-icn2 u-icn2-5 j-flag"></a>
                     <div class="tip">
@@ -159,9 +94,6 @@
                         </div>
                     </li>
                 </ul>
-                <!-- <div class="more">
-                    <a href="/user/songs/rank?id=371876620">查看更多&gt;</a>
-                </div> -->
             </div>
             </template>
             <!-- 听歌排行 End -->
@@ -232,13 +164,17 @@
 </template>
 
 <script>
+import userInfo from '../components/Info'
 import { userProfile, userDj, userPlaylist, userPlayRecord } from '@/api'
 export default {
     name: 'UserHome',
+    components: {
+        userInfo
+    },
     data() {
         return {
             uid: null,
-            profileData: null,
+            userProfileData: null,
             nickname: null,
             peopleCanSeeMyPlayRecord: null,
             createdDjData: null, // 用户创建的电台，没有找到相对应的api
@@ -251,15 +187,14 @@ export default {
         this.uid = this.$route.query.id
         this.getProfile(this.uid)
         this.getPlaylist(this.uid)
-        this.getPlayRecord(this.uid, this.playRecordType)
     },
     computed: {
         bindings() {
             let urlNull = function(item, index, array) {
                 return item.url !== ''
             }
-            if (this.profileData) {
-                let newData = this.profileData.bindings.filter(urlNull)
+            if (this.userProfileData) {
+                let newData = this.userProfileData.bindings.filter(urlNull)
                 //console.log(newData)
                 return newData
             }
@@ -292,11 +227,16 @@ export default {
             // 用户信息
             userProfile(uid).then(res => {
                 if(res.data.code === 200) {
-                    this.profileData = res.data
+                    this.userProfileData = res.data
                     // 昵称
                     this.nickname = res.data && res.data.profile.nickname
                     // 是否显示听歌记录
                     this.peopleCanSeeMyPlayRecord = res.data.peopleCanSeeMyPlayRecord
+
+                    // 如果peopleCanSeeMyPlayRecord为true,则执行获取听歌记录的数据
+                    if(this.peopleCanSeeMyPlayRecord == true) {
+                        this.getPlayRecord(res.data.profile.userId, this.playRecordType)
+                    }
                 }
             }).catch(error => {
                 console.log(error)
