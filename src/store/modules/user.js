@@ -39,11 +39,9 @@ const actions = {
                 console.log('打发打发打发')
                 commit(types.UPDATE_USER_INFO, res.data)
             } else {
-                console.error('store action setCurrentUserInfo:'+error)
+                console.error('store action setCurrentUserInfo:'+res.data.code+ ':'+res.data.message)
             }
         }).catch(error => {
-            alert('获取数据错误')
-
             console.error(error)
             
             commit(types.LOGOUT)
