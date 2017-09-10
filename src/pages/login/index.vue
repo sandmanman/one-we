@@ -78,7 +78,7 @@ export default {
     methods: {
         ...mapActions([
             'setUserID',
-            'setCurrentUserInfo'
+            'setCurrentUserProfile'
         ]),
         openLoginByMobile() {
             this.mobile = ''
@@ -126,7 +126,7 @@ export default {
                                 var currentUserID = Number(localStorage.getter('CURRENT_USER_ID'))
                                 // store actions
                                 this.setUserID(currentUserID)
-                                this.setCurrentUserInfo(currentUserID)
+                                this.setCurrentUserProfile(currentUserID)
 
                                 // 跳转页面或刷新
                                 this.$router.push('/')

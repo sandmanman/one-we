@@ -40,7 +40,7 @@
             <!-- 侧边 -->
             <div class="g-sd1">
                 <!-- 用户信息 -->
-                <my-info></my-info>
+                <my-profile></my-profile>
             </div>
         </div>
 
@@ -56,7 +56,7 @@
     import NewAlbum from './components/NewAlbum'
     import Toplist from './components/Toplist'
 
-    import MyInfo from './components/MyInfo'
+    import MyProfile from './components/MyProfile'
 
     import {
         banner,
@@ -74,7 +74,7 @@
             RecommendResource,
             NewAlbum,
             Toplist,
-            MyInfo
+            MyProfile
         },
         data() {
             return {

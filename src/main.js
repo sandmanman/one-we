@@ -63,7 +63,7 @@ new Vue({
             if ( localStorage.getter('CURRENT_USER_ID') ) {
                 var userId = Number(localStorage.getter('CURRENT_USER_ID'))
                 store.dispatch('setUserID', userId)
-                store.dispatch('setCurrentUserInfo', userId)
+                store.dispatch('setCurrentUserProfile', userId)
             }
         }
     }

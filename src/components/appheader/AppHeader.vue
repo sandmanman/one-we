@@ -30,7 +30,7 @@
                 </ul>
 
                 <!-- 登录 -->
-                <div class="m-tophead f-pr j-tflag" v-if="!userInfo">
+                <div class="m-tophead f-pr j-tflag" v-if="!userProfile">
                     <a href="#" class="link">登录</a>
                     <div class="m-tlist j-uflag">
                         <div class="inner">
@@ -49,16 +49,16 @@
                 <template v-else>
                 <div class="m-tophead f-pr j-tflag">
                     <div class="head f-fl f-pr">
-                        <img :src="userInfo.profile.avatarUrl + '?param=30y30'">
-                        <a :href="'/user/home?id=' + userInfo.profile.userId" class="mask"></a>
+                        <img :src="userProfile.profile.avatarUrl + '?param=30y30'">
+                        <a :href="'/user/home?id=' + userProfile.profile.userId" class="mask"></a>
                         <i class="m-topmsg f-pa j-uflag">5</i>
                     </div>
-                    <a :href="'/user/home?id=' + userInfo.profile.userId" class="name f-thide f-fl f-tdn f-hide">{{userInfo.profile.nickname}}</a>
+                    <a :href="'/user/home?id=' + userProfile.profile.userId" class="name f-thide f-fl f-tdn f-hide">{{userProfile.profile.nickname}}</a>
                     <div class="m-tlist m-tlist-lged j-uflag">
                         <div class="inner">
                             <ul class="f-cb lb mg">
                                 <li>
-                                    <router-link :to="{ name: 'userHome', params: { id: userInfo.profile.userId }}" class="itm-1">
+                                    <router-link :to="{ name: 'userHome', params: { id: userProfile.profile.userId }}" class="itm-1">
                                         <i class="icn icn-hm"></i>
                                         <em>我的主页</em>
                                         <i class="icon u-icn u-icn-68 f-alpha j-uflag"></i>
@@ -175,7 +175,7 @@ export default {
         
     },
     computed: {
-        ...mapGetters(['userInfo']),
+        ...mapGetters(['userProfile']),
     },
     methods: {
         ...mapActions(['logout']),

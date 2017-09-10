@@ -22,17 +22,16 @@ axios.defaults.validateStatus = function(status) {
 const service = axios.create({
     timeout: 5000, // 如果请求超过 `timeout` 的时间，请求将被中断
     baseURL: 'http://localhost:1128',
-    withCredentials: true, // `withCredentials`指示是否跨站点访问控制请求
+    //withCredentials: true, // `withCredentials`指示是否跨站点访问控制请求
 })
 
 
-// request请求拦截器
+//
+// 请求时的拦截器
+//
 service.interceptors.request.use(
     config => {
-        // 在发送请求之前检测vuex是否存有token
-        if(docCookies.hasItem('__csrf')) {
-            config.headers.Authorization = '__csrf' + docCookies.getItem('__csrf')
-        }
+        console.log('axios.interceptors.request')
         return config
     },
     error => {
@@ -41,7 +40,9 @@ service.interceptors.request.use(
     }
 )
 
-// response响应拦截器
+//
+// 请求完成后的拦截器
+//
 // service.interceptors.response.use(
 //     response => {
 //         // 对响应数据做点什么

@@ -5,12 +5,12 @@
 
 import * as types from '../mutation-types'
 import { docCookies, localStorage } from '@/utils'
-import { userInfo } from '@/api'
+import { userProfile } from '@/api'
 
 // state
 const state = {
     userID: null,
-    userInfo: null,
+    userProfile: null,
 }
 
 
@@ -19,8 +19,8 @@ const mutations = {
     [types.CURRENT_USER_ID](state, userID) {
         state.userID = userID
     },
-    [types.UPDATE_USER_INFO](state, userInfo) {
-        state.userInfo = userInfo
+    [types.UPDATE_USER_PROFILE](state, userProfile) {
+        state.userProfile = userProfile
     },
     [types.LOGOUT](state) {
         state.userID = null
@@ -33,13 +33,13 @@ const actions = {
     setUserID({commit}, userID) {
         commit(types.CURRENT_USER_ID, userID)
     },
-    setCurrentUserInfo({commit}, userID) {
-        userInfo(userID).then(res => {
+    setCurrentUserProfile({commit}, userID) {
+        userProfile(userID).then(res => {
             if ( res.data.code === 200 ) {
                 console.log('打发打发打发')
-                commit(types.UPDATE_USER_INFO, res.data)
+                commit(types.UPDATE_USER_PROFILE, res.data)
             } else {
-                console.error('store action setCurrentUserInfo:'+res.data.code+ ':'+res.data.message)
+                console.error('store action setCurrentuserProfile:'+res.data.code+ ':'+res.data.message)
             }
         }).catch(error => {
             console.error(error)
@@ -64,8 +64,8 @@ const getters = {
     userID: state => {
         return state.userID
     },
-    userInfo: state => {
-        return state.userInfo
+    userProfile: state => {
+        return state.userProfile
     }
 }
 
