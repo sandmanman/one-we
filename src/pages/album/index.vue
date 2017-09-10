@@ -184,7 +184,7 @@ export default {
             songsData: null,
             comments: null,
             hotComments: null,
-            totalComment: Number,
+            totalComment: NaN,
             pageLimit: 20,
         }
     },

@@ -23,7 +23,7 @@
         </div>
 
         <div class="cmmts j-flag">
-            <template v-if="hotComments">
+            <template v-if="hotComments && hotComments.length !== 0">
             <!-- 精彩评论 S -->
             <h3 class="u-hd4">精彩评论</h3>
             <div class="itm" v-for="item in hotComments" :key="item.commentId">
@@ -64,7 +64,7 @@
             <br>
             </template>
 
-
+            <template  v-if="comments && comments.length !== 0">
             <h3 class="u-hd4">最新评论({{totalComment}})</h3>
             <div class="itm" v-for="item in comments" :key="item.commentId">
                 <div class="head">
@@ -104,6 +104,7 @@
                 </div>
             </div>
             <!-- / .itm -->
+            </template>
         </div>
         <!-- / .cmmts -->
     </div>
