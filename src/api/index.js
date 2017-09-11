@@ -92,6 +92,18 @@ export function loginRefresh() {
     })
 }
 
+// 签到
+// 可选参数:
+// type: 签到类型,默认 0, 其中 0 为安卓端签到,1为 web/PC 签到
+// 说明:调用此接口,传入签到类型(可不传,默认安卓端签到),可签到(需要登录),其中安卓端签到可获得3点经验, web/PC 端签到可获得2点经验
+export function dailySignin() {
+    return $http({
+        method: 'get',
+        url: '/daily_signin'
+    })
+}
+
+
 // 用户详情
 export function userProfile(uid) {
     return $http({
@@ -123,10 +135,10 @@ export function userPlaylist(uid) {
     })
 }
 // 用户电台
-export function userDj(uid) {
+export function userRadio(uid) {
     return $http({
         method: 'get',
-        url: '/user/dj',
+        url: '/user/audio',
         params: {
             uid
         }

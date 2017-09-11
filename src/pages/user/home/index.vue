@@ -5,28 +5,32 @@
             <user-info :userProfile="userProfileData" :bindings="bindings"></user-info>         
 
             <!-- 创建的电台 S -->
-            <temppale v-if="createdDjData">
+            <template v-if="radioData">
             <div class="u-title u-title-1 f-cb">
-                <h3><span class="f-ff2 s-fc3">{{nickname}}创建的电台</span></h3>
+                <h3><span class="f-ff2 s-fc3">创建的电台</span></h3>
             </div>
             <ul class="m-plylist m-create f-cb">
-                <li class="itm ">
+                <li class="itm" v-for="item in radioData" :key="item.id">
                     <router-link
-                    :to="{name: 'djRadioDetail'}"></router-link>
-                    <a href="/djradio?id=1216051" class="col cvr u-cover-3">
-                        <img src="http://p1.music.126.net/3MpVCL4Wz-mkrJulXO28mg==/3419481180275990.jpg?param=50y50">
-                    </a>
+                    :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                    class="col cvr u-cover-3">
+                        <img :src="item.picUrl+'?param=50y50'">
+                    </router-link>
                     <div class="col cnt f-pr f-thide">
-                        <a href="/djradio?id=1216051" class="s-fc1">陈一发儿</a>
+                        <router-link
+                        :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                        class="s-fc1">
+                        {{item.name}}
+                        </router-link>
                         <div class="opt hshow">
                             <span class="icn u-icn2 u-icn2-share">分享</span>
                         </div>
                     </div>
-                    <div class="col col-3 s-fc3">订阅1985560次</div>
-                    <div class="col col-4 s-fc4">34期</div>
+                    <div class="col col-3 s-fc3" style="width:200px;">订阅{{item.subCount}}次</div>
+                    <div class="col col-4 s-fc4" style="text-align:right;padding-right:20px;margin-left:0;">{{item.programCount}}期</div>
                 </li>
             </ul>
-            </temppale>
+            </template>
             <!-- 创建的电台 End -->
 
             <!-- 听歌排行 S -->
@@ -101,7 +105,7 @@
             <!-- 创建的歌单 S -->
             <template v-if="createPlaylist">
             <div class="u-title u-title-1 f-cb">
-                <h3><span class="f-ff2">{{nickname}}创建的歌单（{{createPlaylist.length}}）</span></h3>
+                <h3><span class="f-ff2">创建的歌单（{{createPlaylist.length}}）</span></h3>
             </div>
             <ul class="m-cvrlst f-cb">
                 <li v-for="item in createPlaylist" :key="item.id">
@@ -132,7 +136,7 @@
             <!-- 收藏的歌单 S -->
             <template v-if="collectionPlaylist">
             <div class="u-title u-title-1 f-cb">
-                <h3><span class="f-ff2">{{nickname}}收藏的歌单（{{collectionPlaylist.length}}）</span></h3>
+                <h3><span class="f-ff2">收藏的歌单（{{collectionPlaylist.length}}）</span></h3>
             </div>
             <ul class="m-cvrlst f-cb">
                 <li v-for="item in collectionPlaylist" :key="item.id">
@@ -165,7 +169,7 @@
 
 <script>
 import userInfo from '../components/Info'
-import { userProfile, userDj, userPlaylist, userPlayRecord } from '@/api'
+import { userProfile, userRadio, userPlaylist, userPlayRecord } from '@/api'
 export default {
     name: 'UserHome',
     components: {
@@ -175,9 +179,8 @@ export default {
         return {
             uid: null,
             userProfileData: null,
-            nickname: null,
             peopleCanSeeMyPlayRecord: null,
-            createdDjData: null, // 用户创建的电台，没有找到相对应的api
+            radioData: null,
             playlistData: null,
             playRecordType: 1, // 听歌排行显示类型，1:最近一周，0:所有时间
             playRecordData: null,
@@ -186,6 +189,7 @@ export default {
     created() {
         this.uid = this.$route.query.id
         this.getProfile(this.uid)
+        this.getUserRadio(this.uid)
         this.getPlaylist(this.uid)
     },
     computed: {
@@ -228,8 +232,6 @@ export default {
             userProfile(uid).then(res => {
                 if(res.data.code === 200) {
                     this.userProfileData = res.data
-                    // 昵称
-                    this.nickname = res.data && res.data.profile.nickname
                     // 是否显示听歌记录
                     this.peopleCanSeeMyPlayRecord = res.data.peopleCanSeeMyPlayRecord
 
@@ -237,6 +239,17 @@ export default {
                     if(this.peopleCanSeeMyPlayRecord == true) {
                         this.getPlayRecord(res.data.profile.userId, this.playRecordType)
                     }
+                }
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        getUserRadio(uid) {
+            userRadio(uid).then(res => {
+                if(res.data.code === 200) {
+                    this.radioData = res.data.djRadios
+                } else {
+                    console.error(res.data.code+res.data.message)
                 }
             }).catch(error => {
                 console.log(error)
@@ -287,7 +300,12 @@ export default {
     padding: 105px 0 105px 0;
     text-align: center;
 }
-.m-record  li:nth-child(even) {
+.m-record li:nth-child(even),
+.m-plylist .itm:nth-child(even) {
     background-color: #f7f7f7;
+}
+.m-record li:hover,
+.m-plylist .itm:hover {
+    background-color: #eee;
 }
 </style>
