@@ -44,11 +44,12 @@
                 </router-link>
             </li>
             <li>
-                <a href="/user/fans?id=371876620">
+                <router-link
+                :to="{name: 'userFans', query: {id: userProfile.profile.userId}}">
                     <strong>{{userProfile.profile.followeds}}</strong>
                     <span>粉丝</span>
                     <i class="u-icn u-icn-68 f-alpha"></i>
-                </a>
+                </router-link>
             </li>
         </ul>
         <div class="inf s-fc3 f-brk" v-if="userProfile.profile.signature">个人介绍：{{userProfile.profile.signature}}</div>

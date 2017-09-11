@@ -5,7 +5,7 @@
             <user-info :userProfile="userProfileData" :bindings="bindings"></user-info>         
 
             <!-- 创建的电台 S -->
-            <template v-if="radioData">
+            <template v-if="radioData && radioData.length !== 0">
             <div class="u-title u-title-1 f-cb">
                 <h3><span class="f-ff2 s-fc3">创建的电台</span></h3>
             </div>

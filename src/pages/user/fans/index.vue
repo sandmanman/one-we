@@ -1,12 +1,12 @@
 <template>
     <div class="g-bd">
-        <div class="g-wrap p-prf" v-if="followsData">
+        <div class="g-wrap p-prf" v-if="fansData">
             <div class="u-title u-title-1 f-cb">
-                <h3><span class="f-ff2 s-fc3">关注</span></h3>
+                <h3><span class="f-ff2 s-fc3">粉丝</span></h3>
             </div>
         
             <ul class="m-fans f-cb">
-                <li v-for="item in followsData" :key="item.userId">
+                <li v-for="item in fansData" :key="item.userId">
                     <router-link
                     :to="{name: 'userHome', query: {id: item.userId}}"
                     :title="item.nickname"
@@ -47,22 +47,22 @@
 </template>
 
 <script>
-import { userFollows } from '@/api'
+import { userFolloweds } from '@/api'
 export default {
-    name: 'UserFollows',
+    name: 'userFans',
     data() {
         return {
-            followsData: null,
+            fansData: null,
         }
     },
     created() {
-        this.getFollows(this.$route.query.id)
+        this.getFans(this.$route.query.id)
     },
     methods: {
-        getFollows(uid, limit, offset) {
-            userFollows(uid, limit, offset).then(res => {
+        getFans(uid, limit, offset) {
+            userFolloweds(uid, limit, offset).then(res => {
                 if(res.data.code === 200) {
-                    this.followsData = res.data.follow
+                    this.fansData = res.data.followeds
                 } else {
                     console.error(res.data.code+res.data.msg)
                 }

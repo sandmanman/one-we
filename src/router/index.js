@@ -56,9 +56,10 @@ const MVDetail  = resolve => require(['@/pages/mv'], resolve)
 const Login = resolve => require(['@/pages/login'], resolve)
 
 // 用户
-const User  = resolve => require(['@/pages/user'], resolve)
-const UserHome  = resolve => require(['@/pages/user/home'], resolve)
-const UserFollows  = resolve => require(['@/pages/user/follows'], resolve)
+const User = resolve => require(['@/pages/user'], resolve)
+const UserHome = resolve => require(['@/pages/user/home'], resolve)
+const UserFollows = resolve => require(['@/pages/user/follows'], resolve)
+const UserFans = resolve => require(['@/pages/user/fans'], resolve)
 
 export default new Router({
     mode: 'history',
@@ -270,6 +271,14 @@ export default new Router({
                     component: UserFollows,
                     meta: {
                         title: '我的关注',
+                    }
+                },
+                {
+                    path: 'fans',
+                    name: 'userFans',
+                    component: UserFans,
+                    meta: {
+                        title: '我的粉丝',
                     }
                 }
             ]
