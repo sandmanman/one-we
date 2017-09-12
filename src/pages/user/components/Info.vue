@@ -33,9 +33,10 @@
         </div>
         <ul class="data s-fc3 f-cb">
             <li class="fst">
-                <a href="/user/event?id=371876620">
+                <router-link
+                :to="{name: 'userEvent', query: {id: userProfile.profile.userId}}">
                     <strong>{{userProfile.profile.eventCount}}</strong><span>动态</span>
-                </a>
+                </router-link>
             </li>
             <li>
                 <router-link

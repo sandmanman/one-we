@@ -60,6 +60,7 @@ const User = resolve => require(['@/pages/user'], resolve)
 const UserHome = resolve => require(['@/pages/user/home'], resolve)
 const UserFollows = resolve => require(['@/pages/user/follows'], resolve)
 const UserFans = resolve => require(['@/pages/user/fans'], resolve)
+const UserEvent = resolve => require(['@/pages/user/event'], resolve)
 
 export default new Router({
     mode: 'history',
@@ -254,7 +255,7 @@ export default new Router({
             component: User,
             redirect: '/user/home',
             meta: {
-                title: '我的主页',
+                title: '主页',
             },
             children: [
                 {
@@ -262,7 +263,7 @@ export default new Router({
                     name: 'userHome',
                     component: UserHome,
                     meta: {
-                        title: '我的主页',
+                        title: '主页',
                     }
                 },
                 {
@@ -270,7 +271,7 @@ export default new Router({
                     name: 'userFollows',
                     component: UserFollows,
                     meta: {
-                        title: '我的关注',
+                        title: '关注',
                     }
                 },
                 {
@@ -278,7 +279,15 @@ export default new Router({
                     name: 'userFans',
                     component: UserFans,
                     meta: {
-                        title: '我的粉丝',
+                        title: '粉丝',
+                    }
+                },
+                {
+                    path: 'event',
+                    name: 'userEvent',
+                    component: UserEvent,
+                    meta: {
+                        title: '动态',
                     }
                 }
             ]
