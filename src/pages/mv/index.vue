@@ -33,11 +33,7 @@
                     <!-- video End -->
 
                     <div class="n-cmt">
-                        <div class="u-title u-title-1">
-                            <h3><span class="f-ff2">评论</span></h3>
-                            <span class="sub s-fc3">共<span class="j-flag" v-if="mvData">{{mvData.commentCount}}</span>条评论</span>
-                        </div>
-
+                        
                         <comment
                         :comments="comments"
                         :hotComments="hotComments"
@@ -115,7 +111,7 @@ export default {
 
             comments: [],
             hotComments: [],
-            totalComment: NaN,
+            totalComment: null,
             pageLimit: 20,
         }
     },

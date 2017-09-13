@@ -1,4 +1,9 @@
 <template>
+<div>
+    <div class="u-title u-title-1">
+        <h3><span class="f-ff2">评论</span></h3>
+        <span class="sub s-fc3">共<span class="j-flag" v-if="totalComment">{{totalComment}}</span>条评论</span>
+    </div>
     <div class="m-cmmt">
         <div class="iptarea" v-if="false">
             <div class="head"><img src="http://p3.music.126.net/1RsTROfvnB-Ryv33ZT5FRA==/8887352487628687.jpg?param=50y50"></div>
@@ -28,14 +33,19 @@
             <h3 class="u-hd4">精彩评论</h3>
             <div class="itm" v-for="item in hotComments" :key="item.commentId">
                 <div class="head">
-                    <a :href="'/user/home?id='+item.user.userId">
-                        <img :src="item.user.avatarUrl+'?param=50y50'">
-                    </a>
+                    <router-link
+                    :to="{name: 'userHome', query: {id: item.user.userId}}">
+                    <img :src="item.user.avatarUrl+'?param=50y50'">
+                    </router-link>
                 </div>
                 <div class="cntwrap">
                     <div class="">
                         <div class="cnt f-brk">
-                            <a :href="'/user/home?id='+item.user.userId" class="s-fc7">{{item.user.nickname}}</a>：
+                            <router-link
+                            :to="{name: 'userHome', query: {id: item.user.userId}}"
+                            class="s-fc7">
+                            {{item.user.nickname}}
+                            </router-link>：
                             {{item.content}}
                         </div>
                     </div>
@@ -45,8 +55,11 @@
                                 <i class="bd">◆</i>
                                 <i class="bg">◆</i>
                             </span>
-                            <a :href="'/user/home?id='+reply.user.userId" class="s-fc7">
-                            {{reply.user.nickname}}</a>：
+                            <router-link
+                            :to="{name: 'userHome', query: {id: item.user.userId}}"
+                            class="s-fc7">
+                            {{item.user.nickname}}
+                            </router-link>：
                             {{reply.content}}
                         </div>
                     </template>
@@ -109,6 +122,7 @@
         <!-- / .cmmts -->
     </div>
     <!-- / .m-cmmt -->
+</div>
 </template>
 
 <script>

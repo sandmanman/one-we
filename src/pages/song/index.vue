@@ -85,29 +85,28 @@
                     <!-- 歌曲信息 End -->
 
                     <div class="n-cmt">
-                        <div class="u-title u-title-1">
-                            <h3><span class="f-ff2">评论</span></h3>
-                            <span class="sub s-fc3">共<span class="j-flag">{{totalComment}}</span>条评论</span>
-                        </div>
 
-                        <comment :totalComment="totalComment" :comments="comments" :hotComments="hotComments"></comment>
-
-                        <template v-if="totalComment">
-                        <paginate
-                            :page-count="pageCount"
-                            :page-range="8"
-                            :margin-pages="1"
-                            :click-handler="pageCallback"
-                            :prev-text="'上一页'"
-                            :next-text="'下一页'"
-                            :container-class="'u-page'"
-                            :page-link-class="'page-item'"
-                            :prev-link-class="'page-prev'"
-                            :next-link-class="'page-next'">
-                        </paginate>
-                        </template>
+                        <comment 
+                        :totalComment="totalComment" 
+                        :comments="comments" 
+                        :hotComments="hotComments"></comment>
 
                     </div>
+                    
+                    <template v-if="totalComment">
+                    <paginate
+                        :page-count="pageCount"
+                        :page-range="8"
+                        :margin-pages="1"
+                        :click-handler="pageCallback"
+                        :prev-text="'上一页'"
+                        :next-text="'下一页'"
+                        :container-class="'u-page'"
+                        :page-link-class="'page-item'"
+                        :prev-link-class="'page-prev'"
+                        :next-link-class="'page-next'">
+                    </paginate>
+                    </template>
                 </div>
             </div>
         </div>
@@ -164,7 +163,7 @@ export default {
             simiSongData: null,
             comments: null,
             hotComments: null,
-            totalComment: Number,
+            totalComment: null,
             pageLimit: 20,
         }
     },

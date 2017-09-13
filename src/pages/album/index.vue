@@ -138,12 +138,10 @@
                     </div>
                     
                     <div class="n-cmt">
-                        <div class="u-title u-title-1">
-                            <h3><span class="f-ff2">评论</span></h3>
-                            <span class="sub s-fc3">共<span class="j-flag">{{totalComment}}</span>条评论</span>
-                        </div>
-                        
-                        <comment :totalComment="totalComment" :comments="comments" :hotComments="hotComments"></comment>
+                        <comment 
+                        :totalComment="totalComment" 
+                        :comments="comments" 
+                        :hotComments="hotComments"></comment>
 
                         <template v-if="totalComment">
                         <paginate

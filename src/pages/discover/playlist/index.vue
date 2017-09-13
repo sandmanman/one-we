@@ -361,7 +361,12 @@
                     </p>
                     <p>
                         <span class="s-fc4">by</span>
-                        <a :title="item.creator.nickname" :href="'/user/home?id='+item.creator.userId" class="nm nm-icn f-thide s-fc3">{{item.creator.nickname}}</a>
+                        <router-link
+                        :to="{name: 'userHome', query: {id: item.creator.userId}}"
+                        :title="item.creator.nickname"
+                        class="nm nm-icn f-thide s-fc3">
+                        {{item.creator.nickname}}
+                        </router-link>
                         <sup class="u-icn u-icn-84" v-if="item.creator.vipType === 0"></sup>
                         <sup class="u-icn u-icn-1"  v-if="item.creator.vipType === 11"></sup>
                     </p>
