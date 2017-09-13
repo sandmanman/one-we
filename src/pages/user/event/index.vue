@@ -42,95 +42,6 @@
                                 <div class="j-flag">
                                     <div class="card">
                                         <div class="j-flag">
-                                            <!-- 转发的动态 ==========  S -->
-                                            <div class="text f-brk j-text" v-if="item.json.event && item.json.event !== null">
-                                                <router-link
-                                                :to="{name: 'userHome', query: {id: item.json.event.user.userId}}"
-                                                class="s-fc7">
-                                                @{{item.json.event.user.nickname}}
-                                                </router-link>
-                                                {{item.json.event.json.msg}}
-
-                                                <template v-if="item.json.event.json.video">
-                                                <!-- video S -->
-                                                <div class="src src-video f-cb">
-                                                    <div class="video f-pr j-flag">
-                                                        <div class="info f-pa">
-                                                            <div class="tit u-dicn u-dicn-17">
-                                                                <p class="f-thide2">
-                                                                    <span class="h3">{{item.json.event.json.video.title}}</span>
-                                                                    <span class="h4"> - by {{item.json.event.json.video.creator.nickname}}</span>
-                                                                </p>
-                                                            </div>
-                                                            <div class="bottom u-dicn u-dicn-49">
-                                                                <span class="f-fl">
-                                                                    <i class="icn u-dicn u-dicn-43"></i>
-                                                                    {{item.json.event.json.video.playTime}}
-                                                                </span>
-                                                                <span class="f-fr f-ff1">
-                                                                    <i class="icn u-dicn u-dicn-44"></i>
-                                                                    {{item.json.event.json.video.durationms | formatDuration}}
-                                                                </span>
-                                                            </div>
-                                                            <i class="ply u-dicn u-dicn-42 f-alpha"></i>
-                                                        </div>
-                                                        <img class="f-img" :src="item.json.event.json.video.coverUrl+'?param=338y189'">
-                                                    </div>
-                                                </div>
-                                                <!-- video End -->
-                                                </template>
-
-                                                <template v-if="item.json.event.json.song">
-                                                <!-- song S -->
-                                                <div class="src f-cb" v-if="item.json.event.json.song">
-                                                    <div class="cover cover-ply">
-                                                        <span class="lnk">
-                                                            <img :src="item.json.event.json.song.album.blurPicUrl+'?param=40y40&amp;quality=100'">
-                                                        </span>
-                                                        <a href="javascript:" class="ply u-dicn u-dicn-8 f-alpha"></a>
-                                                    </div>
-                                                    <div class="scnt">
-                                                        <h3 class="tit f-thide f-fs1">
-                                                            <router-link
-                                                            :to="{name: 'songDetail', query: {id: item.json.event.json.song.id}}">
-                                                            {{item.json.event.json.song.name}}
-                                                            </router-link>
-                                                        </h3>
-                                                        <h4 class="from f-thide s-fc3" v-if="item.json.event.json.song.artists">
-                                                            <router-link
-                                                            v-for="(ar, index) in item.json.event.json.song.artists"
-                                                            :to="{name: 'artistDetail', query: {id: ar.id}}"
-                                                            :key="index"
-                                                            class="s-fc3">
-                                                            {{ar.name}}
-                                                            </router-link>
-                                                        </h4>
-                                                    </div>
-                                                </div>
-                                                <!-- song End -->
-                                                </template>
-
-                                                <template v-if="item.json.event.pics.length > 0">
-                                                <!-- pics S -->
-                                                <ul class="pics f-cb j-flag">
-                                                    <li class="pic pic-s"
-                                                    v-for="(pic, index) in item.json.event.pics" :key="index">
-                                                        <img class="f-img j-img f-curbig" :src="pic.pcSquareUrl+'?param=110y110&amp;quality=100'">
-                                                    </li>
-                                                </ul>
-                                                <!-- pics End -->
-                                                </template>
-
-                                                <div class="doper j-flag">
-                                                    <a href="javascript:" class="s-fc7"><i class="icn u-dicn u-dicn-3"></i><span class="j-flag">({{item.json.event.info.likedCount}})</span></a>
-                                                    <span class="line">|</span>
-                                                    <a href="javascript:" class="s-fc7">转发 <span class="j-flag">({{item.json.event.info.shareCount}})</span></a>
-                                                    <span class="line">|</span>
-                                                    <a href="javascript:" class="s-fc7">评论 <span class="j-flag">({{item.json.event.info.commentCount}})</span></a>
-                                                </div>
-                                                
-                                            </div>
-                                            <!-- 转发的动态 ========== End -->
 
                                             <!-- playlist S -->
                                             <div class="src f-cb" v-if="item.json.playlist">
@@ -310,6 +221,98 @@
                                                 </div>
                                             </div>
                                             <!-- toppic End -->
+
+
+                                            <!-- 转发的动态 ==========  S -->
+                                            <div v-if="item.json.event && item.json.event !== null">
+                                                <div class="text f-brk j-text">
+                                                    <router-link
+                                                    :to="{name: 'userHome', query: {id: item.json.event.user.userId}}"
+                                                    class="s-fc7">
+                                                    @{{item.json.event.user.nickname}}
+                                                    </router-link>
+                                                    {{item.json.event.json.msg}}
+                                                </div>
+
+                                                <template v-if="item.json.event.json.video">
+                                                <!-- video S -->
+                                                <div class="src src-video f-cb">
+                                                    <div class="video f-pr j-flag">
+                                                        <div class="info f-pa">
+                                                            <div class="tit u-dicn u-dicn-17">
+                                                                <p class="f-thide2">
+                                                                    <span class="h3">{{item.json.event.json.video.title}}</span>
+                                                                    <span class="h4"> - by {{item.json.event.json.video.creator.nickname}}</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="bottom u-dicn u-dicn-49">
+                                                                <span class="f-fl">
+                                                                    <i class="icn u-dicn u-dicn-43"></i>
+                                                                    {{item.json.event.json.video.playTime}}
+                                                                </span>
+                                                                <span class="f-fr f-ff1">
+                                                                    <i class="icn u-dicn u-dicn-44"></i>
+                                                                    {{item.json.event.json.video.durationms | formatDuration}}
+                                                                </span>
+                                                            </div>
+                                                            <i class="ply u-dicn u-dicn-42 f-alpha"></i>
+                                                        </div>
+                                                        <img class="f-img" :src="item.json.event.json.video.coverUrl+'?param=338y189'">
+                                                    </div>
+                                                </div>
+                                                <!-- video End -->
+                                                </template>
+
+                                                <template v-if="item.json.event.json.song">
+                                                <!-- song S -->
+                                                <div class="src f-cb" v-if="item.json.event.json.song">
+                                                    <div class="cover cover-ply">
+                                                        <span class="lnk">
+                                                            <img :src="item.json.event.json.song.album.blurPicUrl+'?param=40y40&amp;quality=100'">
+                                                        </span>
+                                                        <a href="javascript:" class="ply u-dicn u-dicn-8 f-alpha"></a>
+                                                    </div>
+                                                    <div class="scnt">
+                                                        <h3 class="tit f-thide f-fs1">
+                                                            <router-link
+                                                            :to="{name: 'songDetail', query: {id: item.json.event.json.song.id}}">
+                                                            {{item.json.event.json.song.name}}
+                                                            </router-link>
+                                                        </h3>
+                                                        <h4 class="from f-thide s-fc3" v-if="item.json.event.json.song.artists">
+                                                            <router-link
+                                                            v-for="(ar, index) in item.json.event.json.song.artists"
+                                                            :to="{name: 'artistDetail', query: {id: ar.id}}"
+                                                            :key="index"
+                                                            class="s-fc3">
+                                                            {{ar.name}}
+                                                            </router-link>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                                <!-- song End -->
+                                                </template>
+
+                                                <template v-if="item.json.event.pics.length > 0">
+                                                <!-- pics S -->
+                                                <ul class="pics f-cb j-flag">
+                                                    <li class="pic pic-s"
+                                                    v-for="(pic, index) in item.json.event.pics" :key="index">
+                                                        <img class="f-img j-img f-curbig" :src="pic.pcSquareUrl+'?param=110y110&amp;quality=100'">
+                                                    </li>
+                                                </ul>
+                                                <!-- pics End -->
+                                                </template>
+
+                                                <div class="doper j-flag">
+                                                    <a href="javascript:" class="s-fc7"><i class="icn u-dicn u-dicn-3"></i><span class="j-flag">({{item.json.event.info.likedCount}})</span></a>
+                                                    <span class="line">|</span>
+                                                    <a href="javascript:" class="s-fc7">转发 <span class="j-flag">({{item.json.event.info.shareCount}})</span></a>
+                                                    <span class="line">|</span>
+                                                    <a href="javascript:" class="s-fc7">评论 <span class="j-flag">({{item.json.event.info.commentCount}})</span></a>
+                                                </div>
+                                            </div>
+                                            <!-- 转发的动态 ========== End -->
 
                                         </div>
                                     </div>
