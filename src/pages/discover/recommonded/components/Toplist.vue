@@ -3,7 +3,11 @@
         <dt class="top">
             <div class="cver u-cover u-cover-4">
                 <img class="j-img" :src="toplistData.coverImgUrl">
-                <a href="#" class="msk" :title="toplistData.name"></a>
+                <router-link
+                :to="{name:'toplist', query: {id: toplistId}}"
+                :title="toplistData.name"
+                class="msk">
+                </router-link>
             </div>
             <div class="tit">
                 <router-link
@@ -21,7 +25,10 @@
             <ol>
                 <li v-for="(item, index) in toplistData.tracks.slice(0, 10)" :key="index">
                     <span class="no">{{index + 1}}</span>
-                    <a href="#" class="nm s-fc0 f-thide" :title="item.name">{{item.name}}</a>
+                    <router-link
+                    :to="{name: 'songDetail', query: {id: item.id}}"
+                    :title="item.name"
+                    class="nm s-fc0 f-thide">{{item.name}}</router-link>
                     <div class="oper">
                         <a href="#" class="s-bg s-bg-11" title="播放"></a>
                         <a href="#" class="u-icn u-icn-81" title="添加到播放列表"></a>

@@ -402,92 +402,10 @@
 
                     <!-- 评论 S -->
                     <div class="n-cmt">
-                        <div class="u-title u-title-1">
-                            <h3><span class="f-ff2">评论</span></h3>
-                            <span class="sub s-fc3">共<span class="j-flag">{{toplist.commentCount}}</span>条评论</span>
-                        </div>
-                        <div class="m-cmmt">
-                            <div class="cmmts j-flag">
-                                <template v-if="isShowHotComments">
-                                <!-- 精彩评论 S -->
-                                <h3 class="u-hd4">精彩评论</h3>
-                                <div class="itm" v-for="item in hotComments" :key="item.commentId">
-                                    <div class="head">
-                                        <a :href="'/user/home?id='+item.user.userId">
-                                            <img :src="item.user.avatarUrl+'?param=50y50'">
-                                        </a>
-                                    </div>
-                                    <div class="cntwrap">
-                                        <div class="">
-                                            <div class="cnt f-brk">
-                                                <a :href="'/user/home?id='+item.user.userId" class="s-fc7">{{item.user.nickname}}</a>：
-                                                {{item.content}}
-                                            </div>
-                                        </div>
-                                        <template v-if="item.beReplied">
-                                            <div class="que f-brk f-pr s-fc3" v-for="(reply, index) in item.beReplied" :key="index">
-                                                <span class="darr">
-                                                    <i class="bd">◆</i>
-                                                    <i class="bg">◆</i>
-                                                </span>
-                                                <a :href="'/user/home?id='+reply.user.userId" class="s-fc7">
-                                                {{reply.user.nickname}}</a>：
-                                                {{reply.content}}
-                                            </div>
-                                        </template>
-                                        <div class="rp">
-                                            <div class="time s-fc4">{{item.time | formatCommentTime}}</div>
-                                            <a href="javascript:void(0)"><i class="zan u-icn2 u-icn2-12"></i> ({{item.likedCount}})</a>
-                                            <span class="sep">|</span>
-                                            <a href="javascript:void(0)" class="s-fc3">回复</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- / .itm -->
-                                <!-- 精彩评论 End -->
-                                <br>
-                                <br>
-                                </template>
-
-
-                                <h3 class="u-hd4">最新评论({{toplist.commentCount}})</h3>
-                                <div class="itm" v-for="item in comments" :key="item.commentId">
-                                    <div class="head">
-                                        <a href="/user/home?id=402266706">
-                                            <img :src="item.user.avatarUrl+'?param=50y50'">
-                                        </a>
-                                    </div>
-                                    <div class="cntwrap">
-                                        <div class="">
-                                            <div class="cnt f-brk">
-                                                <a :href="'/user/home?id='+item.user.userId" class="s-fc7">{{item.user.nickname}}</a>：
-                                                {{item.content}}
-                                            </div>
-                                        </div>
-                                        <template v-if="item.beReplied">
-                                            <div class="que f-brk f-pr s-fc3" v-for="(reply, index) in item.beReplied" :key="index">
-                                                <span class="darr">
-                                                    <i class="bd">◆</i>
-                                                    <i class="bg">◆</i>
-                                                </span>
-                                                <a :href="'/user/home?id='+reply.user.userId" class="s-fc7">
-                                                {{reply.user.nickname}}</a>：
-                                                {{reply.content}}
-                                            </div>
-                                        </template>
-                                        <div class="rp">
-                                            <div class="time s-fc4">{{item.time | formatCommentTime}}</div>
-                                            <a href="javascript:void(0)"><i class="zan u-icn2 u-icn2-12"></i> ({{item.likedCount}})</a>
-                                            <span class="sep">|</span>
-                                            <a href="javascript:void(0)" class="s-fc3">回复</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- / .itm -->
-                            </div>
-                            <!-- / .cmmts -->
-                        </div>
-                        <!-- / .m-cmmt -->
+                        <comment 
+                        :totalComment="totalComment" 
+                        :comments="comments" 
+                        :hotComments="hotComments"></comment>
                     </div>
                     <!-- 评论 End -->
                     
@@ -515,10 +433,14 @@
 </template>
 
 <script>
+import Comment from '@/components/comment/Comment'
 import { toplist, commentToplist } from '@/api'
 import { formatDate, formatSeconds} from '@/utils'
 export default {
     name: 'Toplist',
+    components: {
+        Comment
+    },
     data() {
         return {
             toplistID: null,
@@ -528,8 +450,7 @@ export default {
             toplistCommentId: null,
             hotComments: null,
             comments: null,
-            isShowHotComments: true,
-            totalComment: Number,
+            totalComment: null,
             pageLimit: 20,
         }
     },
@@ -551,7 +472,7 @@ export default {
             // 监听路由参数的变化
             this.getToplist(this.$route.query.id)
             this.firstMenuActive = false
-            this.totalComment = NaN
+            this.totalComment = null
             document.body.scrollTop = 0
         }
     },
@@ -581,21 +502,9 @@ export default {
                 if( res.data.code === 200 ) {
                     this.hotComments = res.data.hotComments
                     this.comments = res.data.comments
-
-                    // 评论总数
                     this.totalComment = res.data.total
-
-                    // 是否显示精彩评论
-                    if ( this.hotComments.length !== 0 ) {
-                        this.isShowHotComments = true
-                    } else {
-                        this.isShowHotComments = false
-                    }
-
-                    console.log('isShowHotComments:'+this.isShowHotComments)
-
                 } else {
-                    console.error('数据获取错误')
+                    console.error(res.data.code)
                 }
             }).catch(error => {
                 console.log(error)

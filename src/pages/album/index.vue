@@ -138,23 +138,22 @@
                         :totalComment="totalComment" 
                         :comments="comments" 
                         :hotComments="hotComments"></comment>
-
-                        <template v-if="totalComment">
-                        <paginate
-                            :page-count="pageCount"
-                            :page-range="8"
-                            :margin-pages="1"
-                            :click-handler="pageCallback"
-                            :prev-text="'上一页'"
-                            :next-text="'下一页'"
-                            :container-class="'u-page'"
-                            :page-link-class="'page-item'"
-                            :prev-link-class="'page-prev'"
-                            :next-link-class="'page-next'">
-                        </paginate>
-                        </template>
-
                     </div>
+
+                    <template v-if="totalComment">
+                    <paginate
+                        :page-count="pageCount"
+                        :page-range="8"
+                        :margin-pages="1"
+                        :click-handler="pageCallback"
+                        :prev-text="'上一页'"
+                        :next-text="'下一页'"
+                        :container-class="'u-page'"
+                        :page-link-class="'page-item'"
+                        :prev-link-class="'page-prev'"
+                        :next-link-class="'page-next'">
+                    </paginate>
+                    </template>
 
                 </div>
             </div>

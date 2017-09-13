@@ -64,7 +64,7 @@
                                     </div>
                                 </div>
                                 <!-- 歌词 -->
-                                <div class="bd bd-open f-brk f-ib" v-if="lyricData">
+                                <div class="bd bd-open f-brk f-ib" v-if="lyric">
                                     <div class="lyric-content" :class="{open:isShowMoreLyric}">
                                         <p v-for="(item, index) in lyric" :key="index">{{item.txt}}</p>
                                     </div>
@@ -197,7 +197,7 @@ export default {
         },
         getLyric(id) { // 歌词
             songLyric(id).then(res => {
-                if(res.data.code === 200) {
+                if(res.data.code === 200 && res.data.lrc) {
                     this.lyricData = res.data.lrc.lyric
                     this.lyricFormat()
                 } else {
