@@ -8,7 +8,7 @@
                 <ul class="m-nav j-tflag">
                     <li class="fst">
                         <span>
-                            <router-link :to="{name: 'discover'}" active-class="z-slt">
+                            <router-link :to="{name: 'discover'}" active-class="z-slt" class="z-slt">
                                 <em>发现音乐</em><sub class="cor">&nbsp;</sub>
                             </router-link>
                         </span>
@@ -38,7 +38,6 @@
                                 <li class="lb">
                                     <router-link :to="{ name: 'login'}" class="itm-1"><i class="icn icn-mb"></i><em>手机号登录</em></router-link>
                                 </li>
-                                <!-- <li><a class="itm-2" href="#"><i class="icn icn-wy"></i><em>网易邮箱帐号登录</em></a></li> -->
                             </ul>
                         </div>
                         <i class="arr"></i>
@@ -90,7 +89,9 @@
                 <div class="m-srch f-pr j-suggest">
                     <div class="srchbg">
                         <span class="parent">
-                            <input type="text" class="txt j-flag" value="" placeholder="音乐/电台/用户">
+                            <input type="text" class="txt j-flag" placeholder="音乐/电台/用户"
+                            v-model="keyword"
+                            @keyup="searchHandle">
                         </span>
                     </div>
                 </div>
@@ -148,7 +149,7 @@ export default {
     name: 'AppHeader',
     data() {
         return {
-            
+            keyword: null
         }
     },
     created() {
@@ -166,6 +167,9 @@ export default {
             this.logout()
             // 跳转到主页
             window.location.href = '/'
+        },
+        searchHandle() {
+            console.log('search')
         }
     }
 }

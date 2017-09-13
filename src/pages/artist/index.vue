@@ -21,7 +21,7 @@
                     </div>
 
                     <ul class="m-tabs f-cb">
-                        <li>
+                        <li class="fst">
                             <router-link :to="{name: 'artistHotSongs', query: {id: artistData.id}}" active-class="z-slt">
                                 <em>热门50单曲</em>
                             </router-link>

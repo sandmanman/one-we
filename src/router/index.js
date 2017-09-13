@@ -62,6 +62,9 @@ const UserFollows = resolve => require(['@/pages/user/follows'], resolve)
 const UserFans = resolve => require(['@/pages/user/fans'], resolve)
 const UserEvent = resolve => require(['@/pages/user/event'], resolve)
 
+// 搜索
+const Search = resolve => require(['@/pages/search'], resolve)
+
 export default new Router({
     mode: 'history',
     routes: [{
@@ -291,6 +294,14 @@ export default new Router({
                     }
                 }
             ]
+        },
+        {
+            path: '/search',
+            name: 'search',
+            component: Search,
+            meta: {
+                title: '搜索'
+            }
         },
         {
             path: "*",
