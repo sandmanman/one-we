@@ -120,6 +120,14 @@
                                                 </ul>
                                                 <!-- pics End -->
                                                 </template>
+
+                                                <div class="doper j-flag">
+                                                    <a href="javascript:" class="s-fc7"><i class="icn u-dicn u-dicn-3"></i><span class="j-flag">({{item.json.event.info.likedCount}})</span></a>
+                                                    <span class="line">|</span>
+                                                    <a href="javascript:" class="s-fc7">转发 <span class="j-flag">({{item.json.event.info.shareCount}})</span></a>
+                                                    <span class="line">|</span>
+                                                    <a href="javascript:" class="s-fc7">评论 <span class="j-flag">({{item.json.event.info.commentCount}})</span></a>
+                                                </div>
                                                 
                                             </div>
                                             <!-- 转发的动态 ========== End -->
@@ -304,6 +312,15 @@
                                             <!-- toppic End -->
 
                                         </div>
+                                    </div>
+                                    <!-- / .card -->
+
+                                    <div class="doper j-flag">
+                                        <a href="javascript:" class="s-fc7"><i class="icn u-dicn u-dicn-3"></i><span class="j-flag">({{item.info.likedCount}})</span></a>
+                                        <span class="line">|</span>
+                                        <a href="javascript:" class="s-fc7">转发 <span class="j-flag">({{item.info.shareCount}})</span></a>
+                                        <span class="line">|</span>
+                                        <a href="javascript:" class="s-fc7">评论 <span class="j-flag">({{item.info.commentCount}})</span></a>
                                     </div>
                                 </div>
 
