@@ -70,10 +70,6 @@
                             </h3>
                             <span class="sub s-fc3"><span>{{tracksData.length}}</span>首歌</span>
                             <div class="more s-fc3">播放：<strong class="s-fc6">{{playlistData.playCount}}</strong>次</div>
-                            <div class="out out-list s-fc3">
-                                <i class="u-icn u-icn-95 f-fl"></i>
-                                <a :href="'/outchain/0/'+playlistData.id+'/'" class="des s-fc7">生成外链播放器</a>
-                            </div>
                         </div>
                         <div>
                             <div class="j-flag">

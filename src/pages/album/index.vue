@@ -65,10 +65,6 @@
 
                     <div class="n-songtb" v-if="songsData">
                         <div class="u-title u-title-1 f-cb">
-                            <div class="out s-fc3">
-                                <i class="u-icn u-icn-95 f-fl"></i>
-                                <a class="s-fc7 des">生成外链播放器</a>
-                            </div>
                             <h3><span class="f-ff2">包含歌曲列表</span></h3>
                             <span class="sub s-fc3">{{songsData.length}}首歌</span>
                         </div>

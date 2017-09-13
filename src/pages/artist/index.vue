@@ -114,7 +114,7 @@ export default {
                 if (res.data.code === 200) {
                     this.simiArtistData = res.data.artists.slice(0,6)
                 } else {
-                    console.error(res.data.code+res.data.msg)
+                    console.error(res.data.code)
                 }
             }).catch(error => {
                 console.error(error)

@@ -12,10 +12,6 @@
                                     <img :src="songData.al.picUrl+'?param=130y130'" class="j-img">
                                     <span class="msk f-alpha"></span>
                                 </div>
-                                <div class="out s-fc3">
-                                    <i class="u-icn u-icn-95 f-fl"></i>
-                                    <a data-href="/outchain/2/418603077/" class="des s-fc7">生成外链播放器</a>
-                                </div>
                             </div>
                             <!-- 专辑封面 S -->
 
@@ -92,7 +88,7 @@
                         :hotComments="hotComments"></comment>
 
                     </div>
-                    
+
                     <template v-if="totalComment">
                     <paginate
                         :page-count="pageCount"
