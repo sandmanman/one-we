@@ -599,12 +599,13 @@ export function songLyric(id) {
 // 1004: MV
 // 1006: 歌词
 // 1009: 电台
-export function search(keywords) {
+export function search(keywords, type) {
     return $http({
         method: 'get',
         url: '/search',
         params: {
             keywords,
+            type
         }
     })
 }

@@ -90,8 +90,8 @@
                     <div class="srchbg">
                         <span class="parent">
                             <input type="text" class="txt j-flag" placeholder="音乐/电台/用户"
-                            v-model="keyword"
-                            @keyup="searchHandle">
+                            v-model="keywords"
+                            @keyup.enter="searchHandle">
                         </span>
                     </div>
                 </div>
@@ -149,7 +149,7 @@ export default {
     name: 'AppHeader',
     data() {
         return {
-            keyword: null
+            keywords: null
         }
     },
     created() {
@@ -169,7 +169,9 @@ export default {
             window.location.href = '/'
         },
         searchHandle() {
-            console.log('search')
+            if ( this.keywords ) {
+                this.$router.push({name: 'search', query: {keywords: this.keywords, type: 1}})
+            }
         }
     }
 }
