@@ -2,13 +2,13 @@
     <div class="g-bd">
         <div class="g-wrap n-srch">
             <div class="pgsrch f-pr j-suggest">
-                <input type="text" class="srch j-flag" style="opacity: 1;" v-model="keywords" @keyup.enter="searchHandle(keywords, type)">
+                <input type="text" class="srch j-flag" style="opacity: 1;" v-model="keywords" @keyup.enter="searchHandle(keywords, 1)">
                 <span class="j-flag" style="display:none;">&nbsp;</span>
-                <a href="javascript:void(0)" class="btn j-flag" title="搜索" @click="searchHandle(keywords, type)">搜索</a>
+                <a href="javascript:void(0)" class="btn j-flag" title="搜索" @click="searchHandle(keywords, 1)">搜索</a>
             </div>
 
             <div class="snote s-fc4 ztag">
-                搜索“{{keywords}}”，找到 <em class="s-fc6" v-if="searchResultData">{{resultCount}}</em> {{type | currentTypeName}}
+                搜索“{{currentKeywords}}”，找到 <em class="s-fc6" v-if="searchResultData">{{resultCount}}</em> {{type | currentTypeName}}
             </div>
 
             <ul class="m-tabs m-tabs-srch f-cb ztag">
@@ -358,7 +358,7 @@ export default {
     name: 'Search',
     data() {
         return {
-            keywords: null,
+            keywords: null, // input keywords
             type: 1,
             typeName: '',
             searchResultData: null,
@@ -371,6 +371,9 @@ export default {
         this.getSearchResult(this.keywords, this.type)
     },
     computed: {
+        currentKeywords() {
+            return this.$route.query.keywords
+        },
         resultCount() {
             var t = parseInt(this.type)
             var tc = 0
@@ -413,7 +416,6 @@ export default {
     methods: {
         getSearchResult(keywords, type) {
             search(keywords, type).then(res => {
-
                 if (res.data.code === 200) {
                     this.searchResultData = res.data.result
                 } else {
@@ -425,7 +427,7 @@ export default {
         },
         searchHandle(keywords, type) {
             if ( keywords ) {
-                this.getSearchResult(keywords, type)
+                this.$router.push({name: 'search', query: {keywords: keywords, type: type}})
             }
         }
     },
