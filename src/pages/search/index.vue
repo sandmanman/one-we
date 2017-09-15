@@ -74,8 +74,8 @@
             <div class="ztag j-flag">
                 <div class="n-srchrst ztag">
                     <!-- 单曲 -->
-                    <div class="srchsongst" v-if="type == 1">
-                        <div class="item f-cb h-flag">
+                    <div class="srchsongst" v-if="type == 1 && this.searchResultData">
+                        <div class="item f-cb h-flag" v-for="item in searchResultData.songs" :key="item.id">
                             <div class="td">
                                 <div class="hd">
                                     <a class="ply " title="播放"></a>
@@ -85,11 +85,12 @@
                                 <div class="sn">
                                     <div class="text">
                                         <router-link
-                                        :to="{name: 'songDetail', query: {id: 29822014}}">
-                                            <b title="听见下雨的声音">听见下雨的声音</b>
+                                        :to="{name: 'songDetail', query: {id: item.id}}">
+                                            <b :title="item.name">{{item.name}}</b>
                                         </router-link>
                                         <router-link
-                                        :to="{name: 'mvDetail', query: {id: 394168}}"
+                                        v-if="item.mvid"
+                                        :to="{name: 'mvDetail', query: {id: item.mvid}}"
                                         title="MV"
                                         class="mv"></router-link>
                                     </div>
@@ -105,95 +106,128 @@
                             </div>
                             <div class="td w1">
                                 <div class="text">
-                                    <router-link
-                                    :to="{name: 'artistDetail', query: {id: 6452}}">周杰伦</router-link>
+                                    <span
+                                    v-for="ar in item.artists"
+                                    :key="ar.id">
+                                        <router-link
+                                        :to="{name: 'artistDetail', query: {id: ar.id}}">{{ar.name}}</router-link>
+                                        &nbsp;
+                                    </span>
+                                    
                                 </div>
                             </div>
                             <div class="td w2">
                                 <div class="text">
                                     <router-link
-                                    :to="{name: 'albumDetail', query: {id: 3084335}}"
-                                    title="《哎呦，不错哦》"
+                                    :to="{name: 'albumDetail', query: {id: item.album.id}}"
+                                    :title="item.album.name"
                                     class="s-fc3">
-                                        《哎呦，不错哦》
+                                        {{item.album.name}}
                                     </router-link>
                                 </div>
                             </div>
-                            <div class="td">04:39</div>
+                            <div class="td">{{item.duration | formatMusicDuration}}</div>
                         </div>
                     </div>
 
                     <!-- 歌手 -->
-                    <div class="m-sgerlist m-sgerlist-1" v-if="type == 100">
+                    <div class="m-sgerlist m-sgerlist-1" v-if="type == 100 && this.searchResultData">
                         <ul class="m-cvrlst m-cvrlst-5 f-cb">
-                            <li>
+                            <li v-for="item in searchResultData.artists" :key="item.id">
                                 <div class="u-cover u-cover-5">
-                                    <a href="/artist?id=12174549">
-                                    <img src="http://p1.music.126.net/AsIsebnxMgrOr7TBw9i7PA==/109951162807163368.jpg?param=130y130">
-                                    <span title="哎哟小强" class="msk"></span>
-                                    </a>
+                                    <router-link
+                                    :to="{name: 'artistDetail', query: {id: item.id}}">
+                                        <img :src="item.img1v1Url+'?param=130y130'">
+                                        <span :title="item.name" class="msk"></span>
+                                    </router-link>
                                 </div>
                                 <p>
-                                    <a class="nm f-thide s-fc0" href="/artist?id=12174549" title="哎哟小强">
-                                        <span class="s-fc7">哎</span>哟小强
-                                    </a>
-                                    <a href="/user/home?id=268788981">
+                                    <router-link
+                                    :to="{name: 'artistDetail', query: {id: item.id}}"
+                                    :title="item.name"
+                                    class="nm f-thide s-fc0">
+                                        {{item.name}}
+                                    </router-link>
+                                    <router-link
+                                    v-if="item.accountId"
+                                    :to="{name: 'userHome', query: {id: item.accountId}}">
                                         <i class="u-icn u-icn-5"></i>
-                                    </a>
+                                    </router-link>
                                 </p>
                             </li>
                         </ul>
                     </div>
 
                     <!-- 专辑 -->
-                    <ul class="m-cvrlst m-cvrlst-alb3 f-cb" v-if="type == 10">
-                        <li>
+                    <ul class="m-cvrlst m-cvrlst-alb3 f-cb" v-if="type == 10 && this.searchResultData">
+                        <li v-for="item in searchResultData.albums" :key="item.id">
                             <div class="u-cover u-cover-alb2">
-                                <a href="/album?id=35666326">
-                                    <img src="http://p1.music.126.net/BAZWr6bpCSdkN5iQlMMSlg==/109951162955753000.jpg?param=180y180">
+                                <router-link
+                                :to="{name: 'albumDetail', query: {id: item.id}}">
+                                    <img :src="item.picUrl+'?param=180y180'">
                                     <span title="哎" class="msk"></span>
-                                </a>
+                                </router-link>
                                 <a title="播放" class="icon-play f-alpha f-fr " href="javascript:void(0)"></a>
                             </div>
                             <p class="dec">
-                                <a href="/album?id=35666326" class="tit f-thide s-fc0" title="哎">
-                                    <span class="s-fc7">哎</span>
-                                </a>
+                                <router-link
+                                :to="{name: 'albumDetail', query: {id: item.id}}"
+                                :title="item.name"
+                                class="tit f-thide s-fc0">
+                                    {{item.name}}
+                                </router-link>
                             </p>
                             <p>
-                                <span class="nm f-thide" title="Ca$hFlow">
-                                    <a href="/artist?id=809018" class="s-fc3">Ca$hFlow</a>
+                                <span class="nm f-thide"
+                                v-for="ar in item.artists"
+                                :key="ar.id">
+                                    <router-link
+                                    :to="{name: 'artistDetail', query: {id: ar.id}}"
+                                    class="s-fc3">
+                                        {{ar.name}}
+                                    </router-link>
+                                    &nbsp;
                                 </span>
                             </p>
                         </li>
                     </ul>
 
                     <!-- MV -->
-                    <ul class="m-mvlist f-cb" v-if="type == 1004">
-                        <li>
+                    <ul class="m-mvlist f-cb" v-if="type == 1004 && this.searchResultData">
+                        <li v-for="item in searchResultData.mvs" :key="item.id">
                             <div class="cover f-pr">
-                                <img src="http://p4.music.126.net/m_khyC-sLEhYc0AEBceLpQ==/1377688077271835.jpg?param=159y90">
-                                <span title="哎呀" class="msk"></span>
+                                <img :src="item.cover+'?param=159y90'">
+                                <span :title="item.name" class="msk"></span>
                                 <p class="tr u-msk u-msk-1">
-                                    <span class="u-icn2 u-icn2-mv"></span>111143</p><p class="bl u-msk u-msk-2">03:48
+                                    <span class="u-icn2 u-icn2-mv"></span>{{item.playCount}}</p>
+                                    <p class="bl u-msk u-msk-2">{{item.duration | formatMusicDuration}}
                                 </p>
-                                <a class="link" href="/mv?id=5308814"></a>
+                                <router-link
+                                :to="{name: 'mvDetail', query: {id: item.id}}" class="link"></router-link>
                             </div>
                             <h4 class="title f-thide">
-                                <a href="/mv?id=5308814" class="s-fc0" title="哎呀"><span class="s-fc7">哎</span>呀</a>
+                                <router-link
+                                :to="{name: 'mvDetail', query: {id: item.id}}"
+                                :title="item.name"
+                                class="s-fc0">
+                                    {{item.name}}
+                                </router-link>
                             </h4>
                             <h5 class="name f-thide">
-                                <span class="f-thide" title="王蓉">
-                                    <a href="/artist?id=9622" class="s-fc3">王蓉</a>
+                                <span class="f-thide" v-for="ar in item.artists" :key="ar.id">
+                                    <router-link
+                                    :to="{name: 'artistDetail', query: {id: ar.id}}"
+                                    class="s-fc3">{{ar.name}}</router-link>
+                                    &nbsp;
                                 </span>
                             </h5>
                         </li>
                     </ul>
 
                     <!-- 歌单 -->
-                    <table class="m-table m-table-2 m-table-2-cover" v-if="type == 1000">
+                    <table class="m-table m-table-2 m-table-2-cover" v-if="type == 1000 && this.searchResultData">
                         <tbody>
-                            <tr class="h-flag">
+                            <tr class="h-flag" v-for="item in searchResultData.playlists" :key="item.id">
                                 <td class="first w0">
                                     <div class="hd">
                                         <span class="ply " title="播放"></span>
@@ -201,10 +235,11 @@
                                 </td>
                                 <td class="w7">
                                     <div class="u-cover u-cover-3">
-                                        <a href="/playlist?id=85581999">
-                                            <img src="http://p1.music.126.net/dfJp9prLqOTwjCvteZu3VQ==/7870304232708478.jpg?param=180y180">
-                                            <span title="【节奏布鲁斯】哎，听了就想跳舞了" class="msk"></span>
-                                        </a>
+                                        <router-link
+                                        :to="{name: 'playlistDetail', query: {id: item.id}}">
+                                            <img :src="item.coverImgUrl+'?param=180y180'">
+                                            <span :title="item.name" class="msk"></span>
+                                        </router-link>
                                     </div>
                                 </td>
                                 <td>
@@ -217,72 +252,85 @@
                                         <div class="tt">
                                             <div class="ttc">
                                                 <span class="txt">
-                                                    <a href="/playlist?id=85581999" title="【节奏布鲁斯】哎，听了就想跳舞了">
-                                                        【节奏布鲁斯】
-                                                        <span class="s-fc7">哎</span>，听了就想跳舞了
-                                                    </a>
+                                                    <router-link
+                                                    :to="{name: 'playlistDetail', query: {id: item.id}}">
+                                                        {{item.name}}
+                                                    </router-link>
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="w11 s-fc4">35首</td>
+                                <td class="w11 s-fc4">{{item.trackCount}}首</td>
                                 <td class="w4">
                                     <div class="text">
                                         <span class="s-fc3">by</span>&nbsp;&nbsp;
-                                        <a class="s-fc3" href="/user/home?id=55448171" title="双鱼脆脆">
-                                            双鱼脆脆&nbsp;
+                                        <router-link
+                                        :to="{name: 'userHome', query: {id: item.creator.userId}}"
+                                        class="s-fc3">
+                                            {{item.creator.nickname}}&nbsp;
                                             <sup class="u-icn u-icn-84 "></sup>
-                                        </a>
+                                        </router-link>
                                     </div>
                                 </td>
-                                <td class="w6 s-fc4">收藏：4415</td>
-                                <td class="last w6 s-fc4">收听：16万</td>
+                                <td class="w6 s-fc4">收藏：{{item.bookCount | formatPlayCount}}</td>
+                                <td class="last w6 s-fc4">收听：{{item.playCount | formatPlayCount}}</td>
                             </tr>
                         </tbody>
                     </table>
 
                     <!-- 主播电台 -->
-                    <ul class="m-rdilist f-cb" v-if="type == 1009">
-                        <li>
-                            <a href="/djradio?id=6607001" class="u-cover u-cover-rdi2">
-                                <img src="http://p1.music.126.net/uQG6LAbGDqENzWl_lxnsUw==/18550960185804866.jpg?param=200y200" alt="">
-                            </a>
+                    <ul class="m-rdilist f-cb" v-if="type == 1009 && this.searchResultData">
+                        <li v-for="item in searchResultData.djRadios" :key="item.id">
+                            <router-link
+                            :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                            class="u-cover u-cover-rdi2">
+                                <img :src="item.picUrl+'?param=200y200'">
+                            </router-link>
                             <h3 class="f-fs2 f-thide">
-                                <a href="/djradio?id=6607001" class="s-fc1">
-                                    Dj<span class="s-fc7">哎</span>小麦
-                                </a>
+                                <router-link
+                                :to="{name: 'djRadioDetail', query: {id: item.id}}"
+                                class="s-fc1">
+                                    {{item.name}}
+                                </router-link>
                             </h3>
                             <p class="f-thide s-fc4">
-                                by <a href="/user/home?id=116768631">-XMRD</a>
+                                by 
+                                <router-link :to="{name: 'userHome', query: {id: item.dj.userId}}">
+                                    {{item.dj.nickname}}
+                                </router-link>
                                 <i class="icnfix u-icn u-icn-s-01 f-sep"></i>
                             </p>
                         </li>
                     </ul>
 
                     <!-- 用户 -->
-                    <table class="m-table m-table-2 m-table-2-cover" v-if="type == 1002">
+                    <table class="m-table m-table-2 m-table-2-cover" v-if="type == 1002 && this.searchResultData">
                         <tbody>
-                            <tr class="h-flag">
+                            <tr class="h-flag" v-for="item in searchResultData.userprofiles" :key="item.id">
                                 <td class="first w7">
                                     <div class="u-cover u-cover-3">
-                                        <a href="/user/home?id=20557394">
-                                        <img src="http://p1.music.126.net/JOgAFTLTNw8PC5ARaiafTQ==/7835119859832500.jpg?param=180y180">
-                                        <span class="msk" title="哎_呦喂强"></span>
-                                        </a>
+                                        <router-link
+                                        :to="{name: 'userHome', query: {id: item.userId}}">
+                                            <img :src="item.avatarUrl+'?param=180y180'">
+                                            <span class="msk" :title="item.nickname"></span>
+                                        </router-link>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="ttc">
-                                        <a href="/user/home?id=20557394" title="哎_呦喂强" class="txt f-fs1">
-                                            <span class="s-fc7">哎</span>
-                                            _呦喂强&nbsp;
-                                            <sup class=" u-icn2 u-icn2-music2 "></sup>
-                                            <i class="icnfix u-icn u-icn-s-01"></i>
+                                        <router-link
+                                        :to="{name: 'userHome', query: {id: item.userId}}"
+                                        :title="item.nickname"
+                                        class="txt f-fs1">
+                                            {{item.nickname}}&nbsp;
+                                            <sup class=" u-icn2 u-icn2-music2" v-if="item.userType == 4"></sup>
+                                            <i class="icnfix u-icn" :class="{'u-icn-s-01': item.gender == 1, 'u-icn-s-02': item.gender == 2 }"></i>
+                                        </router-link>
                                         </a>
                                     </div>
                                     <div class="dec s-fc4 f-thide">
-                                        东张西望，一无所长。四体不勤，五谷不分。不事劳作，一无所获。厌恶争执，不善言说。借酒消愁，不太能喝。
+                                        {{item.signature}}
                                     </div>
                                 </td>
                                 <td class="w9">
@@ -290,8 +338,8 @@
                                         <i>关注</i>
                                     </a>
                                 </td>
-                                <td class="w9 s-fc4">歌单：34</td>
-                                <td class="last w9 s-fc4">粉丝：952</td>
+                                <td class="w9 s-fc4">歌单：{{item.playlistCount}}</td>
+                                <td class="last w9 s-fc4">粉丝：{{item.followeds}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -305,6 +353,7 @@
 
 <script>
 import { search } from '@/api'
+import { formatSeconds, formatPlayCount } from '@/utils'
 export default {
     name: 'Search',
     data() {
@@ -375,7 +424,9 @@ export default {
             })
         },
         searchHandle(keywords, type) {
-            this.getSearchResult(keywords, type)
+            if ( keywords ) {
+                this.getSearchResult(keywords, type)
+            }
         }
     },
     filters: {
@@ -406,6 +457,12 @@ export default {
             }
 
             return tn
+        },
+        formatMusicDuration(val) { // 音乐播放总时长格式
+            return formatSeconds(val)
+        },
+        formatPlayCount(val) {
+            return formatPlayCount(val)
         }
     }
 }
