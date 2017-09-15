@@ -313,7 +313,6 @@ export default {
             type: 1,
             typeName: '',
             searchResultData: null,
-            resultCount: 0,
         }
     },
     created() {
@@ -321,6 +320,38 @@ export default {
         this.type = this.$route.query.type
         
         this.getSearchResult(this.keywords, this.type)
+    },
+    computed: {
+        resultCount() {
+            var t = parseInt(this.type)
+            var tc = 0
+            if ( this.searchResultData ) {
+                switch(t) {
+                    case 1:
+                        tc = this.searchResultData.songCount
+                        break
+                    case 100:
+                        tc = this.searchResultData.artistCount
+                        break
+                    case 10:
+                        tc = this.searchResultData.albumCount
+                        break
+                    case 1004:
+                        tc = this.searchResultData.mvCount
+                        break
+                    case 1000:
+                        tc = this.searchResultData.playlistCount
+                        break
+                    case 1009:
+                        tc = this.searchResultData.djRadiosCount
+                        break
+                    case 1002:
+                        tc = this.searchResultData.userprofileCount
+                        break
+                }
+            }
+            return tc
+        }
     },
     watch: {
         '$route'(to, from) {
@@ -349,7 +380,6 @@ export default {
     },
     filters: {
         currentTypeName(type) {
-            console.log(type)
             var t = type.toString(), tn
             switch(t) {
                 case '1':
