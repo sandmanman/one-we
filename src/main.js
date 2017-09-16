@@ -49,6 +49,7 @@ router.afterEach((route) => {
     }
 })
 
+
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
@@ -65,6 +66,11 @@ new Vue({
                 store.dispatch('setUserID', userId)
                 store.dispatch('setCurrentUserProfile', userId)
             }
+        }
+    },
+    methods: {
+        playSong() {
+            console.log('播放音乐')
         }
     }
 })

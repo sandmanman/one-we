@@ -144,6 +144,15 @@ export default {
         toggleVolume() {
             // 显示隐藏音量调节
             this.isShowVolume = !this.isShowVolume
+        },
+        play() {
+            console.log('播放/暂停')
+        },
+        prev() {
+            console.log('上一首')
+        },
+        next() {
+            console.log('下一首')
         }
     }
 }

@@ -86,8 +86,8 @@
                                     <tbody>
                                         <tr v-for="(item, index) in tracksData" :key="item.id">
                                             <td class="left">
-                                                <div class="hd ">
-                                                    <span class="ply ">&nbsp;</span><span class="num">{{index+1}}</span>
+                                                <div class="hd">
+                                                    <span class="ply" @click="playSong(item.id)">&nbsp;</span><span class="num">{{index+1}}</span>
                                                 </div>
                                             </td>
                                             <td class="">
@@ -180,6 +180,8 @@
 import Comment from '@/components/comment/Comment'
 import { playlistDetail, playlistComment } from '@/api'
 import { formatDate, formatSeconds} from '@/utils'
+import { mapActions } from 'vuex'
+
 export default {
     name: 'PlaylistDetail',
     components: {
@@ -207,6 +209,7 @@ export default {
         this.getPlaylistDetail(this.$route.query.id)
     },
     methods: {
+        ...mapActions(['setPlaySong', 'setPlaylist']),
         getPlaylistDetail(id) {
             playlistDetail(id).then(res => {
                 if (res.data.code === 200) {
@@ -237,6 +240,11 @@ export default {
             }).catch(error => {
                 console.log(error)
             })
+        },
+        playSong(sid) {
+            console.log('song id:'+sid)
+            this.setPlaySong(sid)
+            this.setPlaylist(sid)
         },
         pageCallback(pageNum) {
             playlistComment(this.commentId, this.pageLimit, (pageNum-1)*this.pageLimit).then(res => {

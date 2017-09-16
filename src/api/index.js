@@ -609,3 +609,21 @@ export function search(keywords, type) {
         }
     })
 }
+
+
+//
+// 获取音乐 url
+// 必选参数:
+// id : 音乐 id
+// 调用例子:
+// /music/url?id=347230
+// /music/url?id=347230,347231
+export function music(id) {
+    return $http({
+        method: 'get',
+        url: '/music/url',
+        params: {
+            id
+        }
+    })
+}
