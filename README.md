@@ -2,14 +2,42 @@
 
 Vue，仿网易云音乐Web版
 
-感谢[@Binaryify](https://github.com/Binaryify)对网易云音乐api深度挖掘。详细请Star[NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
+感谢 [@Binaryify](https://github.com/Binaryify) 对网易云音乐api深度挖掘。详细请 Star[NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
 
 
 ## 说明
 
-页面所有CSS全部拷贝自网易云音乐Web版，这里仅供个人学习之用。
+页面所有CSS全部拷贝并使用网易云音乐Web版，仅供个人学习用。
 
-## 开发中...
+## 技术栈
+- Vue
+- Vuex
+- axios
+- [vuejs-paginate](https://github.com/lokyoung/vuejs-paginate)
+
+## Todo List
+
+- [x] 首页推荐
+- [x] 排行榜
+- [x] 歌单
+- [x] 歌单详细
+- [x] 主播电台
+- [x] 电台详细
+- [x] 歌手-热门歌手
+- [x] 歌手详细
+- [x] 新碟
+- [x] 专辑详细
+- [x] MV播放
+- [x] 搜索
+- [x] 用户主页
+- [x] 用户动态
+- [x] 用户关注
+- [x] 用户粉丝
+- [ ] 音乐播放
+- [ ] 登录
+- [ ] 优化各种问题...
+
+
 
 > A Vue.js project
 
