@@ -11,9 +11,13 @@ Vue，仿网易云音乐Web版
 
 ## 技术栈
 - Vue
+- vue-router
 - Vuex
 - axios
+- [vue-awesome-swiper](https://github.com/surmon-china/vue-awesome-swiper)
+- [vue-dplayer](https://github.com/MoePlayer/vue-dplayer)
 - [vuejs-paginate](https://github.com/lokyoung/vuejs-paginate)
+- [fecha](https://github.com/taylorhakes/fecha)
 
 ## Todo List
 
