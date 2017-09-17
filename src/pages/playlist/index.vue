@@ -209,7 +209,10 @@ export default {
         this.getPlaylistDetail(this.$route.query.id)
     },
     methods: {
-        ...mapActions(['setPlaySong', 'setPlaylist']),
+        ...mapActions([
+            'setPlaySong',
+            'setPlaylist'
+        ]),
         getPlaylistDetail(id) {
             playlistDetail(id).then(res => {
                 if (res.data.code === 200) {

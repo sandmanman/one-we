@@ -1,5 +1,6 @@
 <template>
     <div class="g-btmbar">
+        <audio id="audioMM" preload="auto"></audio>
         <div class="m-playbar m-playbar-lock">
             <div class="updn">
                 <div class="left f-fl"><a href="javascript:;" class="btn"></a></div>
@@ -15,18 +16,37 @@
                     <a href="javascript:;" class="nxt" title="下一首(ctrl+→)">下一首</a>
                 </div>
 
+                <template v-if="songInfo">
                 <div class="head j-flag">
-                    <img src="http://p1.music.126.net/cUTk0ewrQtYGP2YpPZoUng==/3265549553028224.jpg?param=34y34">
-                    <a href="/song?id=418603077" class="mask"></a>
+                    <img 
+                    v-if="songInfo.al" 
+                    :src="songInfo.al.picUrl+'?param=34y34'">
+                    <router-link
+                    :to="{name: 'songDetail', query: {id: songInfo.id}}"
+                    class="mask"></router-link>
                 </div>
 
                 <div class="play">
                     <div class="j-flag words">
-                        <a hidefocus="true" href="/song?id=418603077" class="f-thide name fc1 f-fl" title="告白气球">告白气球</a>
-                        <a hidefocus="true" href="/mv?id=5382080" class="mv f-fl" title="MV"></a>
+                        <router-link
+                        :to="{name: 'songDetail', query: {id: songInfo.id}}"
+                        :title="songInfo.name"
+                        class="f-thide name fc1 f-fl">
+                            {{songInfo.name}}
+                        </router-link>
+
+                        <router-link
+                        v-if="songInfo.mv"
+                        :to="{name: 'mvDetail', query: {id: songInfo.mv}}"
+                        class="mv f-fl"
+                        title="MV"></router-link>
                         <span class="by f-thide f-fl">
-                            <span title="周杰伦">
-                                <a class="" href="/artist?id=6452" hidefocus="true">周杰伦</a>
+                            <span title="周杰伦" v-for="ar in songInfo.ar" :key="ar.id">
+                                <router-link
+                                :to="{name: 'artistDetail', query: {id: ar.id}}">
+                                {{ar.name}}
+                                </router-link>
+                                &nbsp;
                             </span>
                         </span>
                     </div>
@@ -34,12 +54,29 @@
                         <div class="barbg j-flag">
                             <div class="rdy" style="width: 93.2686%;"></div>
                             <div class="cur" style="width: 4.69478%;">
+                                <span class="btn f-tdn f-alpha z-load"><i></i></span>
+                            </div>
+                        </div>
+                        <span class="j-flag time"><em>00:10</em> / {{songInfo.dt | formatSeconds}}</span>
+                    </div>
+                </div>
+                </template>
+
+                <template v-else>
+                <div class="head j-flag"><a href="javascript:;" class="mask"></a></div>
+                <div class="play">
+                    <div class="j-flag words"></div>
+                    <div class="m-pbar">
+                        <div class="barbg j-flag">
+                            <div class="rdy" style="width: 0%;"></div>
+                            <div class="cur" style="width: 0%;">
                                 <span class="btn f-tdn f-alpha"><i></i></span>
                             </div>
                         </div>
-                        <span class="j-flag time"><em>00:10</em> / 03:35</span>
+                        <span class="j-flag time"><em>00:00</em> / 00:00</span>
                     </div>
                 </div>
+                </template>
 
                 <div class="oper f-fl">
                     <a href="javascript:;" class="icn icn-add j-flag" title="收藏">收藏</a>
@@ -69,7 +106,7 @@
             </div>
 
             <!-- 播放列表 S -->
-            <transition name="fade">
+            <transition name="slide">
             <div class="list" v-show="isShowPlaylist">
                 <div class="listhd">
                     <div class="listhdc">
@@ -128,6 +165,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { formatSeconds} from '@/utils'
 export default {
     name: 'Player',
     data() {
@@ -135,6 +174,9 @@ export default {
             isShowPlaylist: false,
             isShowVolume: false,
         }
+    },
+    computed: {
+        ...mapGetters(['songInfo'])
     },
     methods: {
         togglePlaylist() {
@@ -154,45 +196,51 @@ export default {
         next() {
             console.log('下一首')
         }
+    },
+    filters: {
+        formatSeconds(val) {
+            return formatSeconds(val)
+        }
     }
 }
 </script>
 
 <style scoped>
+.list {
+    z-index: -1;
+    animation-duration: .2s;
+    animation-fill-mode: both;
+}
 .listbdc {
     overflow-y: auto;
 }
-.fade-enter-active,
-.fade-leave-active {
-    animation-duration: .5s;
-    animation-fill-mode: both;
+.slide-enter-active,
+.slide-leave-active {
     animation-name: slideInUp;
 }
  /* .fade-leave-active 在低于版本 2.1.8 中 */
-.fade-enter,
-.fade-leave-to {
-    animation-name: slideInDown;
+.slide-enter,
+.slide-leave-to {
+    animation-name: slideOutDown;
 }
 
 @keyframes slideInUp {
     from {
-        opacity: 0;
         transform: translate3d(0, 100%, 0);
+        visibility: visible;
     }
 
     to {
-        opacity: 1;
         transform: translate3d(0, 0, 0);
     }
 }
-@keyframes slideInDown {
+@keyframes slideOutDown {
     from {
-        opacity: 1;
         transform: translate3d(0, 0, 0);
     }
 
     to {
-        opacity: 0;
+        visibility: hidden;
         transform: translate3d(0, 100%, 0);
     }
 }
