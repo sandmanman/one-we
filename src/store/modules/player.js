@@ -75,8 +75,8 @@ const mutations = {
     [types.PLAY_AUDIO](state) {
         var audio = new Audio()
         
-        if ( state.song ) {
-            audio.src = state.song.url
+        if ( state.songSource ) {
+            audio.src = state.songSource.url
             audio.play()
 
             state.isPlaying = true

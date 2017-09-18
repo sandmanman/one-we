@@ -52,8 +52,11 @@
                     </div>
                     <div class="m-pbar">
                         <div class="barbg j-flag">
+                            <!-- 资源加载百分比 -->
                             <div class="rdy" style="width: 93.2686%;"></div>
+                            <!-- 播放进度百分比 -->
                             <div class="cur" style="width: 4.69478%;">
+                                <!-- z-load 加载中 -->
                                 <span class="btn f-tdn f-alpha z-load"><i></i></span>
                             </div>
                         </div>
