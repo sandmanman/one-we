@@ -2,18 +2,18 @@
     <dl class="blk" v-cloak>
         <dt class="top">
             <div class="cver u-cover u-cover-4">
-                <img class="j-img" :src="toplistData.coverImgUrl">
+                <img class="j-img" :src="toplistData.playlist.coverImgUrl">
                 <router-link
                 :to="{name:'toplist', query: {id: toplistId}}"
-                :title="toplistData.name"
+                :title="toplistData.playlist.name"
                 class="msk">
                 </router-link>
             </div>
             <div class="tit">
                 <router-link
                 :to="{name:'toplist', query: {id: toplistId}}"
-                :title="toplistData.name">
-                    <h3 class="f-fs1 f-thide">{{toplistData.name}}</h3>
+                :title="toplistData.playlist.name">
+                    <h3 class="f-fs1 f-thide">{{toplistData.playlist.name}}</h3>
                 </router-link>
                 <div class="btn">
                     <a href="javascript:;" class="s-bg s-bg-9 f-tdn" title="播放">播放</a>
@@ -23,7 +23,7 @@
         </dt>
         <dd>
             <ol>
-                <li v-for="(item, index) in toplistData.tracks.slice(0, 10)" :key="index">
+                <li v-for="(item, index) in toplistData.playlist.tracks.slice(0, 10)" :key="index">
                     <span class="no">{{index + 1}}</span>
                     <router-link
                     :to="{name: 'songDetail', query: {id: item.id}}"

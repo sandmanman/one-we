@@ -131,20 +131,20 @@
                 // 飙升榜
                 var bs = () => {
                     toplist(3).then((res) => {
-                        this.biaosheng = res.data.result
+                        this.biaosheng = res.data
                     })
                 }
                 // 新歌榜
                 var xg = () => {
                     toplist(0).then((res) => {
-                        this.xinge = res.data.result
+                        this.xinge = res.data
                     })
                 }
                 
                 // 原创榜
                 var yc = () => {
                     toplist(2).then((res) => {
-                        this.yuanchuang = res.data.result
+                        this.yuanchuang = res.data
                     })
                 }
                 

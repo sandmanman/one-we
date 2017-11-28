@@ -237,17 +237,17 @@
                 <div class="g-wrap">
                     <div class="m-info m-info-rank f-cb">
                         <div class="cover u-cover u-cover-rank">
-                            <img :src="toplist.coverImgUrl+'?param=150y150'">
+                            <img :src="toplist.playlist.coverImgUrl+'?param=150y150'">
                             <span class="msk"></span>
                         </div>
                         <div class="cnt">
                             <div class="cntc m-info">
                                 <div class="hd f-cb">
-                                    <h2 class="f-ff2">{{toplist.name}}</h2>
+                                    <h2 class="f-ff2">{{toplist.playlist.name}}</h2>
                                 </div>
                                 <div class="user f-cb">
                                     <i class="u-icn u-icn-57"></i>
-                                    <span class="sep s-fc3">最近更新：{{toplist.trackUpdateTime | formatToplistUpdateDate}}</span>
+                                    <span class="sep s-fc3">最近更新：{{toplist.playlist.trackUpdateTime | formatToplistUpdateDate}}</span>
                                     <span class="s-fc4">（每天更新）</span>
                                 </div>
                                 <div class="btns f-cb">
@@ -255,11 +255,11 @@
                                         <i><em class="ply"></em>播放</i>
                                     </a>
                                     <a href="javascript:;" class="u-btni u-btni-add" title="添加到播放列表"></a>
-                                    <a class="u-btni u-btni-fav" href="javascript:;"><i>({{toplist.subscribedCount}})</i></a>
-                                    <a class="u-btni u-btni-share" href="javascript:;"><i>({{toplist.shareCount}})</i></a>
+                                    <a class="u-btni u-btni-fav" href="javascript:;"><i>({{toplist.playlist.subscribedCount}})</i></a>
+                                    <a class="u-btni u-btni-share" href="javascript:;"><i>({{toplist.playlist.shareCount}})</i></a>
                                     <a class="u-btni u-btni-dl" href="javascript:;"><i>下载</i></a>
                                     <a href="javascript:;" class="u-btni u-btni-cmmt j-cmt">
-                                        <i>(<span>{{toplist.commentCount}}</span>)</i>
+                                        <i>(<span>{{toplist.playlist.commentCount}}</span>)</i>
                                     </a>
                                 </div>
                             </div>
@@ -271,8 +271,8 @@
                     <!-- 歌曲列表 S -->
                     <div class="u-title u-title-1 f-cb">
                         <h3><span class="f-ff2">歌曲列表</span></h3>
-                        <span class="sub s-fc3"><span>{{toplist.trackCount}}</span>首歌</span>
-                        <div class="more s-fc3">播放：<strong class="s-fc6">{{toplist.playCount}}</strong>次</div>
+                        <span class="sub s-fc3"><span>{{toplist.playlist.trackCount}}</span>首歌</span>
+                        <div class="more s-fc3">播放：<strong class="s-fc6">{{toplist.playlist.playCount}}</strong>次</div>
                     </div>
                     <div id="song-list-pre-cache">
                         <div class="j-flag">
@@ -300,17 +300,17 @@
                                             <div class="f-cb">
                                                 <div class="tt">
                                                     <a :href="'/song?id='+item.id">
-                                                        <img class="rpic" :src="item.album.picUrl+'?param=50y50&amp;quality=100'">
+                                                        <img class="rpic" :src="item.al.picUrl+'?param=50y50&amp;quality=100'">
                                                     </a>
                                                     <span class="ply ">&nbsp;</span>
                                                     <div class="ttc">
                                                         <span class="txt">
                                                             <router-link
                                                             :to="{name: 'songDetail', query: {id: item.id}}">
-                                                                <b :title="item.name + '- ('+ item.alias[0] +')'">{{item.name}}</b>
+                                                                <b :title="item.name + '- ('+ item.al[0] +')'">{{item.name}}</b>
                                                             </router-link>
-                                                            <span v-if="item.alias[0]" :title="item.alias[0]" class="s-fc8">
-                                                                - {{item.alias[0]}}
+                                                            <span v-if="item.al[0]" :title="item.al[0]" class="s-fc8">
+                                                                - {{item.al[0]}}
                                                             </span>
                                                             <router-link
                                                             v-if="item.mvid"
@@ -359,10 +359,10 @@
                                                         <span class="txt">
                                                             <router-link
                                                             :to="{name: 'songDetail', query: {id: item.id}}">
-                                                                <b :title="item.name + '- ('+ item.alias[0] +')'">{{item.name}}</b>
+                                                                <b :title="item.name + '- ('+ item.al[0] +')'">{{item.name}}</b>
                                                             </router-link>
-                                                            <span v-if="item.alias[0]" :title="item.alias[0]" class="s-fc8">
-                                                                - {{item.alias[0]}}
+                                                            <span v-if="item.al[0]" :title="item.al[0]" class="s-fc8">
+                                                                - {{item.al[0]}}
                                                             </span>
                                                             <router-link
                                                             v-if="item.mvid"
@@ -480,11 +480,11 @@ export default {
         getToplist(id) {
             toplist(id).then(res => {
                 if( res.data.code === 200 ) {
-                    this.toplist = res.data.result
-                    this.top3 = res.data.result.tracks.slice(0,3)
-                    this.topOther = res.data.result.tracks.slice(3)
+                    this.toplist = res.data
+                    this.top3 = res.data.playlist.tracks.slice(0,3)
+                    this.topOther = res.data.playlist.tracks.slice(3)
 
-                    var commentId = res.data.result.commentThreadId.replace(/A_PL_0_/g, '')
+                    var commentId = res.data.playlist.commentThreadId.replace(/A_PL_0_/g, '')
                     this.toplistCommentId = commentId
 
                     // 请求该排行榜下的评论
