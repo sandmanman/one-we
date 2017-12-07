@@ -8,23 +8,23 @@
                 <ul class="m-nav j-tflag">
                     <li class="fst">
                         <span>
-                            <router-link :to="{name: 'discover'}" active-class="z-slt" class="z-slt">
+                            <router-link :to="{name: 'discover'}" active-class="z-slt">
                                 <em>发现音乐</em><sub class="cor">&nbsp;</sub>
                             </router-link>
                         </span>
                     </li>
                     <li>
                         <span>
-                            <a href="#">
+                            <router-link :to="{name: 'my'}" active-class="z-slt">
                                 <em>我的音乐</em><sub class="cor">&nbsp;</sub>
-                            </a>
+                            </router-link>
                         </span>
                     </li>
                     <li class="lst">
                         <span>
-                            <a href="#">
+                            <router-link :to="{name: 'friend'}" active-class="z-slt">
                                 <em>朋友</em><sub class="cor">&nbsp;</sub>
-                            </a>
+                            </router-link>
                         </span>
                     </li>
                 </ul>

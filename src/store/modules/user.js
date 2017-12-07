@@ -41,7 +41,6 @@ const actions = {
     setCurrentUserProfile({commit}, userID) {
         userProfile(userID).then(res => {
             if ( res.data.code === 200 ) {
-                console.log('打发打发打发')
                 commit(types.UPDATE_USER_PROFILE, res.data)
             } else {
                 console.error('store action setCurrentuserProfile:'+res.data.code+ ':'+res.data.message)

@@ -7,6 +7,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+// 404
 const PageNotFound =  resolve => require(['@/pages/404.vue'], resolve)
 
 const Discover = resolve => require(['@/pages/discover'], resolve)
@@ -64,6 +65,12 @@ const UserEvent = resolve => require(['@/pages/user/event'], resolve)
 
 // 搜索
 const Search = resolve => require(['@/pages/search'], resolve)
+
+// 我的音乐
+const My = resolve => require(['@/pages/my'], resolve)
+
+// 朋友
+const Friend = resolve => require(['@/pages/friend'], resolve)
 
 export default new Router({
     mode: 'history',
@@ -301,6 +308,23 @@ export default new Router({
             component: Search,
             meta: {
                 title: '搜索'
+            }
+        },
+        ,
+        {
+            path: '/my',
+            name: 'my',
+            component: My,
+            meta: {
+                title: '我的音乐'
+            }
+        },
+        {
+            path: '/friend',
+            name: 'friend',
+            component: Friend,
+            meta: {
+                title: '朋友'
             }
         },
         {
