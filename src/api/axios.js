@@ -22,7 +22,7 @@ axios.defaults.validateStatus = function(status) {
 const service = axios.create({
     timeout: 5000, // 如果请求超过 `timeout` 的时间，请求将被中断
     baseURL: 'http://localhost:1128',
-    //withCredentials: true, // `withCredentials`指示是否跨站点访问控制请求
+    withCredentials: true, // `withCredentials`指示是否跨站点访问控制请求
 })
 
 
