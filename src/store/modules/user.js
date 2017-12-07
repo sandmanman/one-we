@@ -24,6 +24,11 @@ const mutations = {
     },
     [types.LOGOUT](state) {
         state.userID = null
+        state.userProfile = null
+        // 删除Cookie
+        docCookies.removeItem('MUSIC_U')
+        // 删除localStorage
+        localStorage.remove('CURRENT_USER_ID')
     }
 }
 
@@ -45,12 +50,8 @@ const actions = {
             console.error(error)
             
             commit(types.LOGOUT)
-            // 删除Cookie
-            docCookies.removeItem('__csrf')
-            // 删除localStorage
-            localStorage.remove('CURRENT_USER_ID')
 
-            console.log('Cookie[__csrf]:'+docCookies.hasItem('__csrf'))
+            console.log('Cookie[MUSIC_U]:'+docCookies.hasItem('MUSIC_U'))
         })
     },
     logout({commit}) {

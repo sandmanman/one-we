@@ -25,8 +25,8 @@ router.beforeEach((to, from, next) => {
      * https://github.com/doterlin/vue-example-login
      */
     if (to.meta.requestAuth) { // 目标路由需要登录权限
-        console.log('Cookie[__csrf]:'+docCookies.hasItem('__csrf'))
-        if( docCookies.hasItem('__csrf') ) {
+        console.log('Cookie[MUSIC_U]:'+docCookies.hasItem('MUSIC_U'))
+        if( docCookies.hasItem('MUSIC_U') ) {
             next()
         } else {
             // 中断路由

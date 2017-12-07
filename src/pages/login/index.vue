@@ -46,9 +46,9 @@ import Modal from '@/components/modal/Modal'
 export default {
     beforeRouteEnter( to, from, next ) {
         // 进入登录页面，判断Cookie是否存在
-        console.log('Cookie[__csrf]:'+docCookies.hasItem('__csrf'))
+        console.log('Cookie[MUSIC_U]:'+docCookies.hasItem('MUSIC_U'))
         next( VM => {
-            if( docCookies.hasItem('__csrf') ) {
+            if( docCookies.hasItem('MUSIC_U') ) {
                 VM.$router.push({path: '/'})
             } else {
                 return false
